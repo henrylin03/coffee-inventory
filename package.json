@@ -2,9 +2,9 @@
 	"name": "template--expressjs-ejs-postgres",
 	"version": "1.0.0",
 	"description": "Template to quickly spin-up ExpressJS (Node JS) app, with EJS templating",
-	"main": "app.js",
+	"main": "src/app.js",
 	"scripts": {
-		"dev": "node --watch app.js",
+		"dev": "node --watch src/app.js",
 		"seed-db": "node db/populatedb.js"
 	},
 	"repository": {
