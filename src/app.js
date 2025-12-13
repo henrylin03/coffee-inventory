@@ -3,7 +3,7 @@ const path = require("node:path");
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 /* set up EJS templating */
 app.set("view engine", "ejs");
