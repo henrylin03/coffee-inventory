@@ -3,6 +3,8 @@
 require("dotenv").config();
 const { Client } = require("pg");
 
+const DATABASE_NAME = "coffee_inventory";
+
 const CREATE_TABLES_QUERY = `
 CREATE TABLE IF NOT EXISTS categories (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -38,7 +40,7 @@ VALUES
     ('Campos Decaf Ground Coffee', 250, 'Campos', 'Making great coffee at home has never been easier! Our Campos Decaf coffee, ground in a resealable 250g bag is ready for you to brew at home. Decaf coffee is for coffee lovers. For people who enjoy the flavour and experience of coffee without the caffeine. We have always taken great pride in our decaf for exactly this reason.', 2200, 221, 2),
     ('Campos Superior Aluminium Coffee Capsules 10 pack', 55, 'Campos', 'If you have ordered a cup of Campos coffee in our famous green cup, then you've tasted our Campos Superior Blend. Campos Superior is our signature, quintessential specialty coffee cafe blend. It's what we've proudly served in our cafes since day in Newtown, 2002.', 800, 81, 3),
     ('Vittoria Nespresso Compatible Coffee Capsules 10 pack', 52, 'Vittoria', 'Vittoria Italian blend is a medium roast of 100% Arabica coffee beans from Central and South America with a balanced body and taste. Italian blend is a milder cup compared to darker roasts like Vittoria Espresso.', 475, 48, 3),
-    ('Some uncategorised coffee', 250, 'Roastery X', 'Lorem ipsum blah blah', 2500, 15)
+    ('Some uncategorised coffee', 250, 'Roastery X', 'Lorem ipsum blah blah', 2500, 15);
 `;
 
 async function main() {
@@ -47,7 +49,7 @@ async function main() {
 		console.warn(
 			"Database URL not provided. Defaulting to development database.",
 		);
-		databaseUrl = process.env.LOCAL_DB_URI;
+		databaseUrl = `postgresql://${process.env.USER_NAME}:${process.env.PASSWORD}@localhost:5432/${DATABASE_NAME}`;
 	}
 
 	console.log("seeding...");
