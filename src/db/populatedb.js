@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-
 require("dotenv").config();
 const { Client } = require("pg");
 
@@ -11,7 +10,6 @@ CREATE TABLE IF NOT EXISTS categories (
     name VARCHAR(100) NOT NULL,
     description VARCHAR(280)
 );
-
 
 CREATE TABLE IF NOT EXISTS items (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -44,22 +42,16 @@ VALUES
 `;
 
 async function main() {
-	let databaseUrl = process.argv[2];
-	if (typeof databaseUrl === "undefined" || databaseUrl === "") {
-		console.warn(
-			"Database URL not provided. Defaulting to development database.",
-		);
-		databaseUrl = `postgresql://${process.env.USER_NAME}:${process.env.PASSWORD}@localhost:5432/${DATABASE_NAME}`;
-	}
+	const localDatabaseUrl = `postgresql://${process.env.USER_NAME}:${process.env.PASSWORD}@localhost:5432/${DATABASE_NAME}`;
 
 	console.log("seeding...");
 	const client = new Client({
-		connectionString: databaseUrl,
+		connectionString: localDatabaseUrl,
 	});
 
 	await client.connect();
 	await client.query(CREATE_TABLES_QUERY);
-	await client.query(POPULATE_TABLES_QUERY);
+	//   await client.query(POPULATE_TABLES_QUERY);
 	await client.end();
 	console.log("done");
 }
