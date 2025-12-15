@@ -1,8 +1,7 @@
 #! /usr/bin/env node
 require("dotenv").config();
 const { Client } = require("pg");
-
-const DATABASE_NAME = "coffee_inventory";
+const { DATABASE_NAME } = require("./constants");
 
 const CREATE_TABLES_QUERY = `
 CREATE TABLE IF NOT EXISTS categories (
