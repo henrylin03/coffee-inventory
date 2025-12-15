@@ -1,1 +1,1 @@
-- ensure to CREATE DATABASE locally first otherwise the `populatedb` script won't work
+- ensure to CREATE DATABASE locally first otherwise the `populatedb` script won't work. in your .env add your postgres username (as `USER_NAME`) and password (`PASSWORD`) to ensure local environment of db works.
