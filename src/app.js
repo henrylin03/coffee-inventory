@@ -12,7 +12,9 @@ app.set("views", path.join(__dirname, "views"));
 /* middleware to parse data in request body */
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (_req, res) => res.render("index"));
+// app.get("/", (_req, res) => res.render("index"));
+app.get("/items", (_req, res) => res.render("items"));
+app.get("/categories", (_req, res) => res.render("categories"));
 
 const PORT = 3000;
 app.listen(PORT, (error) => {
