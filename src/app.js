@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("node:path");
+const itemsRouter = require("./routes/itemsRouter");
 
 const app = express();
 
@@ -12,7 +13,8 @@ app.set("views", path.join(__dirname, "views"));
 /* middleware to parse data in request body */
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/items", (_req, res) => res.render("items"));
+/* routes */
+app.use("/items", itemsRouter);
 app.get("/categories", (_req, res) => res.render("categories"));
 app.get("/", (_req, res) => res.redirect("/items"));
 

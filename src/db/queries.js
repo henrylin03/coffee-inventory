@@ -1,12 +1,10 @@
 const pool = require("./pool");
 
-/* WRITE QUERIES HERE */
+const getAllItems = async () => {
+	const { rows } = await pool.query("SELECT * FROM items;");
+	return rows;
+};
 
-// async function getAllMessages() {
-//   const { rows } = await pool.query("SELECT * FROM messages");
-//   return rows;
-// }
-
-// module.exports = {
-//   getAllMessages,
-// };
+module.exports = {
+	getAllItems,
+};
