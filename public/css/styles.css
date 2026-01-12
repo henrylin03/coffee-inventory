@@ -14,6 +14,11 @@ main {
 	padding: 2rem;
 }
 
+.page-title {
+	font-size: 2rem;
+	font-weight: 400;
+}
+
 /* navbar */
 nav {
 	background-color: #002a39;
