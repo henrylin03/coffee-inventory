@@ -5,14 +5,7 @@
     <%- include("../components/navbar.ejs") %>
     <main>
       <h1 class="page-title">All items</h1>
-
-      <% if (Array.isArray(items) && items.length) { %>
-      <ul>
-        <% items.forEach((item) => { %>
-        <li><%= JSON.stringify(item) %></li>
-        <% }) %>
-      </ul>
-      <% } %>
+      <%- include("./itemsTable.ejs") %>
     </main>
   </body>
 </html>
