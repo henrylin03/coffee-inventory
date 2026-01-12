@@ -9,5 +9,16 @@
       <th>Stock on hand</th>
     </tr>
   </thead>
-  <tbody></tbody>
+  <tbody>
+    <% items.forEach(item => { %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.sku %></td>
+      <td><%= item.size_grams %></td>
+      <td><%= item.roastery %></td>
+      <td><%= item.price_cents %></td>
+      <td><%= item.stock_quantity %></td>
+    </tr>
+    <%}); %>
+  </tbody>
 </table>
