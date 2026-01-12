@@ -4,6 +4,16 @@
 	font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
+body {
+	display: grid;
+	grid-template-columns: 1fr 9fr;
+	min-height: 100dvh;
+}
+
+main {
+	padding: 2rem;
+}
+
 /* navbar */
 nav {
 	background-color: #002a39;
