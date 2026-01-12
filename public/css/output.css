@@ -1,4 +1,5 @@
 /*! tailwindcss v4.1.18 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
 	:root,
@@ -9,6 +10,9 @@
 		--font-mono:
 			ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
 			"Courier New", monospace;
+		--text-3xl: 1.875rem;
+		--text-3xl--line-height: calc(2.25 / 1.875);
+		--font-weight-bold: 700;
 		--default-font-family: var(--font-sans);
 		--default-mono-font-family: var(--font-mono);
 	}
@@ -225,40 +229,60 @@
 		display: none !important;
 	}
 }
-@layer utilities;
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Satisfy&display=swap");
-* {
-	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+@layer utilities {
+	.table {
+		display: table;
+	}
+	.border-collapse {
+		border-collapse: collapse;
+	}
+	.resize {
+		resize: both;
+	}
+	.border {
+		border-style: var(--tw-border-style);
+		border-width: 1px;
+	}
+	.text-3xl {
+		font-size: var(--text-3xl);
+		line-height: var(--tw-leading, var(--text-3xl--line-height));
+	}
+	.font-bold {
+		--tw-font-weight: var(--font-weight-bold);
+		font-weight: var(--font-weight-bold);
+	}
+	.underline {
+		text-decoration-line: underline;
+	}
+	.outline {
+		outline-style: var(--tw-outline-style);
+		outline-width: 1px;
+	}
 }
-nav {
-	background-color: #002a39;
-	color: white;
-	padding: 1.5rem;
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
+@property --tw-border-style {
+	syntax: "*";
+	inherits: false;
+	initial-value: solid;
 }
-.branding {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
+@property --tw-font-weight {
+	syntax: "*";
+	inherits: false;
 }
-.logo {
-	height: 1.75rem;
-	margin-bottom: 0.25rem;
+@property --tw-outline-style {
+	syntax: "*";
+	inherits: false;
+	initial-value: solid;
 }
-.app-name {
-	font-family: "Satisfy", cursive;
-	font-size: 2rem;
-}
-nav > ul {
-	list-style: none;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
-}
-nav a {
-	color: inherit;
-	text-decoration: none;
+@layer properties {
+	@supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or
+		((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
+		*,
+		::before,
+		::after,
+		::backdrop {
+			--tw-border-style: solid;
+			--tw-font-weight: initial;
+			--tw-outline-style: solid;
+		}
+	}
 }
