@@ -59,3 +59,15 @@ nav a {
 	color: inherit;
 	text-decoration: none;
 }
+
+/* tables */
+table {
+	width: 100%;
+}
+
+table th {
+	text-align: left;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	opacity: 0.8;
+}
