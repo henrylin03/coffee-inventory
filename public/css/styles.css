@@ -15,6 +15,17 @@ nav {
 	gap: 2rem;
 }
 
+.branding {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.logo {
+	height: 1.75rem;
+	margin-bottom: 0.25rem;
+}
+
 .app-name {
 	font-family: "Satisfy", cursive;
 	font-size: 2rem;
