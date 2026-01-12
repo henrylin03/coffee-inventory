@@ -5,6 +5,7 @@
 	"main": "src/app.js",
 	"scripts": {
 		"dev": "node --watch src/app.js",
+		"tailwind:css": "npx @tailwindcss/cli -i ./public/css/styles.css -o ./public/css/output.css --watch",
 		"seed-db": "node src/db/populatedb.js"
 	},
 	"repository": {
@@ -24,10 +25,12 @@
 	},
 	"homepage": "https://github.com/henrylin03/template--expressjs-ejs-postgres#readme",
 	"dependencies": {
+		"@tailwindcss/cli": "^4.1.18",
 		"dotenv": "^17.2.3",
 		"ejs": "^3.1.10",
 		"express": "^5.2.1",
-		"pg": "^8.16.3"
+		"pg": "^8.16.3",
+		"tailwindcss": "^4.1.18"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.11",
