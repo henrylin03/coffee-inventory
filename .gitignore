@@ -6,4 +6,4 @@ build/
 
 **/*:Zone.Identifier
 
-/css/output.css
+**/output.css
