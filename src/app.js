@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 /* routes */
 app.use("/items", itemsRouter);
-app.get("/categories", (_req, res) => res.render("categories"));
+app.get("/categories", (_req, res) => res.render("pages/categories"));
 app.get("/", (_req, res) => res.redirect("/items"));
 
 const PORT = 3000;
