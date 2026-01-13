@@ -20,8 +20,11 @@
       <td><%= item.price_cents %></td>
       <td><%= item.stock_quantity %></td>
       <td class="buttons">
-        <button type="button" class="secondary-btn">Edit</button
-        ><button type="button" class="delete-btn">Delete</button>
+        <a href=<%= `/items/${item.id}` %>>
+          <button type="button" class="secondary-btn">Edit</button
+          >
+        </a>
+        <button type="button" class="delete-btn">Delete</button>
       </td>
     </tr>
     <%}); %>

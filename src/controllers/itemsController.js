@@ -5,4 +5,13 @@ const getAllItems = async (_req, res) => {
 	res.render("pages/items", { items: allItems });
 };
 
-module.exports = { getAllItems };
+const getItemById = async (req, res) => {
+	const { id: itemId } = req.params;
+	const item = await db.getItemById(itemId);
+
+	if (item === null) throw new Error(`Item with ID ${itemId} not found`);
+
+	res.render("pages/items/itemDetailsPage", { item });
+};
+
+module.exports = { getAllItems, getItemById };
