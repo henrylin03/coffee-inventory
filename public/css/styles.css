@@ -10,8 +10,17 @@ body {
 	min-height: 100dvh;
 }
 
+main {
+	display: flex;
+	flex-direction: column;
+}
+
 main > header {
 	padding: 1rem 2rem;
+}
+
+main > .content-section {
+	flex: 1;
 }
 
 .page-footer {
