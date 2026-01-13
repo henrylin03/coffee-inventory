@@ -5,7 +5,7 @@
     <%- include("../../components/navbar.ejs") %>
     <main>
       <header>
-        <h1 class="page-title">Edit item</h1>
+        <h1 class="page-title" id="page-title">Edit item</h1>
         <div class="buttons">
           <button type="button" class="delete-btn">Delete item</button>
           <a href="/items" aria-label="Close item details and view all items">
@@ -29,6 +29,15 @@
           </a>
         </div>
       </header>
+      <section aria-labelledby="page-title"></section>
+      <footer class="page-footer">
+        <div class="buttons">
+          <button type="button" class="primary-btn">Save</button>
+          <a href="/items" aria-label="Close item details and view all items"
+            ><button type="button" class="cancel-btn">Cancel</button></a
+          >
+        </div>
+      </footer>
     </main>
   </body>
 </html>

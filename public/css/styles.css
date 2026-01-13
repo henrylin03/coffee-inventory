@@ -14,6 +14,11 @@ main > header {
 	padding: 1rem 2rem;
 }
 
+.page-footer {
+	border: 1px solid #ccc;
+	padding: 1rem;
+}
+
 /* typography */
 .page-title {
 	font-size: 2rem;
@@ -31,6 +36,12 @@ button {
 	background: none;
 }
 
+button.primary-btn {
+	background-color: #0a9396;
+	border: 2px solid #0a9396;
+	color: white;
+}
+
 button.secondary-btn {
 	background-color: white;
 	border: 2px solid #0a9396;
@@ -41,6 +52,11 @@ button.delete-btn {
 	background-color: white;
 	border: 2px solid #ae2012;
 	color: #ae2012;
+}
+
+button.cancel-btn {
+	background-color: #f6f6f6;
+	border: 2px solid #ccc;
 }
 
 /* navbar */
@@ -140,4 +156,12 @@ td.buttons {
 
 tbody button {
 	width: 100%;
+}
+
+/* other page elements */
+.page-footer > .buttons {
+	width: fit-content;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.5rem;
 }
