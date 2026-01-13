@@ -29,7 +29,86 @@
           </a>
         </div>
       </header>
-      <section aria-labelledby="page-title" class="content-section"></section>
+
+      <section aria-labelledby="page-title" class="content-section">
+        <form action="/edit" method="post">
+          <ul>
+            <li>
+              <label for="itemNameInput">Name*</label
+              ><input
+                type="text"
+                id="itemNameInput"
+                name="item_name"
+                required
+              />
+            </li>
+            <li>
+              <label for="skuInput">SKU*</label
+              ><input type="text" id="skuInput" name="sku" required />
+            </li>
+            <li>
+              <label for="roasteryInput">Roastery*</label
+              ><input
+                type="text"
+                id="roasteryInput"
+                name="roastery_name"
+                required
+              />
+            </li>
+            <li>
+              <label for="descriptionInput" class="optional-input"
+                >Description<small>(Optional)</small></label
+              ><textarea
+                id="descriptionInput"
+                name="description"
+                rows="6"
+              ></textarea>
+            </li>
+            <li>
+              <label for="weightInput">Weight*</label>
+              <div class="right">
+                <input
+                  type="number"
+                  id="weightInput"
+                  name="weightInGramsPerUnit"
+                  required
+                  min="0"
+                  step="0.1"
+                /><span>grams</span>
+              </div>
+            </li>
+            <li>
+              <label for="sellingPriceInput">Selling price*</label>
+              <div class="right">
+                <span>AUD$</span
+                ><input
+                  type="number"
+                  id="sellingPriceInput"
+                  name="selling_price"
+                  required
+                  step="any"
+                  min="0"
+                />
+              </div>
+            </li>
+            <li>
+              <label for="stockCountInput">Stock on hand*</label>
+              <div class="right">
+                <input
+                  type="number"
+                  id="stockCountInput"
+                  name="stock_on_hand"
+                  required
+                  min="0"
+                  step="1"
+                />
+                <span>units</span>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </section>
+
       <footer class="page-footer">
         <div class="buttons">
           <button type="button" class="primary-btn">Save</button>
