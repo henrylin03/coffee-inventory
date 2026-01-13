@@ -23,7 +23,12 @@ main > header {
 /* ui elements */
 button {
 	cursor: pointer;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
+	border-radius: 0.5rem;
+	outline: none;
+	border: none;
+	padding: 0.25rem 0.5rem;
+	background: none;
 }
 
 button.secondary-btn {
@@ -82,6 +87,23 @@ nav a {
 	text-decoration: none;
 }
 
+/* header */
+main > header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+main > header > .buttons {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+button.close-btn {
+	color: hsl(0, 0%, 80%);
+}
+
 /* tables */
 table {
 	width: 100%;
@@ -118,9 +140,4 @@ td.buttons {
 
 tbody button {
 	width: 100%;
-	border-radius: 0.5rem;
-	outline: none;
-	border: none;
-	padding: 0.25rem 0.5rem;
-	font-size: 0.8rem;
 }
