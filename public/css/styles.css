@@ -10,8 +10,8 @@ body {
 	min-height: 100dvh;
 }
 
-main {
-	padding: 2rem;
+main > header {
+	padding: 1rem 2rem;
 }
 
 /* typography */
@@ -69,16 +69,32 @@ nav a {
 /* tables */
 table {
 	width: 100%;
+	border-collapse: collapse;
 }
 
-thead th {
+thead > tr {
+	background-color: #f4f4f4;
+}
+
+td,
+th {
+	padding: 1rem 2.5rem;
+}
+
+th {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
 	text-align: left;
 	font-size: 0.75rem;
 	text-transform: uppercase;
 	opacity: 0.8;
 }
 
-tbody .buttons {
+td {
+	border-bottom: 1px solid #e6e6e6;
+}
+
+td.buttons {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5rem;
