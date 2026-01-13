@@ -14,9 +14,28 @@ main > header {
 	padding: 1rem 2rem;
 }
 
+/* typography */
 .page-title {
 	font-size: 2rem;
 	font-weight: 400;
+}
+
+/* ui elements */
+button {
+	cursor: pointer;
+	font-size: 0.9rem;
+}
+
+button.secondary-btn {
+	background-color: white;
+	border: 2px solid #0a9396;
+	color: #0a9396;
+}
+
+button.delete-btn {
+	background-color: white;
+	border: 2px solid #ae2012;
+	color: #ae2012;
 }
 
 /* navbar */
@@ -70,12 +89,12 @@ thead > tr {
 	background-color: #f4f4f4;
 }
 
-table td,
-table th {
-	padding: 1rem;
+td,
+th {
+	padding: 1rem 2.5rem;
 }
 
-table th {
+th {
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	text-align: left;
@@ -84,6 +103,19 @@ table th {
 	opacity: 0.8;
 }
 
-tbody td {
+td {
 	border-bottom: 1px solid #e6e6e6;
+}
+
+td.buttons {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.5rem;
+}
+
+tbody button {
+	border-radius: 0.5rem;
+	outline: none;
+	border: none;
+	padding: 0.25rem 0.5rem;
 }
