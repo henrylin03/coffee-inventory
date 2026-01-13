@@ -1,0 +1,29 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>SKU</th>
+      <th>Weight</th>
+      <th>Roastery</th>
+      <th>Selling price ($AUD)</th>
+      <th>Stock on hand</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% items.forEach(item => { %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= item.sku %></td>
+      <td><%= item.size_grams %></td>
+      <td><%= item.roastery %></td>
+      <td><%= item.price_cents %></td>
+      <td><%= item.stock_quantity %></td>
+      <td class="buttons">
+        <button type="button" class="secondary-btn">Edit</button
+        ><button type="button" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    <%}); %>
+  </tbody>
+</table>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("../partials/helmet.ejs", {pageTitle: "Manage Your Items"}) %>
+  <body>
+    <%- include("../components/navbar.ejs") %>
+    <main>
+      <header><h1 class="page-title">All items</h1></header>
+      <%- include("./itemsTable.ejs", {items}) %>
+    </main>
+  </body>
+</html>
