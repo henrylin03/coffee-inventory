@@ -23,6 +23,19 @@ main > header {
 /* ui elements */
 button {
 	cursor: pointer;
+	font-size: 0.9rem;
+}
+
+button.secondary-btn {
+	background-color: white;
+	border: 2px solid #0a9396;
+	color: #0a9396;
+}
+
+button.delete-btn {
+	background-color: white;
+	border: 2px solid #ae2012;
+	color: #ae2012;
 }
 
 /* navbar */
