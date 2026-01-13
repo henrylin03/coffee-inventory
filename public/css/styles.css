@@ -6,7 +6,7 @@
 
 body {
 	display: grid;
-	grid-template-columns: 1fr 9fr;
+	grid-template-columns: 1fr 8fr;
 	min-height: 100dvh;
 }
 
@@ -50,14 +50,17 @@ nav {
 }
 
 .branding {
+	place-self: center;
 	display: flex;
 	align-items: center;
 	gap: 1rem;
 }
 
 .logo {
+	min-width: 1.75rem;
 	height: 1.75rem;
 	margin-bottom: 0.25rem;
+	color: #94d2bd;
 }
 
 .app-name {
@@ -71,7 +74,7 @@ nav > ul {
 
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 1.5rem;
 }
 
 nav a {
