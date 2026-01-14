@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Satisfy&display=swap");
 
+:root {
+	--danger-colour: #ae2012;
+}
+
 * {
 	font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
@@ -64,8 +68,8 @@ input[type="submit"] {
 
 .delete-btn {
 	background-color: white;
-	border: 2px solid #ae2012;
-	color: #ae2012;
+	border: 2px solid var(--danger-colour);
+	color: var(--danger-colour);
 }
 
 .cancel-btn {
@@ -202,6 +206,10 @@ form > ul > li > .right {
 	gap: 0.5rem;
 }
 
+.input-container > input {
+	width: 100%;
+}
+
 .optional-input {
 	display: flex;
 	flex-direction: column;
@@ -211,6 +219,27 @@ form > ul > li > .right {
 	font-size: 0.75rem;
 	opacity: 0.6;
 	font-style: italic;
+}
+
+form li.error {
+	color: var(--danger-colour);
+}
+
+.error input {
+	border: 2px solid var(--danger-colour);
+}
+
+.error-message {
+	font-size: 0.75rem;
+	display: none;
+}
+
+.error .error-message {
+	display: block;
+}
+
+.error .decorative-text {
+	transform: translateY(-40%);
 }
 
 /* footer */
