@@ -31,7 +31,11 @@
       </header>
 
       <section aria-labelledby="page-title" class="content-section">
-        <form action="/edit" method="post" id="edit-item-form">
+        <form
+          action="/items/<%= item.id %>/update"
+          method="POST"
+          id="edit-item-form"
+        >
           <ul>
             <li>
               <label for="itemNameInput">Name*</label

@@ -16,4 +16,10 @@ const getItemById = async (req, res) => {
 	res.render("pages/items/itemDetailsPage", { item });
 };
 
-module.exports = { getAllItems, getItemById };
+const updateItemPost = async (req, res) => {
+	console.log("req.body:", req.body);
+	// const { id: itemId } = req.params;
+	res.end();
+};
+
+module.exports = { getAllItems, getItemById, updateItemPost };
