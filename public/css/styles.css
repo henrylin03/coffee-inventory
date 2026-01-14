@@ -234,6 +234,10 @@ form li.error {
 	display: block;
 }
 
+.error .decorative-text {
+	transform: translateY(-40%);
+}
+
 /* footer */
 .page-footer > .buttons {
 	width: fit-content;
