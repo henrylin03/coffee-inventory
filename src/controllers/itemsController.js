@@ -1,3 +1,4 @@
+const { validationResult } = require("express-validator");
 const db = require("../db/queries");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
 const { validateItem } = require("./validateItem");
@@ -17,18 +18,29 @@ const getItemById = async (req, res) => {
 	res.render("pages/editItem", { item });
 };
 
-const updateItemPost = async (req, res) => {
-	const { id: itemId } = req.params;
+const updateItemPost = [
+	validateItem,
+	async (req, res) => {
+		const { id: itemId } = req.params;
+		const item = await db.getItemById(itemId);
+		if (item === null)
+			throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
 
-	const { price_dollars, ...unchangedFormInputsAndValues } = req.body;
+		const errors = validationResult(req);
+		if (!errors.isEmpty())
+			return res
+				.status(404)
+				.render("pages/editItem", { errors: errors.array(), item });
 
-	const formInputsAndValues = {
-		...unchangedFormInputsAndValues,
-		price_cents: price_dollars * 100,
-	};
+		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
+		const formInputsAndValues = {
+			...unchangedFormInputsAndValues,
+			price_cents: price_dollars * 100,
+		};
 
-	await db.updateItemById(itemId, formInputsAndValues);
-	res.redirect("/items");
-};
+		await db.updateItemById(itemId, formInputsAndValues);
+		res.redirect("/items");
+	},
+];
 
 module.exports = { getAllItems, getItemById, updateItemPost };

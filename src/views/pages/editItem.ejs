@@ -34,6 +34,10 @@
       </header>
 
       <section aria-labelledby="page-title" class="content-section">
+        <% if (locals.errors && locals.errors.length > 0) { %>
+        <p><%= locals.errors %></p>
+        <% } %>
+
         <form
           action="/items/<%= item.id %>/update"
           method="POST"
