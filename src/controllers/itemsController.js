@@ -10,8 +10,6 @@ const getItemById = async (req, res) => {
 	const { id: itemId } = req.params;
 	const item = await db.getItemById(itemId);
 
-	console.log("item:", item);
-
 	if (item === null)
 		throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
 
@@ -19,8 +17,31 @@ const getItemById = async (req, res) => {
 };
 
 const updateItemPost = async (req, res) => {
-	console.log("req.body:", req.body);
-	// const { id: itemId } = req.params;
+	const { id: itemId } = req.params;
+
+	const {
+		name,
+		sku,
+		roastery,
+		description,
+		size_grams,
+		price_dollars,
+		stock_quantity,
+	} = req.body;
+
+	const price_cents = price_dollars * 100;
+
+	const formInputsAndValues = {
+		name,
+		sku,
+		roastery,
+		description,
+		size_grams,
+		price_cents,
+		stock_quantity,
+	};
+
+	await db.updateItemById(itemId, formInputsAndValues);
 	res.end();
 };
 
