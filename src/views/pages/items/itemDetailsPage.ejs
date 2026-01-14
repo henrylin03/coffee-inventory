@@ -39,12 +39,19 @@
                 type="text"
                 id="itemNameInput"
                 name="item_name"
+                value="<%= item.name %>"
                 required
               />
             </li>
             <li>
               <label for="skuInput">SKU*</label
-              ><input type="text" id="skuInput" name="sku" required />
+              ><input
+                type="text"
+                id="skuInput"
+                name="sku"
+                value="<%= item.sku %>"
+                required
+              />
             </li>
             <li>
               <label for="roasteryInput">Roastery*</label
@@ -52,17 +59,16 @@
                 type="text"
                 id="roasteryInput"
                 name="roastery_name"
+                value="<%= item.roastery %>"
                 required
               />
             </li>
             <li>
               <label for="descriptionInput" class="optional-input"
                 >Description<small>(Optional)</small></label
-              ><textarea
-                id="descriptionInput"
-                name="description"
-                rows="6"
-              ></textarea>
+              ><textarea id="descriptionInput" name="description" rows="6">
+<%= item.description %></textarea
+              >
             </li>
             <li>
               <label for="weightInput">Weight*</label>
@@ -74,6 +80,7 @@
                   required
                   min="0"
                   step="0.1"
+                  value="<%= item.size_grams %>"
                 /><span>grams</span>
               </div>
             </li>
@@ -88,6 +95,7 @@
                   required
                   step="any"
                   min="0"
+                  value="<%= item.price_cents / 100 %>"
                 />
               </div>
             </li>
@@ -101,6 +109,7 @@
                   required
                   min="0"
                   step="1"
+                  value="<%= item.stock_quantity %>"
                 />
                 <span>units</span>
               </div>
