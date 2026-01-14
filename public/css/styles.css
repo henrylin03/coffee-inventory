@@ -221,9 +221,17 @@ form li.error {
 	color: var(--error-colour);
 }
 
-.error input,
-.error textarea {
+.error input {
 	border: 2px solid var(--error-colour);
+}
+
+.error-message {
+	font-size: 0.75rem;
+	display: none;
+}
+
+.error .error-message {
+	display: block;
 }
 
 /* footer */
