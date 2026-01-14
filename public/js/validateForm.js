@@ -1,6 +1,7 @@
 const form = document.querySelector("form");
 const inputListItems = form.querySelectorAll("li");
 const inputElements = form.querySelectorAll("input, textarea");
+const numberInputElements = form.querySelectorAll("input[type='number']");
 const saveButton = document.querySelector("input[type='submit']");
 
 form.noValidate = true; // disable default html validation
@@ -10,6 +11,13 @@ function handleInputElementBlur(event) {
 
 	const inputListItem = event.currentTarget.closest("li");
 	validateInput(inputListItem);
+}
+
+function handlePositiveNumberInputKeydown(event) {
+	const INVALID_KEYS = ["-", "e", "E", "+"];
+	if (INVALID_KEYS.includes(event.key)) {
+		event.preventDefault();
+	}
 }
 
 function clearError(event) {
@@ -37,5 +45,8 @@ function validateForm(event) {
 inputElements.forEach((inputElement) => {
 	inputElement.addEventListener("blur", handleInputElementBlur);
 	inputElement.addEventListener("input", clearError);
+});
+numberInputElements.forEach((inputElement) => {
+	inputElement.addEventListener("keydown", handlePositiveNumberInputKeydown);
 });
 saveButton.addEventListener("click", validateForm);
