@@ -42,7 +42,7 @@ const updateItemPost = async (req, res) => {
 	};
 
 	await db.updateItemById(itemId, formInputsAndValues);
-	res.end();
+	res.redirect("/items");
 };
 
 module.exports = { getAllItems, getItemById, updateItemPost };
