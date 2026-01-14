@@ -206,6 +206,10 @@ form > ul > li > .right {
 	gap: 0.5rem;
 }
 
+.input-container > input {
+	width: 100%;
+}
+
 .optional-input {
 	display: flex;
 	flex-direction: column;
