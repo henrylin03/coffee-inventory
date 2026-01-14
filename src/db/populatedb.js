@@ -14,10 +14,10 @@ CREATE TABLE IF NOT EXISTS items (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(100) NOT NULL,
     sku VARCHAR(24) UNIQUE NOT NULL,
-    size_grams SMALLINT NOT NULL,
+    size_grams DECIMAL NOT NULL,
     roastery VARCHAR(100) NOT NULL,
     description VARCHAR(4000),
-    price_cents SMALLINT NOT NULL,
+    price_cents DECIMAL NOT NULL,
     stock_quantity NUMERIC NOT NULL,
     category_id INTEGER REFERENCES categories(id)
 );

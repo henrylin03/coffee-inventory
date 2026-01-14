@@ -1,7 +1,7 @@
 const pool = require("./pool");
 
 const getAllItems = async () => {
-	const { rows } = await pool.query("SELECT * FROM items;");
+	const { rows } = await pool.query("SELECT * FROM items ORDER BY id ASC;");
 	return rows;
 };
 
@@ -14,7 +14,29 @@ const getItemById = async (itemId) => {
 	return rows[0];
 };
 
+const updateItemById = async (itemId, formObject) => {
+	const generateUpdateQuery = (formObject) => {
+		const resQueryParts = ["UPDATE items SET"];
+
+		const setQueryParts = [];
+		Object.keys(formObject).forEach((columnName, idx) => {
+			setQueryParts.push(`${columnName} = $${idx + 2}`); // first parameter is itemId
+		});
+
+		resQueryParts.push(setQueryParts.join(", "));
+		resQueryParts.push(" WHERE id = $1;"); // first parameter is itemId
+
+		return resQueryParts.join(" ");
+	};
+
+	await pool.query(generateUpdateQuery(formObject), [
+		itemId,
+		...Object.values(formObject),
+	]);
+};
+
 module.exports = {
 	getAllItems,
 	getItemById,
+	updateItemById,
 };

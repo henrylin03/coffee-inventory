@@ -16,4 +16,18 @@ const getItemById = async (req, res) => {
 	res.render("pages/items/itemDetailsPage", { item });
 };
 
-module.exports = { getAllItems, getItemById };
+const updateItemPost = async (req, res) => {
+	const { id: itemId } = req.params;
+
+	const { price_dollars, ...unchangedFormInputsAndValues } = req.body;
+
+	const formInputsAndValues = {
+		...unchangedFormInputsAndValues,
+		price_cents: price_dollars * 100,
+	};
+
+	await db.updateItemById(itemId, formInputsAndValues);
+	res.redirect("/items");
+};
+
+module.exports = { getAllItems, getItemById, updateItemPost };
