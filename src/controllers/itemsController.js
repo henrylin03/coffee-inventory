@@ -3,7 +3,7 @@ const CustomNotFoundError = require("../errors/CustomNotFoundError");
 
 const getAllItems = async (_req, res) => {
 	const allItems = await db.getAllItems();
-	res.render("pages/items", { items: allItems });
+	res.render("pages/allItems", { items: allItems });
 };
 
 const getItemById = async (req, res) => {
@@ -13,7 +13,7 @@ const getItemById = async (req, res) => {
 	if (item === null)
 		throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
 
-	res.render("pages/items/itemDetailsPage", { item });
+	res.render("pages/editItem", { item });
 };
 
 const updateItemPost = async (req, res) => {
