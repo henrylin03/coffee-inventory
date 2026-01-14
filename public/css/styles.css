@@ -164,7 +164,7 @@ td.buttons {
 	gap: 0.5rem;
 }
 
-td.buttons > button {
+td.buttons button {
 	width: 100%;
 }
 
