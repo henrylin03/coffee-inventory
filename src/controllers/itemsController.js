@@ -1,5 +1,6 @@
 const db = require("../db/queries");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
+const { validateItem } = require("./validateItem");
 
 const getAllItems = async (_req, res) => {
 	const allItems = await db.getAllItems();
