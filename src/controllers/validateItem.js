@@ -71,6 +71,12 @@ const validateItem = [
 			),
 		)
 		.optional(),
+
+	body("size_grams")
+		.isFloat({ min: 0.1 })
+		.withMessage(
+			"Weight of each unit must be a positive number, greater than 0.1 grams",
+		),
 ];
 
 module.exports = { validateItem };
