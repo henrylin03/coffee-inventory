@@ -7,8 +7,13 @@ const CHARACTER_LIMITS = {
 	description: { min: 0, max: 4000 },
 };
 
-const getLengthErrorMessage = (fieldName, minCharacters, maxCharacters) =>
-	`${fieldName} must be between ${minCharacters} and ${maxCharacters} characters`;
+const getLengthErrorMessage = (fieldName, minCharacters, maxCharacters) => {
+	const isOptionalField = minCharacters === 0;
+	if (isOptionalField)
+		return `${fieldName} must be at most ${maxCharacters} characters`;
+
+	return `${fieldName} must be between ${minCharacters} and ${maxCharacters} characters`;
+};
 
 const alphanumericErrorMessage =
 	"must only contain letters, numbers, hyphens (-) or underscores (_)";
@@ -54,6 +59,18 @@ const validateItem = [
 				CHARACTER_LIMITS.roastery.max,
 			),
 		),
+
+	body("description")
+		.trim()
+		.isLength({ max: CHARACTER_LIMITS.description.max })
+		.withMessage(
+			getLengthErrorMessage(
+				"Description",
+				CHARACTER_LIMITS.description.min,
+				CHARACTER_LIMITS.description.max,
+			),
+		)
+		.optional(),
 ];
 
 module.exports = { validateItem };
