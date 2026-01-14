@@ -38,11 +38,11 @@
         >
           <ul>
             <li>
-              <label for="itemNameInput">Name*</label
+              <label for="nameInput">Name*</label
               ><input
                 type="text"
-                id="itemNameInput"
-                name="item_name"
+                id="nameInput"
+                name="name"
                 value="<%= item.name %>"
                 required
               />
@@ -62,7 +62,7 @@
               ><input
                 type="text"
                 id="roasteryInput"
-                name="roastery_name"
+                name="roastery"
                 value="<%= item.roastery %>"
                 required
               />
@@ -80,7 +80,7 @@
                 <input
                   type="number"
                   id="weightInput"
-                  name="weightInGramsPerUnit"
+                  name="size_grams"
                   required
                   min="0"
                   step="0.1"
@@ -95,7 +95,7 @@
                 ><input
                   type="number"
                   id="sellingPriceInput"
-                  name="selling_price"
+                  name="price_cents"
                   required
                   step="any"
                   min="0"
@@ -109,7 +109,7 @@
                 <input
                   type="number"
                   id="stockCountInput"
-                  name="stock_on_hand"
+                  name="stock_quantity"
                   required
                   min="0"
                   step="1"

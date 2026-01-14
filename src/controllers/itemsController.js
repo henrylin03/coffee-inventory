@@ -10,6 +10,8 @@ const getItemById = async (req, res) => {
 	const { id: itemId } = req.params;
 	const item = await db.getItemById(itemId);
 
+	console.log("item:", item);
+
 	if (item === null)
 		throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
 
