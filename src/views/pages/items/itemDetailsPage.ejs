@@ -31,7 +31,7 @@
       </header>
 
       <section aria-labelledby="page-title" class="content-section">
-        <form action="/edit" method="post">
+        <form action="/edit" method="post" id="edit-item-form">
           <ul>
             <li>
               <label for="itemNameInput">Name*</label
@@ -120,7 +120,12 @@
 
       <footer class="page-footer">
         <div class="buttons">
-          <button type="button" class="primary-btn">Save</button>
+          <input
+            type="submit"
+            form="edit-item-form"
+            class="primary-btn"
+            value="Save"
+          />
           <a href="/items" aria-label="Close item details and view all items"
             ><button type="button" class="cancel-btn">Cancel</button></a
           >
