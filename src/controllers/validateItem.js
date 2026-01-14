@@ -3,6 +3,7 @@ const { body } = require("express-validator");
 const CHARACTER_LIMITS = {
 	name: { min: 1, max: 100 },
 	sku: { min: 1, max: 24 },
+	roastery: { min: 1, max: 100 },
 	description: { min: 0, max: 4000 },
 };
 
@@ -37,6 +38,20 @@ const validateItem = [
 				"SKU",
 				CHARACTER_LIMITS.sku.min,
 				CHARACTER_LIMITS.sku.max,
+			),
+		),
+
+	body("roastery")
+		.trim()
+		.isLength({
+			min: CHARACTER_LIMITS.roastery.min,
+			max: CHARACTER_LIMITS.roastery.max,
+		})
+		.withMessage(
+			getLengthErrorMessage(
+				"Roastery",
+				CHARACTER_LIMITS.roastery.min,
+				CHARACTER_LIMITS.roastery.max,
 			),
 		),
 ];
