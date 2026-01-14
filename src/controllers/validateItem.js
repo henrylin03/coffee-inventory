@@ -77,6 +77,13 @@ const validateItem = [
 		.withMessage(
 			"Weight of each unit must be a positive number, greater than 0.1 grams",
 		),
+
+	body("price_cents")
+		.trim()
+		.isFloat({ min: 0 })
+		.withMessage(
+			"Selling price of each unit must be a positive number or zero.",
+		),
 ];
 
 module.exports = { validateItem };
