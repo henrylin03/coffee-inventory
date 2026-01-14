@@ -19,26 +19,11 @@ const getItemById = async (req, res) => {
 const updateItemPost = async (req, res) => {
 	const { id: itemId } = req.params;
 
-	const {
-		name,
-		sku,
-		roastery,
-		description,
-		size_grams,
-		price_dollars,
-		stock_quantity,
-	} = req.body;
-
-	const price_cents = price_dollars * 100;
+	const { price_dollars, ...unchangedFormInputsAndValues } = req.body;
 
 	const formInputsAndValues = {
-		name,
-		sku,
-		roastery,
-		description,
-		size_grams,
-		price_cents,
-		stock_quantity,
+		...unchangedFormInputsAndValues,
+		price_cents: price_dollars * 100,
 	};
 
 	await db.updateItemById(itemId, formInputsAndValues);
