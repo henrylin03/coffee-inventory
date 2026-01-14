@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Satisfy&display=swap");
 
 :root {
-	--error-colour: #ae2012;
+	--danger-colour: #ae2012;
 }
 
 * {
@@ -68,8 +68,8 @@ input[type="submit"] {
 
 .delete-btn {
 	background-color: white;
-	border: 2px solid #ae2012;
-	color: #ae2012;
+	border: 2px solid var(--danger-colour);
+	color: var(--danger-colour);
 }
 
 .cancel-btn {
@@ -222,11 +222,11 @@ form > ul > li > .right {
 }
 
 form li.error {
-	color: var(--error-colour);
+	color: var(--danger-colour);
 }
 
 .error input {
-	border: 2px solid var(--error-colour);
+	border: 2px solid var(--danger-colour);
 }
 
 .error-message {
