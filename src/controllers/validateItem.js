@@ -84,6 +84,10 @@ const validateItem = [
 		.withMessage(
 			"Selling price of each unit must be a positive number or zero.",
 		),
+
+	body("stock_quantity")
+		.isInt({ min: 0 })
+		.withMessage("Stock quantity must be a non-negative integer."),
 ];
 
 module.exports = { validateItem };
