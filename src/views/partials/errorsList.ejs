@@ -1,9 +1,10 @@
 <% if (locals.errors) {%>
-<article class="errors-container">
+<section class="errors-container">
+  <h2>Please correct the following errors</h2>
   <ul>
     <% errors.forEach(error => {%>
     <li><%= error.msg %></li>
     <% })%>
   </ul>
-</article>
+</section>
 <% } %>
