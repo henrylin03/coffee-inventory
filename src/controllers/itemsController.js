@@ -29,7 +29,7 @@ const updateItemPost = [
 		const errors = validationResult(req);
 		if (!errors.isEmpty())
 			return res
-				.status(404)
+				.status(400)
 				.render("pages/editItem", { errors: errors.array(), item });
 
 		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
