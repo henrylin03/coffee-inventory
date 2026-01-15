@@ -34,8 +34,8 @@
       </header>
 
       <section aria-labelledby="page-title" class="content-section">
-        <% if (locals.errors && locals.errors.length > 0) { %>
-        <p><%= locals.errors %></p>
+        <% if (locals.errors) { %>
+        <p><%= JSON.stringify(locals.errors) %></p>
         <% } %>
 
         <form
