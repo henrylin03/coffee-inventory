@@ -51,7 +51,7 @@ input[type="submit"] {
 	border-radius: 0.5rem;
 	outline: none;
 	border: none;
-	padding: 0.25rem 0.5rem;
+	padding: 0.5rem 1rem;
 }
 
 .primary-btn {
@@ -150,10 +150,11 @@ thead > tr {
 
 td,
 th {
-	padding: 0.5rem 2rem;
+	padding-inline: 2rem;
 }
 
 th {
+	padding-block: 0.25rem;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	text-align: left;
@@ -163,10 +164,12 @@ th {
 }
 
 td {
+	padding-block: 0;
 	border-bottom: 1px solid #e6e6e6;
 }
 
 td.buttons {
+	padding: 1rem 1rem 1rem 0;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5rem;
