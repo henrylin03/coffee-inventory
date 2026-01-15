@@ -15,8 +15,6 @@ const getAllItems = async (_req, res) => {
 		};
 	});
 
-	console.log(allItems);
-
 	res.render("pages/allItems", { items: allItems });
 };
 
