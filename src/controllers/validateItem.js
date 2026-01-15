@@ -79,7 +79,6 @@ const validateItem = [
 		),
 
 	body("price_cents")
-		.trim()
 		.isFloat({ min: 0 })
 		.withMessage(
 			"Selling price of each unit must be a positive number or zero.",
