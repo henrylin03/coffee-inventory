@@ -35,7 +35,7 @@ const validateItem = [
 
 	body("sku")
 		.trim()
-		.isAlphanumeric("en-AU", { ignore: ["-", "_"] })
+		.isAlphanumeric("en-AU", { ignore: "-_" })
 		.withMessage(`SKU ${alphanumericErrorMessage}`)
 		.isLength({ min: CHARACTER_LIMITS.sku.min, max: CHARACTER_LIMITS.sku.max })
 		.withMessage(
