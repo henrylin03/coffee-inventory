@@ -2,9 +2,19 @@ const { validationResult, matchedData } = require("express-validator");
 const db = require("../db/queries");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
 const { validateItem } = require("./validateItem");
+const { formatCurrency } = require("../helpers/formatHelpers");
 
 const getAllItems = async (_req, res) => {
-	const allItems = await db.getAllItems();
+	const fetchedItems = await db.getAllItems();
+
+	const allItems = fetchedItems.map((item) => {
+		const { price_cents, ...unchangedFormInputsAndValues } = item;
+		return {
+			...unchangedFormInputsAndValues,
+			price_dollars: formatCurrency(price_cents),
+		};
+	});
+
 	res.render("pages/allItems", { items: allItems });
 };
 
