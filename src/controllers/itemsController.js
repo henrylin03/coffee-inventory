@@ -1,4 +1,4 @@
-const { validationResult } = require("express-validator");
+const { validationResult, matchedData } = require("express-validator");
 const db = require("../db/queries");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
 const { validateItem } = require("./validateItem");
@@ -33,6 +33,7 @@ const updateItemPost = [
 				.render("pages/editItem", { errors: errors.array(), item });
 
 		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
+
 		const formInputsAndValues = {
 			...unchangedFormInputsAndValues,
 			price_cents: price_dollars * 100,
