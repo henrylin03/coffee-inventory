@@ -47,7 +47,6 @@ button {
 button,
 input[type="submit"] {
 	cursor: pointer;
-	font-size: 0.8rem;
 	border-radius: 0.5rem;
 	outline: none;
 	border: none;
@@ -75,6 +74,10 @@ input[type="submit"] {
 .cancel-btn {
 	background-color: #f6f6f6;
 	border: 2px solid #ccc;
+}
+
+.action-btn {
+	font-size: 0.85rem;
 }
 
 /* navbar */
