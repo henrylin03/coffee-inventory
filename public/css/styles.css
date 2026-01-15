@@ -36,6 +36,10 @@ main > .content-section {
 }
 
 /* ui elements */
+.button-anchor-wrapper {
+	text-decoration: none;
+}
+
 button {
 	background: none;
 }
@@ -74,6 +78,18 @@ input[type="submit"] {
 
 .action-btn {
 	font-size: 0.85rem;
+}
+
+.add-btn {
+	padding: 0.75rem 2rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+button > .icon > svg {
+	height: 1.5rem;
+	width: 1.5rem;
 }
 
 /* navbar */
