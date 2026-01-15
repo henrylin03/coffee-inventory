@@ -33,9 +33,7 @@
       </header>
 
       <section aria-labelledby="page-title" class="content-section">
-        <% if (locals.errors) { %>
-        <p><%= JSON.stringify(locals.errors) %></p>
-        <% } %>
+        <%- include("../partials/errorsList.ejs") %>
 
         <form
           action="/items/<%= item.id %>/update"
