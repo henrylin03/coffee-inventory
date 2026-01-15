@@ -206,10 +206,6 @@ form > ul > li > .right {
 	gap: 0.5rem;
 }
 
-.input-container > input {
-	width: 100%;
-}
-
 .optional-input {
 	display: flex;
 	flex-direction: column;
@@ -219,27 +215,6 @@ form > ul > li > .right {
 	font-size: 0.75rem;
 	opacity: 0.6;
 	font-style: italic;
-}
-
-form li.error {
-	color: var(--danger-colour);
-}
-
-.error input {
-	border: 2px solid var(--danger-colour);
-}
-
-.error-message {
-	font-size: 0.75rem;
-	display: none;
-}
-
-.error .error-message {
-	display: block;
-}
-
-.error .decorative-text {
-	transform: translateY(-40%);
 }
 
 /* footer */

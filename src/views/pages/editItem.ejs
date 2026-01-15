@@ -43,7 +43,6 @@
           <ul>
             <li>
               <label for="nameInput">Name*</label>
-              <div class="input-container">
                 <input
                   type="text"
                   id="nameInput"
@@ -51,12 +50,9 @@
                   value="<%= item.name %>"
                   required
                 />
-                <p class="error-message">This is a required field</p>
-              </div>
             </li>
             <li>
               <label for="skuInput">SKU*</label>
-              <div class="input-container">
                 <input
                   type="text"
                   id="skuInput"
@@ -64,12 +60,9 @@
                   value="<%= item.sku %>"
                   required
                 />
-                <p class="error-message">This is a required field</p>
-              </div>
             </li>
             <li>
               <label for="roasteryInput">Roastery*</label>
-              <div class="input-container">
                 <input
                   type="text"
                   id="roasteryInput"
@@ -77,8 +70,6 @@
                   value="<%= item.roastery %>"
                   required
                 />
-                <p class="error-message">This is a required field</p>
-              </div>
             </li>
             <li>
               <label for="descriptionInput" class="optional-input"
@@ -90,18 +81,15 @@
             <li>
               <label for="weightInput">Weight*</label>
               <div class="right">
-                <div class="input-container">
-                  <input
-                    type="number"
-                    id="weightInput"
-                    name="size_grams"
-                    required
-                    min="0.1"
-                    step="any"
-                    value="<%= item.size_grams %>"
-                  />
-                  <p class="error-message">This is a required field</p>
-                </div>
+                <input
+                  type="number"
+                  id="weightInput"
+                  name="size_grams"
+                  required
+                  min="0.1"
+                  step="any"
+                  value="<%= item.size_grams %>"
+                />
                 <p class="decorative-text">grams</p>
               </div>
             </li>
@@ -109,35 +97,29 @@
               <label for="sellingPriceInput">Selling price*</label>
               <div class="right">
                 <p class="decorative-text">AUD$</p>
-                <div class="input-container">
-                  <input
-                    type="number"
-                    id="sellingPriceInput"
-                    name="price_dollars"
-                    required
-                    step="any"
-                    min="0"
-                    value="<%= item.price_cents / 100 %>"
-                  />
-                  <p class="error-message">This is a required field</p>
-                </div>
+                <input
+                  type="number"
+                  id="sellingPriceInput"
+                  name="price_dollars"
+                  required
+                  step="any"
+                  min="0"
+                  value="<%= item.price_cents / 100 %>"
+                />
               </div>
             </li>
             <li>
               <label for="stockCountInput">Stock on hand*</label>
               <div class="right">
-                <div class="input-container">
-                  <input
-                    type="number"
-                    id="stockCountInput"
-                    name="stock_quantity"
-                    required
-                    min="0"
-                    step="1"
-                    value="<%= item.stock_quantity %>"
-                  />
-                  <p class="error-message">This is a required field</p>
-                </div>
+                <input
+                  type="number"
+                  id="stockCountInput"
+                  name="stock_quantity"
+                  required
+                  min="0"
+                  step="1"
+                  value="<%= item.stock_quantity %>"
+                />
                 <p class="decorative-text">units</p>
               </div>
             </li>
