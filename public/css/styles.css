@@ -19,10 +19,6 @@ main {
 	flex-direction: column;
 }
 
-main > header {
-	padding: 1rem 2rem;
-}
-
 main > .content-section {
 	flex: 1;
 	padding-inline: 2rem;
@@ -126,6 +122,7 @@ nav a {
 
 /* header */
 main > header {
+	padding: 1rem 2rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
