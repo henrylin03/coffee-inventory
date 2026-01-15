@@ -186,6 +186,11 @@ td.buttons button {
 	text-align: right;
 }
 
+td .decorative-text {
+	opacity: 0.65;
+	font-size: smaller;
+}
+
 /* forms */
 textarea {
 	resize: vertical;

@@ -17,7 +17,7 @@
       <td><%= item.sku %></td>
       <td class="align-right"><%= Math.round(item.size_grams) %>g</td>
       <td><%= item.roastery %></td>
-      <td class="align-right"><%= item.price_dollars %></td>
+      <td class="align-right"><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
       <td class="align-right"><%= item.stock_quantity %></td>
       <td class="buttons">
         <a href=<%= `/items/${item.id}` %>>
