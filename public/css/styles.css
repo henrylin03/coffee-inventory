@@ -50,7 +50,7 @@ input[type="submit"] {
 	border-radius: 0.5rem;
 	outline: none;
 	border: none;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem;
 }
 
 .primary-btn {
@@ -157,7 +157,7 @@ th {
 }
 
 th {
-	padding-block: 0.25rem;
+	padding-block: 0.75rem;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	text-align: left;
