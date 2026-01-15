@@ -3,10 +3,10 @@
     <tr>
       <th>Name</th>
       <th>SKU</th>
-      <th>Weight</th>
+      <th class="align-right">Weight</th>
       <th>Roastery</th>
-      <th>Selling price ($AUD)</th>
-      <th>Stock on hand</th>
+      <th class="align-right">Selling price ($AUD)</th>
+      <th class="align-right">Stock on hand</th>
       <th></th>
     </tr>
   </thead>
@@ -15,10 +15,10 @@
     <tr>
       <td><%= item.name %></td>
       <td><%= item.sku %></td>
-      <td><%= item.size_grams %></td>
+      <td class="align-right"><%= item.size_grams %></td>
       <td><%= item.roastery %></td>
-      <td><%= item.price_cents %></td>
-      <td><%= item.stock_quantity %></td>
+      <td class="align-right"><%= item.price_cents %></td>
+      <td class="align-right"><%= item.stock_quantity %></td>
       <td class="buttons">
         <a href=<%= `/items/${item.id}` %>>
           <button type="button" class="secondary-btn action-btn">Edit</button

@@ -182,6 +182,10 @@ td.buttons button {
 	width: 100%;
 }
 
+.align-right {
+	text-align: right;
+}
+
 /* forms */
 textarea {
 	resize: vertical;
