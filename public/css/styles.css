@@ -85,6 +85,18 @@ input[type="submit"] {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+
+	&:hover {
+		filter: brightness(1.1);
+	}
+
+	&:active {
+		transform: translateY(0.1rem);
+	}
+
+	transition:
+		filter 0.25s ease-out,
+		transform 0.1s ease-out;
 }
 
 button > .icon > svg {
