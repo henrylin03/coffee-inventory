@@ -55,15 +55,15 @@ input[type="submit"] {
 }
 
 .primary-btn {
-	background-color: #0a9396;
-	border: 2px solid #0a9396;
+	background-color: var(--primary-colour);
+	border: 2px solid var(--primary-colour);
 	color: white;
 }
 
 .secondary-btn {
 	background-color: white;
-	border: 2px solid #0a9396;
-	color: #0a9396;
+	border: 2px solid var(--primary-colour);
+	color: var(--primary-colour);
 }
 
 .delete-btn {
@@ -130,7 +130,7 @@ nav > .links > li {
 
 	&:hover {
 		background-color: hsl(181, 80%, 40%);
-		transition: background-color 0.1s linear;
+		transition: background-color 0.05s linear;
 	}
 }
 
