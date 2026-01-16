@@ -117,6 +117,7 @@ nav > .links {
 
 	display: flex;
 	flex-direction: column;
+	gap: 0.5rem;
 }
 
 nav > .links > li {
@@ -126,10 +127,10 @@ nav > .links > li {
 	}
 
 	&:hover {
-		background-color: hsl(181, 80%, 40%);
+		background-color: hsl(181, 100%, 20%);
 	}
 
-	transition: background-color 0.05s linear;
+	transition: background-color 0.25s ease-out;
 }
 
 nav > .links a {
