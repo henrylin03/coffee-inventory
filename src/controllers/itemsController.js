@@ -18,6 +18,10 @@ const getAllItems = async (_req, res) => {
 	res.render("pages/allItems", { items: allItems });
 };
 
+const createItemGet = async (_req, res) => {
+	res.render("pages/newItem");
+};
+
 const getItemById = async (req, res) => {
 	const { id: itemId } = req.params;
 	const item = await db.getItemById(itemId);
@@ -51,4 +55,4 @@ const updateItemPost = [
 	},
 ];
 
-module.exports = { getAllItems, getItemById, updateItemPost };
+module.exports = { createItemGet, getAllItems, getItemById, updateItemPost };
