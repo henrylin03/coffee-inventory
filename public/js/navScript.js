@@ -1,15 +1,17 @@
-const navbarElement = document.querySelector("#nav");
-const anchorElements = navbarElement.querySelectorAll(".links>li>a");
+const nav = document.querySelector("#nav");
+const navlinkWrappers = nav.querySelectorAll(".navlink-wrapper");
 
 function styleActiveLink() {
-	const currentPath = window.location.pathname.split("/")[1];
+	const pathOfCurrentPage = window.location.pathname.split("/")[1];
 
-	[...anchorElements].forEach((anchor) => {
-		const anchorPath = anchor.getAttribute("href").split("/")[1];
-		const anchorContainer = anchor.parentElement;
+	[...navlinkWrappers].forEach((navlinkWrapperElement) => {
+		const navlinkAnchorElement =
+			navlinkWrapperElement.querySelector(".navlink");
+		const navlinkPath = navlinkAnchorElement.getAttribute("href").split("/")[1];
 
-		if (anchorPath === currentPath) anchorContainer.classList.add("active");
-		else anchorContainer.classList.remove("active");
+		if (navlinkPath === pathOfCurrentPage)
+			navlinkWrapperElement.classList.add("active");
+		else navlinkAnchorElement.classList.remove("active");
 	});
 }
 
