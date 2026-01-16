@@ -6,9 +6,10 @@ function styleActiveLink() {
 
 	[...anchorElements].forEach((anchor) => {
 		const anchorPath = anchor.getAttribute("href").split("/")[1];
+		const anchorContainer = anchor.parentElement;
 
-		if (anchorPath === currentPath) anchor.classList.add("active");
-		else anchor.classList.remove("active");
+		if (anchorPath === currentPath) anchorContainer.classList.add("active");
+		else anchorContainer.classList.remove("active");
 	});
 }
 
