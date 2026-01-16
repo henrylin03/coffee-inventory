@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Satisfy&display=swap");
 
 :root {
-	--primary-colour: #0a9396;
+	--primary-colour: hsl(181, 88%, 31%);
 	--danger-colour: #ae2012;
 }
 
@@ -127,11 +127,24 @@ nav > .links > li {
 	&.active {
 		background-color: var(--primary-colour);
 	}
+
+	&:hover {
+		background-color: hsl(181, 80%, 40%);
+		transition: background-color 0.1s linear;
+	}
 }
 
 nav > .links a {
 	color: inherit;
 	text-decoration: none;
+}
+
+nav > .links button {
+	padding: 0;
+	color: white;
+	width: 100%;
+	display: flex;
+	align-items: start;
 }
 
 /* header */
