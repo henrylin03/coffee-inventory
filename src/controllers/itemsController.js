@@ -22,10 +22,27 @@ const createItemGet = async (_req, res) => {
 	res.render("pages/newItem");
 };
 
-const createItemPost = async (req, res) => {
-	console.log("req.body:", req.body);
-	res.end();
-};
+const createItemPost = [
+	validateItem,
+	async (req, res) => {
+		const errors = validationResult(req);
+		console.log("errors:", errors);
+		if (!errors.isEmpty())
+			return res
+				.status(400)
+				.render("pages/newItem", { errors: errors.array() });
+
+		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
+
+		const formInputsAndValues = {
+			...unchangedFormInputsAndValues,
+			price_cents: price_dollars * 100,
+		};
+
+		await db.addItem(formInputsAndValues);
+		res.redirect("/items");
+	},
+];
 
 const getItemById = async (req, res) => {
 	const { id: itemId } = req.params;
