@@ -1,5 +1,5 @@
 <dialog>
-  <div class="flex">
+  <form action="/items/<%= itemId %>/delete" method="POST" class="flex">
     <div class="top">
       <div class="inner">
         <div class="heading-container">
@@ -34,10 +34,10 @@
         <ul class="buttons">
           <li><button type="button" class="cancel-btn">No, keep it</button></li>
           <li>
-            <button type="button" class="delete-btn-filled">Yes, delete</button>
+            <button type="submit" class="delete-btn-filled">Yes, delete</button>
           </li>
         </ul>
       </div>
     </footer>
-  </div>
+  </form>
 </dialog>

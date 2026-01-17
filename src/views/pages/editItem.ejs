@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include("../partials/helmet.ejs", {pageTitle: "Edit Item"}) %>
+    <%- include("../partials/helmet.ejs", { pageTitle: "Edit Item" }) %>
     <script src="/js/editItemScript.js" defer></script>
     <script src="/js/deleteItemScript.js" defer></script>
   </head>
@@ -144,6 +144,6 @@
       </footer>
     </main>
 
-    <%- include("../components/confirmModal.ejs") %>
+    <%- include("../components/confirmDeleteModal.ejs", {itemId: item.id}) %>
   </body>
 </html>

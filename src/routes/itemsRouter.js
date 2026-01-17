@@ -11,4 +11,6 @@ itemsRouter.post("/new", itemsController.createItemPost);
 itemsRouter.get("/:id", itemsController.editItemGet);
 itemsRouter.post("/:id/update", itemsController.editItemPost);
 
+itemsRouter.post("/:id/delete", itemsController.deleteItemPost);
+
 module.exports = itemsRouter;
