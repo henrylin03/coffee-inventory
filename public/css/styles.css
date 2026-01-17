@@ -316,3 +316,9 @@ form > ul > li > .right {
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.5rem;
 }
+
+/* modals */
+::backdrop {
+	background: black;
+	opacity: 0.5;
+}
