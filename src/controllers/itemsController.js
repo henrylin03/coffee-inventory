@@ -58,12 +58,15 @@ const updateItemPost = [
 	validateItem,
 	async (req, res) => {
 		const { id: itemId } = req.params;
+		const item = await db.getItemById(itemId);
+		if (item === null)
+			throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
 
 		const errors = validationResult(req);
 		if (!errors.isEmpty())
 			return res
 				.status(400)
-				.render("pages/editItem", { errors: errors.array() });
+				.render("pages/editItem", { item, errors: errors.array() });
 
 		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
 
