@@ -4,7 +4,16 @@ const CustomNotFoundError = require("../errors/CustomNotFoundError");
 const { validateItem } = require("./validateItem");
 const { formatCurrency } = require("../helpers/formatHelpers");
 
-const getAllItems = async (_req, res) => {
+const getItemById = async (itemId) => {
+	const item = await db.getItemById(itemId);
+
+	if (item === null)
+		throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
+
+	return item;
+};
+
+exports.getAllItems = async (_req, res) => {
 	const fetchedItems = await db.getAllItems();
 
 	const allItems = fetchedItems.map((item) => {
@@ -18,26 +27,50 @@ const getAllItems = async (_req, res) => {
 	res.render("pages/allItems", { items: allItems });
 };
 
-const getItemById = async (req, res) => {
-	const { id: itemId } = req.params;
-	const item = await db.getItemById(itemId);
-
-	if (item === null)
-		throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
-
-	res.render("pages/editItem", { item });
+exports.createItemGet = async (_req, res) => {
+	res.render("pages/newItem");
 };
 
-const updateItemPost = [
+exports.createItemPost = [
 	validateItem,
 	async (req, res) => {
-		const { id: itemId } = req.params;
-
 		const errors = validationResult(req);
 		if (!errors.isEmpty())
 			return res
 				.status(400)
-				.render("pages/editItem", { errors: errors.array() });
+				.render("pages/newItem", { errors: errors.array() });
+
+		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
+
+		const formInputsAndValues = {
+			...unchangedFormInputsAndValues,
+			price_cents: price_dollars * 100,
+		};
+
+		await db.addItem(formInputsAndValues);
+		res.redirect("/items");
+	},
+];
+
+exports.editItemGet = async (req, res) => {
+	const { id: itemId } = req.params;
+	const fetchedItem = await getItemById(itemId);
+
+	res.render("pages/editItem", { item: fetchedItem });
+};
+
+exports.editItemPost = [
+	validateItem,
+	async (req, res) => {
+		const { id: itemId } = req.params;
+		const fetchedItem = await getItemById(itemId);
+
+		const errors = validationResult(req);
+		if (!errors.isEmpty())
+			return res.status(400).render("pages/editItem", {
+				item: fetchedItem,
+				errors: errors.array(),
+			});
 
 		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
 
@@ -50,5 +83,3 @@ const updateItemPost = [
 		res.redirect("/items");
 	},
 ];
-
-module.exports = { getAllItems, getItemById, updateItemPost };

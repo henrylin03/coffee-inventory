@@ -1,14 +1,14 @@
 const { Router } = require("express");
-const {
-	getAllItems,
-	getItemById,
-	updateItemPost,
-} = require("../controllers/itemsController");
+const itemsController = require("../controllers/itemsController");
 
 const itemsRouter = Router();
 
-itemsRouter.get("/", getAllItems);
-itemsRouter.get("/:id", getItemById);
-itemsRouter.post("/:id/update", updateItemPost);
+itemsRouter.get("/", itemsController.getAllItems);
+
+itemsRouter.get("/new", itemsController.createItemGet);
+itemsRouter.post("/new", itemsController.createItemPost);
+
+itemsRouter.get("/:id", itemsController.editItemGet);
+itemsRouter.post("/:id/update", itemsController.editItemPost);
 
 module.exports = itemsRouter;

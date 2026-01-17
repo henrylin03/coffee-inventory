@@ -14,6 +14,23 @@ const getItemById = async (itemId) => {
 	return rows[0];
 };
 
+const addItem = async (formObject) => {
+	const {
+		name,
+		sku,
+		roastery,
+		description,
+		size_grams,
+		stock_quantity,
+		price_cents,
+	} = formObject;
+
+	await pool.query(
+		"INSERT INTO items (name, sku, size_grams, roastery, description, price_cents, stock_quantity) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+		[name, sku, size_grams, roastery, description, price_cents, stock_quantity],
+	);
+};
+
 const updateItemById = async (itemId, formObject) => {
 	const generateUpdateQuery = (formObject) => {
 		const resQueryParts = ["UPDATE items SET"];
@@ -36,6 +53,7 @@ const updateItemById = async (itemId, formObject) => {
 };
 
 module.exports = {
+	addItem,
 	getAllItems,
 	getItemById,
 	updateItemById,
