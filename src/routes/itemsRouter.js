@@ -1,20 +1,14 @@
 const { Router } = require("express");
-const {
-	createItemGet,
-	createItemPost,
-	getAllItems,
-	getItemById,
-	updateItemPost,
-} = require("../controllers/itemsController");
+const itemsController = require("../controllers/itemsController");
 
 const itemsRouter = Router();
 
-itemsRouter.get("/", getAllItems);
+itemsRouter.get("/", itemsController.getAllItems);
 
-itemsRouter.get("/new", createItemGet);
-itemsRouter.post("/new", createItemPost);
+itemsRouter.get("/new", itemsController.createItemGet);
+itemsRouter.post("/new", itemsController.createItemPost);
 
-itemsRouter.get("/:id", getItemById);
-itemsRouter.post("/:id/update", updateItemPost);
+itemsRouter.get("/:id", itemsController.editItemGet);
+itemsRouter.post("/:id/update", itemsController.editItemPost);
 
 module.exports = itemsRouter;
