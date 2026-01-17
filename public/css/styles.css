@@ -3,6 +3,7 @@
 :root {
 	--primary-colour: hsl(181, 88%, 31%);
 	--danger-colour: #ae2012;
+	--dark-grey-colour: #333;
 }
 
 * {
@@ -327,4 +328,39 @@ form > ul > li > .right {
 ::backdrop {
 	background: black;
 	opacity: 0.5;
+}
+
+dialog {
+	border: none;
+	border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	color: var(--dark-grey-colour);
+}
+
+dialog .inner {
+	padding: 1.5rem;
+}
+
+dialog h1 {
+	font-weight: normal;
+	font-size: 1.25rem;
+}
+
+dialog > footer {
+	border-top: 1px solid #ccc;
+}
+
+dialog > footer .buttons {
+	list-style-type: none;
+	padding: 0;
+	width: 50%;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.5rem;
+}
+
+dialog .buttons button {
+	width: 100%;
 }
