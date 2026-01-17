@@ -1,4 +1,4 @@
-const deleteButtons = document.querySelectorAll(".delete-btn");
+const deleteButtons = document.querySelectorAll("main .delete-btn");
 const modal = document.querySelector("dialog");
 const modalCancelButton = modal.querySelector(".cancel-btn");
 

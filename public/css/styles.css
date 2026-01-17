@@ -72,6 +72,12 @@ input[type="submit"] {
 	color: var(--danger-colour);
 }
 
+.delete-btn-filled {
+	background-color: var(--danger-colour);
+	border: 2px solid var(--danger-colour);
+	color: white;
+}
+
 .cancel-btn {
 	background-color: #f6f6f6;
 	border: 2px solid #ccc;
