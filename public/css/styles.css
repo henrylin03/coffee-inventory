@@ -298,6 +298,33 @@ form > ul > li > .right {
 	font-style: italic;
 }
 
+/* other ui elements on pages */
+.categories-list {
+	display: flex;
+	flex-direction: column;
+}
+
+.category {
+	display: flex;
+	gap: 0.5rem;
+	padding: 1.25rem;
+	border-top: 1px solid #ccc;
+}
+
+.category:last-child {
+	border-bottom: 1px solid #ccc;
+}
+
+.category-text-container {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+p.item-count {
+	opacity: 0.75;
+}
+
 /* errors */
 .errors-container {
 	background-color: var(--danger-light-colour);
