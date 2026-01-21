@@ -25,6 +25,13 @@
 
       <form action="/categories/new" method="POST" id="category-form">
         <ul>
+          <li>
+            <label for="nameInput">Category name*</label>
+            <input type="text" id="nameInput" name="name" required />
+          </li>
+          <li>
+            <label for="descriptionInput" class="optional-input">Description<small>(Optional)</small></label><textarea id="descriptionInput" name="description" rows="6"></textarea>
+          </li>
         </ul>
       </form>
     </section>
