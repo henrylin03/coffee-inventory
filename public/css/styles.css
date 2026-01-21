@@ -234,12 +234,8 @@ thead > tr {
 	}
 }
 
-td,
 th {
 	padding: 0.75rem 2rem;
-}
-
-th {
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	text-align: left;
@@ -250,6 +246,7 @@ th {
 
 td {
 	border-bottom: 1px solid #e6e6e6;
+	padding: 1.25rem 2rem;
 }
 
 .align-right {
