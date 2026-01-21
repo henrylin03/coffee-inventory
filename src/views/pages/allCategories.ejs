@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><%- include("../partials/helmet.ejs", {pageTitle: "Manage Your Categories"}) %></head>
+<head><%- include("../partials/helmet.ejs", { pageTitle: "Manage Your Categories" }) %></head>
 
 <body>
   <%- include("../components/navbar.ejs") %>
@@ -9,15 +9,7 @@
     <header>
       <h1 class="page-title">All categories</h1>
       <a href="/categories/new" class="button-anchor-wrapper">
-        <button type="button" class="primary-btn add-btn">
-          <figure class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-              <path d="M5 12h14" />
-              <path d="M12 5v14" />
-            </svg>
-          </figure>
-          <span>Add new category</span>
-        </button>
+        <%- include("../components/addNewButton.ejs", { text: "Add new category" }) %>
       </a>
     </header>
 
