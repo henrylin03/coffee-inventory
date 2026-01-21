@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("node:path");
 const itemsRouter = require("./routes/itemsRouter");
+const categoriesRouter = require("./routes/categoriesRouter");
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 /* routes */
 app.use("/items", itemsRouter);
-app.get("/categories", (_req, res) => res.render("pages/categories"));
+app.use("/categories", categoriesRouter);
 app.get("/", (_req, res) => res.redirect("/items"));
 
 const PORT = 3000;

@@ -56,10 +56,18 @@ const deleteItem = async (itemId) => {
 	await pool.query("DELETE FROM items WHERE id = $1", [itemId]);
 };
 
+const getAllCategories = async () => {
+	const { rows } = await pool.query(
+		"SELECT * FROM categories ORDER BY id ASC;",
+	);
+	return rows;
+};
+
 module.exports = {
 	addItem,
 	deleteItem,
 	getAllItems,
+	getAllCategories,
 	getItemById,
 	updateItemById,
 };
