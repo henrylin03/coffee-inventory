@@ -1,3 +1,41 @@
-<h1>
-  New category
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("../partials/helmet.ejs", { pageTitle: "New category" }) %>
+</head>
+
+<body>
+  <%- include("../components/navbar.ejs") %>
+  <main>
+    <header>
+      <h1 class="page-title" id="page-title">New category</h1>
+      <a href="/categories" aria-label="Cancel adding new category and view all categories">
+        <button type="button" class="close-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+      </a>
+    </header>
+
+    <section aria-labelledby="page-title" class="content-section">
+      <%- include("../partials/errorsList.ejs") %>
+
+      <form action="" method="POST" id="category-form">
+        <ul>
+        </ul>
+      </form>
+    </section>
+
+    <footer class="page-footer">
+      <div class="buttons">
+        <input type="submit" form="category-form" class="primary-btn" value="Save" />
+        <a href="/categories" aria-label="Cancel adding new category and view all categories"><button type="button" class="cancel-btn">Cancel</button></a>
+      </div>
+    </footer>
+  </main>
+</body>
+
+</html>
