@@ -52,8 +52,13 @@ const updateItemById = async (itemId, formObject) => {
 	]);
 };
 
+const deleteItem = async (itemId) => {
+	await pool.query("DELETE FROM items WHERE id = $1", [itemId]);
+};
+
 module.exports = {
 	addItem,
+	deleteItem,
 	getAllItems,
 	getItemById,
 	updateItemById,

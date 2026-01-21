@@ -3,9 +3,10 @@
   <head>
     <%- include("../../partials/helmet.ejs", {pageTitle: "Manage Your Items"})
     %>
+    <script src="/js/deleteItemScript.js" defer></script>
   </head>
   <body>
-    <%- include("../../partials/navbar.ejs") %>
+    <%- include("../../components/navbar.ejs") %>
     <main>
       <header>
         <h1 class="page-title">All items</h1>
@@ -40,5 +41,7 @@
       </header>
       <%- include("./itemsTable.ejs", {items}) %>
     </main>
+
+    <%- include("../../components/confirmDeleteModal.ejs", { itemId: 100}) %>
   </body>
 </html>

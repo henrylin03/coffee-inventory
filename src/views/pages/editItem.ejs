@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%- include("../partials/helmet.ejs", {pageTitle: "Edit Item"}) %>
+    <%- include("../partials/helmet.ejs", { pageTitle: "Edit Item" }) %>
     <script src="/js/editItemScript.js" defer></script>
+    <script src="/js/deleteItemScript.js" defer></script>
   </head>
   <body>
-    <%- include("../partials/navbar.ejs") %>
+    <%- include("../components/navbar.ejs") %>
     <main>
       <header>
         <h1 class="page-title" id="page-title">Edit item</h1>
@@ -142,5 +143,7 @@
         </div>
       </footer>
     </main>
+
+    <%- include("../components/confirmDeleteModal.ejs", {itemId: item.id}) %>
   </body>
 </html>
