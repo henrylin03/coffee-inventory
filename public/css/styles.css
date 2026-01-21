@@ -222,13 +222,20 @@ thead > tr {
 	background-color: #f4f4f4;
 }
 
+tbody > tr {
+	cursor: pointer;
+
+	&:hover {
+		background-color: hsl(45, 90%, 96%);
+	}
+}
+
 td,
 th {
-	padding-inline: 2rem;
+	padding: 0.75rem 2rem;
 }
 
 th {
-	padding-block: 0.75rem;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	text-align: left;
@@ -238,19 +245,7 @@ th {
 }
 
 td {
-	padding-block: 0;
 	border-bottom: 1px solid #e6e6e6;
-}
-
-td.buttons {
-	padding: 1rem 1rem 1rem 0;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 0.5rem;
-}
-
-td.buttons button {
-	width: 100%;
 }
 
 .align-right {

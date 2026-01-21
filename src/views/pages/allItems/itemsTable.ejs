@@ -7,25 +7,17 @@
       <th>Roastery</th>
       <th class="align-right">Selling price ($AUD)</th>
       <th class="align-right">Stock on hand</th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <% items.forEach(item => { %>
-    <tr>
+    <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item">
       <td><%= item.name %></td>
       <td><%= item.sku %></td>
       <td class="align-right"><%= Math.round(item.size_grams) %>g</td>
       <td><%= item.roastery %></td>
       <td class="align-right"><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
       <td class="align-right"><%= item.stock_quantity %></td>
-      <td class="buttons">
-        <a href=<%= `/items/${item.id}` %>>
-          <button type="button" class="secondary-btn action-btn">Edit</button
-          >
-        </a>
-        <button type="button" class="delete-btn action-btn">Delete</button>
-      </td>
     </tr>
     <%}); %>
   </tbody>
