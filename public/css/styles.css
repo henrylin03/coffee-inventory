@@ -214,6 +214,14 @@ thead > tr {
 	background-color: #f4f4f4;
 }
 
+tbody > tr {
+	cursor: pointer;
+
+	&:hover {
+		background-color: hsl(45, 90%, 96%);
+	}
+}
+
 td,
 th {
 	padding: 0.75rem 2rem;

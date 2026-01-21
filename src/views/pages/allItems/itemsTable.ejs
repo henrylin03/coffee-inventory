@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <% items.forEach(item => { %>
-    <tr>
+    <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item">
       <td><%= item.name %></td>
       <td><%= item.sku %></td>
       <td class="align-right"><%= Math.round(item.size_grams) %>g</td>
