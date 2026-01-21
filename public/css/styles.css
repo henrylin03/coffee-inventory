@@ -310,6 +310,7 @@ form > ul > li > .right {
 	gap: 0.5rem;
 	padding: 1.25rem;
 	border-top: 1px solid #ccc;
+	border-radius: 0.5rem;
 }
 
 .category:last-child {
