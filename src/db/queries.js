@@ -63,11 +63,20 @@ const getAllCategories = async () => {
 	return rows;
 };
 
+const addCategory = async (formObject) => {
+	const { name, description } = formObject;
+	await pool.query(
+		"INSERT INTO categories (name, description) VALUES ($1, $2)",
+		[name, description],
+	);
+};
+
 module.exports = {
+	addCategory,
 	addItem,
 	deleteItem,
-	getAllItems,
 	getAllCategories,
+	getAllItems,
 	getItemById,
 	updateItemById,
 };

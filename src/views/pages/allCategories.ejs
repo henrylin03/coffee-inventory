@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head><%- include("../../partials/helmet.ejs", {pageTitle: "Manage Your Categories"}) %></head>
+<head><%- include("../partials/helmet.ejs", { pageTitle: "Manage Your Categories" }) %></head>
 
 <body>
-  <%- include("../../components/navbar.ejs") %>
+  <%- include("../components/navbar.ejs") %>
   <main>
     <header>
       <h1 class="page-title">All categories</h1>
+      <a href="/categories/new" class="button-anchor-wrapper">
+        <%- include("../components/addNewButton.ejs", { text: "Add new category" }) %>
+      </a>
     </header>
 
     <ul class="categories-list">
