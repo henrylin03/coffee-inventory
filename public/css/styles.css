@@ -68,7 +68,7 @@ input[type="submit"] {
 	border-radius: 0.5rem;
 	outline: none;
 	border: none;
-	padding: 0.5rem;
+	padding: 0.5rem 1.5rem;
 }
 
 .primary-btn {
@@ -335,6 +335,10 @@ p.item-count {
 
 .category .icon {
 	color: var(--primary-colour-dark);
+}
+
+#composite-items-section .delete-btn {
+	font-size: 0.85rem;
 }
 
 /* errors */
