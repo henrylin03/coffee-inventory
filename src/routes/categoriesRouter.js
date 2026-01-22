@@ -8,4 +8,6 @@ categoriesRouter.get("/", categoriesController.getAllCategories);
 categoriesRouter.get("/new", categoriesController.createCategoryGet);
 categoriesRouter.post("/new", categoriesController.createCategoryPost);
 
+categoriesRouter.get("/:id", categoriesController.editCategoryGet);
+
 module.exports = categoriesRouter;

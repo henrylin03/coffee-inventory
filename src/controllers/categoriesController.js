@@ -1,6 +1,7 @@
 const { validationResult, matchedData } = require("express-validator");
 const db = require("../db/queries");
 const { validateCategory } = require("../helpers/validation/validateCategory");
+const CustomNotFoundError = require("../errors/CustomNotFoundError");
 
 exports.getAllCategories = async (_req, res) => {
 	const allCategories = await db.getAllCategories();
@@ -26,3 +27,12 @@ exports.createCategoryPost = [
 		res.redirect("/categories");
 	},
 ];
+
+exports.editCategoryGet = async (req, res) => {
+	const { id: categoryId } = req.params;
+	const category = await db.getCategoryById(categoryId);
+	if (category === null)
+		throw new CustomNotFoundError(`Category with id ${categoryId} not found`);
+
+	res.render("pages/editCategory", { category });
+};
