@@ -20,7 +20,9 @@ exports.createCategoryPost = [
 				.status(400)
 				.render("pages/newCategory", { errors: errors.array() });
 
-		// await db.addCategory(formValues);
+		const formValues = matchedData(req);
+
+		await db.addCategory(formValues);
 		res.redirect("/categories");
 	},
 ];
