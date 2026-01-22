@@ -23,7 +23,11 @@ main {
 	flex-direction: column;
 }
 
-main > .content-section {
+.main-section {
+	flex: 1;
+}
+
+main .content-section {
 	flex: 1;
 	padding-inline: 2rem;
 }
@@ -64,7 +68,7 @@ input[type="submit"] {
 	border-radius: 0.5rem;
 	outline: none;
 	border: none;
-	padding: 0.5rem;
+	padding: 0.5rem 1.5rem;
 }
 
 .primary-btn {
@@ -227,6 +231,8 @@ thead > tr {
 
 .clickable-row {
 	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
 
 	&:hover {
 		background-color: hsl(45, 90%, 94%);
@@ -306,11 +312,14 @@ form > ul > li > .right {
 	display: flex;
 	gap: 0.75rem;
 	padding: 1.25rem 2rem;
+}
+
+.category-list-item {
 	border-top: 1px solid #ccc;
 	border-radius: 0.5rem;
 }
 
-.category:last-child {
+.category-list-item:last-child {
 	border-bottom: 1px solid #ccc;
 }
 
@@ -326,6 +335,23 @@ p.item-count {
 
 .category .icon {
 	color: var(--primary-colour-dark);
+}
+
+#composite-items-section {
+	margin-top: 2rem;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+#composite-items-section > header {
+	display: flex;
+	justify-content: end;
+	padding: 2rem;
+}
+
+#composite-items-section .delete-btn {
+	font-size: 0.85rem;
 }
 
 /* errors */

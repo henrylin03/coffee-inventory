@@ -71,12 +71,32 @@ const addCategory = async (formObject) => {
 	);
 };
 
+const getCategoryById = async (categoryId) => {
+	const { rows } = await pool.query("SELECT * FROM categories WHERE id = $1;", [
+		categoryId,
+	]);
+
+	if (rows.length === 0) return null;
+	return rows[0];
+};
+
+const getItemsInCategory = async (categoryId) => {
+	const { rows } = await pool.query(
+		"SELECT * FROM items WHERE category_id = $1;",
+		[categoryId],
+	);
+
+	return rows;
+};
+
 module.exports = {
 	addCategory,
 	addItem,
 	deleteItem,
 	getAllCategories,
 	getAllItems,
+	getCategoryById,
 	getItemById,
+	getItemsInCategory,
 	updateItemById,
 };
