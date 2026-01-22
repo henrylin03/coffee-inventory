@@ -23,9 +23,13 @@ main {
 	flex-direction: column;
 }
 
-main > .content-section {
+main .content-section {
 	flex: 1;
 	padding-inline: 2rem;
+}
+
+.main-section {
+	flex: 1;
 }
 
 .page-footer {
