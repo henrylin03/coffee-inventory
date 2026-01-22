@@ -4,6 +4,19 @@ const { validateCategory } = require("../helpers/validation/validateCategory");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
 const { formatCurrency } = require("../helpers/formatHelpers");
 
+const getItemsInCategory = async (categoryId) => {
+	const itemsInCategory = await db.getItemsInCategory(categoryId);
+	const transformedItems = itemsInCategory.map((item) => {
+		const { price_cents, ...unchanged } = item;
+		return {
+			...unchanged,
+			price_dollars: formatCurrency(price_cents),
+		};
+	});
+
+	return transformedItems;
+};
+
 exports.getAllCategories = async (_req, res) => {
 	const allCategories = await db.getAllCategories();
 	res.render("pages/allCategories", { categories: allCategories });
@@ -31,21 +44,15 @@ exports.createCategoryPost = [
 
 exports.editCategoryGet = async (req, res) => {
 	const { id: categoryId } = req.params;
+
 	const category = await db.getCategoryById(categoryId);
 	if (category === null)
 		throw new CustomNotFoundError(`Category with id ${categoryId} not found`);
 
-	const fetchedItemsInCategory = await db.getItemsInCategory(categoryId);
-	const transformedItems = fetchedItemsInCategory.map((item) => {
-		const { price_cents, ...unchangedAttributes } = item;
-		return {
-			...unchangedAttributes,
-			price_dollars: formatCurrency(price_cents),
-		};
-	});
+	const allItemsInCategory = await getItemsInCategory(categoryId);
 
 	res.render("pages/editCategory", {
 		category,
-		compositeItems: transformedItems,
+		compositeItems: allItemsInCategory,
 	});
 };
