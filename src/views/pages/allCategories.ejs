@@ -24,7 +24,7 @@
           </figure>
           <div class="category-text-container">
             <p><%= category.name %></p>
-            <!-- <p class="item-count">(x items)</p> -->
+            <p class="item-count">(<%= itemCountPerCategory.get(category.id) %> <%= itemCountPerCategory.get(category.id) === 1 ? "item" : "items" %>)</p>
           </div>
         </a>
       </li>
