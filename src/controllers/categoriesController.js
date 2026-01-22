@@ -55,7 +55,6 @@ exports.createCategoryPost = [
 
 exports.editCategoryGet = async (req, res) => {
 	const { id: categoryId } = req.params;
-
 	const category = await db.getCategoryById(categoryId);
 	if (category === null)
 		throw new CustomNotFoundError(`Category with id ${categoryId} not found`);
