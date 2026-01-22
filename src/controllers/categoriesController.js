@@ -24,7 +24,7 @@ exports.getAllCategories = async (_req, res) => {
 		const { id: categoryId } = allCategories[i];
 		const numberOfCompositeItems = await db.countItemsInCategory(categoryId);
 
-		itemCountPerCategory.set(categoryId, numberOfCompositeItems);
+		itemCountPerCategory.set(categoryId, Number(numberOfCompositeItems));
 	}
 
 	res.render("pages/allCategories", {
