@@ -86,8 +86,6 @@ const getItemsInCategory = async (categoryId) => {
 		[categoryId],
 	);
 
-	console.log("rows:", rows);
-
 	return rows;
 };
 

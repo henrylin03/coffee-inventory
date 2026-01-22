@@ -23,13 +23,13 @@ main {
 	flex-direction: column;
 }
 
+.main-section {
+	flex: 1;
+}
+
 main .content-section {
 	flex: 1;
 	padding-inline: 2rem;
-}
-
-.main-section {
-	flex: 1;
 }
 
 .page-footer {
@@ -335,6 +335,19 @@ p.item-count {
 
 .category .icon {
 	color: var(--primary-colour-dark);
+}
+
+#composite-items-section {
+	margin-top: 2rem;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+#composite-items-section > header {
+	display: flex;
+	justify-content: end;
+	padding: 2rem;
 }
 
 #composite-items-section .delete-btn {
