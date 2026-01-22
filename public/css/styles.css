@@ -227,6 +227,8 @@ thead > tr {
 
 .clickable-row {
 	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
 
 	&:hover {
 		background-color: hsl(45, 90%, 94%);
@@ -306,11 +308,14 @@ form > ul > li > .right {
 	display: flex;
 	gap: 0.75rem;
 	padding: 1.25rem 2rem;
+}
+
+.category-list-item {
 	border-top: 1px solid #ccc;
 	border-radius: 0.5rem;
 }
 
-.category:last-child {
+.category-list-item:last-child {
 	border-bottom: 1px solid #ccc;
 }
 
