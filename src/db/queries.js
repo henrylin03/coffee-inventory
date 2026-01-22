@@ -80,6 +80,15 @@ const getCategoryById = async (categoryId) => {
 	return rows[0];
 };
 
+const getItemsInCategory = async (categoryId) => {
+	const { rows } = await pool.query(
+		"SELECT * FROM items WHERE category_id = $1;",
+		[categoryId],
+	);
+
+	return rows;
+};
+
 module.exports = {
 	addCategory,
 	addItem,
@@ -88,5 +97,6 @@ module.exports = {
 	getAllItems,
 	getCategoryById,
 	getItemById,
+	getItemsInCategory,
 	updateItemById,
 };
