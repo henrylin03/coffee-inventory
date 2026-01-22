@@ -1,18 +1,11 @@
 const { body } = require("express-validator");
+const { getLengthErrorMessage } = require("./helpers");
 
 const CHARACTER_LIMITS = {
 	name: { min: 1, max: 100 },
 	sku: { min: 1, max: 24 },
 	roastery: { min: 1, max: 100 },
 	description: { min: 0, max: 4000 },
-};
-
-const getLengthErrorMessage = (fieldName, minCharacters, maxCharacters) => {
-	const isOptionalField = minCharacters === 0;
-	if (isOptionalField)
-		return `${fieldName} must be at most ${maxCharacters} characters`;
-
-	return `${fieldName} must be between ${minCharacters} and ${maxCharacters} characters`;
 };
 
 const alphanumericErrorMessage =

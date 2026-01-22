@@ -1,7 +1,7 @@
 const { validationResult, matchedData } = require("express-validator");
 const db = require("../db/queries");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
-const { validateItem } = require("./validateItem");
+const { validateItem } = require("../helpers/validation/validateItem");
 const { formatCurrency } = require("../helpers/formatHelpers");
 
 const getItemById = async (itemId) => {
