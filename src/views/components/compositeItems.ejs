@@ -1,0 +1,27 @@
+<section>
+  <header><button type="button" class="primary-btn">Add item to category</button></header>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>SKU</th>
+        <th class="align-right">Weight</th>
+        <th>Roastery</th>
+        <th class="align-right">Selling price ($AUD)</th>
+        <th class="align-right">Stock on hand</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% compositeItems.forEach(item => { %>
+      <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item" class="clickable-row">
+        <td><%= item.name %></td>
+        <td><%= item.sku %></td>
+        <td class="align-right"><%= Math.round(item.size_grams) %>g</td>
+        <td><%= item.roastery %></td>
+        <td class="align-right"><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
+        <td class="align-right"><%= item.stock_quantity %></td>
+      </tr>
+      <%}); %>
+    </tbody>
+  </table>
+</section>

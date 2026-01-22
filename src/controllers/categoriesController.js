@@ -2,6 +2,7 @@ const { validationResult, matchedData } = require("express-validator");
 const db = require("../db/queries");
 const { validateCategory } = require("../helpers/validation/validateCategory");
 const CustomNotFoundError = require("../errors/CustomNotFoundError");
+const { formatCurrency } = require("../helpers/formatHelpers");
 
 exports.getAllCategories = async (_req, res) => {
 	const allCategories = await db.getAllCategories();
@@ -34,5 +35,17 @@ exports.editCategoryGet = async (req, res) => {
 	if (category === null)
 		throw new CustomNotFoundError(`Category with id ${categoryId} not found`);
 
-	res.render("pages/editCategory", { category });
+	const fetchedItemsInCategory = await db.getItemsInCategory(categoryId);
+	const transformedItems = fetchedItemsInCategory.map((item) => {
+		const { price_cents, ...unchangedAttributes } = item;
+		return {
+			...unchangedAttributes,
+			price_dollars: formatCurrency(price_cents),
+		};
+	});
+
+	res.render("pages/editCategory", {
+		category,
+		compositeItems: transformedItems,
+	});
 };
