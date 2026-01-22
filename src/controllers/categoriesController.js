@@ -19,7 +19,18 @@ const getItemsInCategory = async (categoryId) => {
 
 exports.getAllCategories = async (_req, res) => {
 	const allCategories = await db.getAllCategories();
-	res.render("pages/allCategories", { categories: allCategories });
+	const itemCountPerCategory = new Map();
+	for (let i = 0; i < allCategories.length; i++) {
+		const { id: categoryId } = allCategories[i];
+		const numberOfCompositeItems = await db.countItemsInCategory(categoryId);
+
+		itemCountPerCategory.set(categoryId, numberOfCompositeItems);
+	}
+
+	res.render("pages/allCategories", {
+		categories: allCategories,
+		itemCountPerCategory,
+	});
 };
 
 exports.createCategoryGet = async (_req, res) => {

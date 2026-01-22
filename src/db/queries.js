@@ -89,9 +89,19 @@ const getItemsInCategory = async (categoryId) => {
 	return rows;
 };
 
+const countItemsInCategory = async (categoryId) => {
+	const { rows } = await pool.query(
+		"SELECT COUNT(id) AS count FROM items WHERE category_id = $1",
+		[categoryId],
+	);
+
+	return rows[0].count;
+};
+
 module.exports = {
 	addCategory,
 	addItem,
+	countItemsInCategory,
 	deleteItem,
 	getAllCategories,
 	getAllItems,
