@@ -5,3 +5,5 @@ build/
 .env
 
 **/*:Zone.Identifier
+
+**/public/css/output.css
