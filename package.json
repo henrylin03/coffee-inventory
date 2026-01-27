@@ -24,11 +24,13 @@
 	},
 	"homepage": "https://github.com/henrylin03/template--expressjs-ejs-postgres#readme",
 	"dependencies": {
+		"@tailwindcss/cli": "^4.1.18",
 		"dotenv": "^17.2.3",
 		"ejs": "^4.0.1",
 		"express": "^5.2.1",
 		"express-validator": "^7.3.1",
-		"pg": "^8.17.2"
+		"pg": "^8.17.2",
+		"tailwindcss": "^4.1.18"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.11",
