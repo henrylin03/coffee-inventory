@@ -1,2 +1,11 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+	themes: corporate --default;
+}
+@plugin "daisyui/theme" {
+	name: "corporate";
+	default: true;
+	--color-primary: #0a9396;
+	--color-base-200: #002a39;
+	--color-base-300: #001219;
+}
