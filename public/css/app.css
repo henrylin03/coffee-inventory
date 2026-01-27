@@ -9,3 +9,15 @@
 	--color-base-200: #002a39;
 	--color-base-300: #001219;
 }
+
+/* @layer base {
+	body {
+
+	}
+} */
+
+body {
+	display: grid;
+	grid-template-columns: 1fr 8fr;
+	min-height: 100dvh;
+}
