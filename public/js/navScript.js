@@ -1,17 +1,14 @@
-const nav = document.querySelector("#nav");
-const navlinkWrappers = nav.querySelectorAll(".navlink-wrapper");
+const navlinks = document.querySelectorAll("nav .navlink");
 
 function styleActiveLink() {
+	const ACTIVE_LINK_CLASS = "menu-active";
 	const pathOfCurrentPage = window.location.pathname.split("/")[1];
 
-	[...navlinkWrappers].forEach((navlinkWrapperElement) => {
-		const navlinkAnchorElement =
-			navlinkWrapperElement.querySelector(".navlink");
-		const navlinkPath = navlinkAnchorElement.getAttribute("href").split("/")[1];
+	[...navlinks].forEach((elem) => {
+		const linkPath = elem.getAttribute("href").split("/")[1];
 
-		if (navlinkPath === pathOfCurrentPage)
-			navlinkWrapperElement.classList.add("active");
-		else navlinkAnchorElement.classList.remove("active");
+		if (linkPath === pathOfCurrentPage) elem.classList.add(ACTIVE_LINK_CLASS);
+		else elem.classList.remove(ACTIVE_LINK_CLASS);
 	});
 }
 
