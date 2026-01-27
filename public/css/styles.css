@@ -444,6 +444,17 @@ details {
 	border-radius: 0.5rem;
 }
 
+details > summary {
+	list-style: none;
+}
+
+summary::after {
+	content: "  ▼";
+}
+details[open] summary:after {
+	content: "  ▲";
+}
+
 details > ul {
 	z-index: 9;
 	border-radius: 0.5rem;
