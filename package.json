@@ -5,7 +5,8 @@
 	"main": "src/app.js",
 	"scripts": {
 		"dev": "node --watch src/app.js",
-		"seed-db": "node src/db/populatedb.js"
+		"seed-db": "node src/db/populatedb.js",
+		"build:css": "npx @tailwindcss/cli -i ./public/css/app.css -o ./public/css/output.css --watch"
 	},
 	"repository": {
 		"type": "git",
