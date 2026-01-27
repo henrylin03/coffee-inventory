@@ -3,6 +3,7 @@
 
 <head>
   <%- include("../partials/helmet.ejs", { pageTitle: "New item" }) %>
+  <script src="/js/newItemScript.js" defer></script>
 </head>
 
 <body>
@@ -68,7 +69,7 @@
     <footer class="page-footer">
       <div class="buttons">
         <input type="submit" form="item-form" class="primary-btn" value="Save" />
-        <a href="/items" aria-label="Close item details and view all items"><button type="button" class="cancel-btn">Cancel</button></a>
+        <button type="button" class="cancel-btn">Cancel</button>
       </div>
     </footer>
   </main>
