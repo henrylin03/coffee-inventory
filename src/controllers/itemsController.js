@@ -5,111 +5,111 @@ const { validateItem } = require("../helpers/validation/validateItem");
 const { formatCurrency } = require("../helpers/formatHelpers");
 
 const getItemById = async (itemId) => {
-	const item = await db.getItemById(itemId);
+  const item = await db.getItemById(itemId);
 
-	if (item === null)
-		throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
+  if (item === null)
+    throw new CustomNotFoundError(`Item with ID ${itemId} not found`);
 
-	return item;
+  return item;
 };
 
 const getRoutes = async (referredCategoryId) => {
-	const routes = {};
+  const routes = {};
 
-	routes.formSubmitRoute = referredCategoryId
-		? `/items/new?referredCategoryId=${referredCategoryId}`
-		: "/items/new";
+  routes.formSubmitRoute = referredCategoryId
+    ? `/items/new?referredCategoryId=${referredCategoryId}`
+    : "/items/new";
 
-	routes.redirectRoute = referredCategoryId
-		? `/categories/${referredCategoryId}`
-		: "/items";
+  routes.redirectRoute = referredCategoryId
+    ? `/categories/${referredCategoryId}`
+    : "/items";
 
-	return routes;
+  return routes;
 };
 
 exports.getAllItems = async (_req, res) => {
-	const fetchedItems = await db.getAllItems();
+  const fetchedItems = await db.getAllItems();
 
-	const allItems = fetchedItems.map((item) => {
-		const { price_cents, ...unchangedFormInputsAndValues } = item;
-		return {
-			...unchangedFormInputsAndValues,
-			price_dollars: formatCurrency(price_cents),
-		};
-	});
+  const allItems = fetchedItems.map((item) => {
+    const { price_cents, ...unchangedFormInputsAndValues } = item;
+    return {
+      ...unchangedFormInputsAndValues,
+      price_dollars: formatCurrency(price_cents),
+    };
+  });
 
-	res.render("pages/allItems", { title: "All items", items: allItems });
+  res.render("pages/allItems", { title: "All items", items: allItems });
 };
 
 exports.createItemGet = async (req, res) => {
-	const { referredCategoryId } = req.query;
+  const { referredCategoryId } = req.query;
 
-	const routes = await getRoutes(referredCategoryId);
+  const routes = await getRoutes(referredCategoryId);
 
-	res.render("pages/newItem", {
-		title: "Create new item",
-		routes,
-	});
+  res.render("pages/newItem", {
+    title: "Create new item",
+    routes,
+  });
 };
 
 exports.createItemPost = [
-	validateItem,
-	async (req, res) => {
-		const { referredCategoryId } = req.query;
-		const routes = await getRoutes(referredCategoryId);
+  validateItem,
+  async (req, res) => {
+    const { referredCategoryId } = req.query;
+    const routes = await getRoutes(referredCategoryId);
 
-		const errors = validationResult(req);
-		if (!errors.isEmpty())
-			return res
-				.status(400)
-				.render("pages/newItem", { errors: errors.array(), routes });
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res
+        .status(400)
+        .render("pages/newItem", { errors: errors.array(), routes });
 
-		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
-		const formInputsAndValues = {
-			...unchangedFormInputsAndValues,
-			price_cents: price_dollars * 100,
-			category_id: referredCategoryId,
-		};
+    const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
+    const formInputsAndValues = {
+      ...unchangedFormInputsAndValues,
+      price_cents: price_dollars * 100,
+      category_id: referredCategoryId,
+    };
 
-		await db.addItem(formInputsAndValues);
-		res.redirect(routes.redirectRoute);
-	},
+    await db.addItem(formInputsAndValues);
+    res.redirect(routes.redirectRoute);
+  },
 ];
 
 exports.editItemGet = async (req, res) => {
-	const { id: itemId } = req.params;
-	const fetchedItem = await getItemById(itemId);
+  const { id: itemId } = req.params;
+  const fetchedItem = await getItemById(itemId);
 
-	res.render("pages/editItem", { title: fetchedItem.name, item: fetchedItem });
+  res.render("pages/editItem", { title: fetchedItem.name, item: fetchedItem });
 };
 
 exports.editItemPost = [
-	validateItem,
-	async (req, res) => {
-		const { id: itemId } = req.params;
-		const fetchedItem = await getItemById(itemId);
+  validateItem,
+  async (req, res) => {
+    const { id: itemId } = req.params;
+    const fetchedItem = await getItemById(itemId);
 
-		const errors = validationResult(req);
-		if (!errors.isEmpty())
-			return res.status(400).render("pages/editItem", {
-				item: fetchedItem,
-				errors: errors.array(),
-			});
+    const errors = validationResult(req);
+    if (!errors.isEmpty())
+      return res.status(400).render("pages/editItem", {
+        item: fetchedItem,
+        errors: errors.array(),
+      });
 
-		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
+    const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
 
-		const formInputsAndValues = {
-			...unchangedFormInputsAndValues,
-			price_cents: price_dollars * 100,
-		};
+    const formInputsAndValues = {
+      ...unchangedFormInputsAndValues,
+      price_cents: price_dollars * 100,
+    };
 
-		await db.updateItemById(itemId, formInputsAndValues);
-		res.redirect("/items");
-	},
+    await db.updateItemById(itemId, formInputsAndValues);
+    res.redirect("/items");
+  },
 ];
 
 exports.deleteItemPost = async (req, res) => {
-	const { id: itemId } = req.params;
-	await db.deleteItem(itemId);
-	res.redirect("/items");
+  const { id: itemId } = req.params;
+  await db.deleteItem(itemId);
+  res.redirect("/items");
 };

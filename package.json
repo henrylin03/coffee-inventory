@@ -1,35 +1,36 @@
 {
-	"name": "coffee-inventory",
-	"version": "1.0.0",
-	"description": "Full-stack web app for managing inventory for a fake e-commerce coffee business. Built with ExpressJS, EJS, and PostgreSQL.",
-	"main": "src/app.js",
-	"scripts": {
-		"dev": "node --watch src/app.js",
-		"seed-db": "node src/db/populatedb.js",
-		"build:css": "npx @tailwindcss/cli -i ./public/css/app.css -o ./public/css/output.css --watch"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/henrylin03/template--expressjs-ejs-postgres.git"
-	},
-	"author": "Henry Lin",
-	"license": "MIT",
-	"type": "commonjs",
-	"bugs": {
-		"url": "https://github.com/henrylin03/template--expressjs-ejs-postgres/issues"
-	},
-	"homepage": "https://github.com/henrylin03/template--expressjs-ejs-postgres#readme",
-	"dependencies": {
-		"@tailwindcss/cli": "^4.1.18",
-		"dotenv": "^17.2.3",
-		"ejs": "^4.0.1",
-		"express": "^5.2.1",
-		"express-ejs-layouts": "^2.5.1",
-		"express-validator": "^7.3.1",
-		"pg": "^8.17.2",
-		"tailwindcss": "^4.1.18"
-	},
-	"devDependencies": {
-		"daisyui": "^5.5.14"
-	}
+  "name": "coffee-inventory",
+  "version": "1.0.0",
+  "description": "Full-stack web app for managing inventory for a fake e-commerce coffee business. Built with ExpressJS, EJS, and PostgreSQL.",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "node --watch src/app.js",
+    "seed-db": "node src/db/populatedb.js",
+    "build:css": "npx @tailwindcss/cli -i ./public/css/app.css -o ./public/css/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrylin03/template--expressjs-ejs-postgres.git"
+  },
+  "author": "Henry Lin",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/henrylin03/template--expressjs-ejs-postgres/issues"
+  },
+  "homepage": "https://github.com/henrylin03/template--expressjs-ejs-postgres#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "dotenv": "^17.2.3",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-validator": "^7.3.1",
+    "pg": "^8.17.2",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "daisyui": "^5.5.14",
+    "prettier": "3.8.1"
+  }
 }
