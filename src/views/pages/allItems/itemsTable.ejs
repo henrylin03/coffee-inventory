@@ -1,31 +1,34 @@
 <div class="overflow-x-auto">
-  <table class="table">
-    <thead class="bg-neutral-200 text-neutral-600 uppercase">
-      <tr>
-        <th>Name</th>
-        <th>SKU</th>
-        <th>Weight</th>
-        <th>Roastery</th>
-        <th>Selling price ($AUD)</th>
-        <th>Stock on hand</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% items.forEach(item => { %>
-      <tr
-        onclick="window.location = '<%= `/items/${item.id}` %>'"
-        aria-label="See more details of item"
-        role="button"
-        class="hover:cursor-pointer hover:bg-neutral-100"
-      >
-        <td><%= item.name %></td>
-        <td><%= item.sku %></td>
-        <td><%= Math.round(item.size_grams) %>g</td>
-        <td><%= item.roastery %></td>
-        <td><%= item.price_dollars %> <span class="opacity-80">/unit</span></td>
-        <td><%= item.stock_quantity %></td>
-      </tr>
-      <%}); %>
-    </tbody>
-  </table>
+    <table class="table">
+        <thead class="bg-neutral-200 text-neutral-600 uppercase">
+            <tr>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>Weight</th>
+                <th>Roastery</th>
+                <th>Selling price ($AUD)</th>
+                <th>Stock on hand</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% items.forEach(item => { %>
+            <tr
+                onclick="window.location = '<%= `/items/${item.id}` %>'"
+                aria-label="See more details of item"
+                role="button"
+                class="hover:cursor-pointer hover:bg-neutral-100"
+            >
+                <td><%= item.name %></td>
+                <td><%= item.sku %></td>
+                <td><%= Math.round(item.size_grams) %>g</td>
+                <td><%= item.roastery %></td>
+                <td>
+                    <%= item.price_dollars %>
+                    <span class="opacity-80">/unit</span>
+                </td>
+                <td><%= item.stock_quantity %></td>
+            </tr>
+            <%}); %>
+        </tbody>
+    </table>
 </div>

@@ -26,6 +26,6 @@ app.get("/", (_req, res) => res.redirect("/items"));
 
 const PORT = 3000;
 app.listen(PORT, (error) => {
-  if (error) throw Error;
-  console.log(`Listening on port ${PORT}`);
+    if (error) throw Error;
+    console.log(`Listening on port ${PORT}`);
 });

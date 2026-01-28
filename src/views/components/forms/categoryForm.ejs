@@ -1,29 +1,29 @@
 <form action="<%= route %>" method="post" id="category-form">
-  <ul>
-    <li class="mb-4 grid grid-cols-[9rem_1fr] gap-8">
-      <label for="nameInput">Category name*</label>
-      <input
-        type="text"
-        id="nameInput"
-        name="name"
-        required
-        class="input"
-        value="<%= typeof category !== 'undefined' ? category.name : '' %>"
-      />
-    </li>
-    <li class="grid grid-cols-[9rem_1fr] gap-8">
-      <label for="descriptionInput" class="flex-col">
-        <span>Description</span>
-        <small class="italic opacity-50">(Optional)</small>
-      </label>
-      <textarea
-        class="textarea"
-        id="descriptionInput"
-        name="description"
-        rows="6"
-      >
+    <ul>
+        <li class="mb-4 grid grid-cols-[9rem_1fr] gap-8">
+            <label for="nameInput">Category name*</label>
+            <input
+                type="text"
+                id="nameInput"
+                name="name"
+                required
+                class="input"
+                value="<%= typeof category !== 'undefined' ? category.name : '' %>"
+            />
+        </li>
+        <li class="grid grid-cols-[9rem_1fr] gap-8">
+            <label for="descriptionInput" class="flex-col">
+                <span>Description</span>
+                <small class="italic opacity-50">(Optional)</small>
+            </label>
+            <textarea
+                class="textarea"
+                id="descriptionInput"
+                name="description"
+                rows="6"
+            >
 <%= typeof category !== 'undefined' ? category.description : '' %></textarea
-      >
-    </li>
-  </ul>
+            >
+        </li>
+    </ul>
 </form>

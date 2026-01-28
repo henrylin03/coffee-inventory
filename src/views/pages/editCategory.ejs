@@ -1,24 +1,24 @@
 <%- include("../components/pageHeaders/pageHeaderWithDelete", { type: "category"
 })%>
 <section class="flex-1 px-8">
-  <%- include("../components/errorsList") %> <%-
-  include("../components/forms/categoryForm", { category, route:
-  `/categories/${category.id}/update`}) %>
+    <%- include("../components/errorsList") %> <%-
+    include("../components/forms/categoryForm", { category, route:
+    `/categories/${category.id}/update`}) %>
 </section>
 <%- include("../components/compositeItems", { categoryId: category.id,
 compositeItems }) %>
 <footer class="border-base-200 flex gap-2 border p-6">
-  <input
-    type="submit"
-    form="category-form"
-    value="Save"
-    class="btn btn-primary"
-  />
-  <button
-    type="button"
-    class="btn border-gray-400 bg-white text-gray-500"
-    onclick="history.back()"
-  >
-    Cancel
-  </button>
+    <input
+        type="submit"
+        form="category-form"
+        value="Save"
+        class="btn btn-primary"
+    />
+    <button
+        type="button"
+        class="btn border-gray-400 bg-white text-gray-500"
+        onclick="history.back()"
+    >
+        Cancel
+    </button>
 </footer>
