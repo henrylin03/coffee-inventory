@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <%- include("../../partials/helmet.ejs", {pageTitle: "Manage Your Items"})
-    %>
-  <script src="/js/deleteItemScript.js" defer></script>
-</head>
-
-<body>
-  <%- include("../../components/header.ejs") %>
-  <main>
-    <header>
-      <h1 class="page-title">All items</h1>
-      <a href="/items/new" class="button-anchor-wrapper">
-        <%- include("../../components/addNewButton.ejs", { text: "Add new item" }) %>
-      </a>
-    </header>
-    <%- include("./itemsTable.ejs", {items}) %>
-  </main>
-</body>
-
-</html>
+<header>
+  <h1 class="text-2xl">All items</h1>
+  <a href="/items/new">
+    <%- include("../../components/addNewButton.ejs", { text: "Add new item" }) %>
+  </a>
+</header>
