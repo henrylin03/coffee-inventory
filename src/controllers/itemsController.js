@@ -24,7 +24,7 @@ exports.getAllItems = async (_req, res) => {
 		};
 	});
 
-	res.render("pages/allItems", { items: allItems });
+	res.render("pages/allItems", { title: "All items", items: allItems });
 };
 
 exports.createItemGet = async (_req, res) => {
