@@ -10,12 +10,6 @@
 	--color-base-300: #001219;
 }
 
-body {
-	display: grid;
-	grid-template-columns: 1fr 8fr;
-	min-height: 100dvh;
-}
-
 .menu-active {
 	background-color: var(--color-primary);
 }
