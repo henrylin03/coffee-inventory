@@ -72,7 +72,6 @@ exports.createItemPost = [
 		};
 
 		await db.addItem(formInputsAndValues);
-
 		res.redirect(routes.redirectRoute);
 	},
 ];
