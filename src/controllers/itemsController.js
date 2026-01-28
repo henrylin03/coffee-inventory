@@ -27,8 +27,14 @@ exports.getAllItems = async (_req, res) => {
 	res.render("pages/allItems", { title: "All items", items: allItems });
 };
 
-exports.createItemGet = async (_req, res) => {
-	res.render("pages/newItem", { title: "Create new item" });
+exports.createItemGet = async (req, res) => {
+	const { referredCategoryId } = req.query ?? null;
+
+	const formRoute = referredCategoryId
+		? `/items/new?referredCategoryId=${referredCategoryId}`
+		: "/items/new";
+
+	res.render("pages/newItem", { title: "Create new item", formRoute });
 };
 
 exports.createItemPost = [
@@ -40,7 +46,7 @@ exports.createItemPost = [
 				.status(400)
 				.render("pages/newItem", { errors: errors.array() });
 
-		const { referredCategoryId } = req.query || null;
+		const { referredCategoryId } = req.query;
 
 		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
 		const formInputsAndValues = {

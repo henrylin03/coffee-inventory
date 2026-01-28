@@ -1,7 +1,7 @@
 <%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "New item "}) %>
 <section class="px-8 flex-1">
   <%- include("../components/errorsList") %>
-  <%- include("../components/forms/itemForm", { route: "/items/new" }) %>
+  <%- include("../components/forms/itemForm", { route: formRoute }) %>
 </section>
 <footer class="flex gap-2 p-6 border border-base-200">
   <input type="submit" form="item-form" value="Save" class="btn btn-primary" />
