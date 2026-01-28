@@ -1,7 +1,5 @@
-<header class="flex items-center justify-between p-8">
-  <h1 class="text-2xl">All items</h1>
-  <a href="/items/new">
-    <%- include("../../components/addNewButton.ejs", { text: "Add new item" }) %>
-  </a>
-</header>
+<%- include("../../components/pageHeader", { heading: "All items", button: {
+  text: "Add new item",
+  route: "/items/new"
+}}) %>
 <%- include("./itemsTable.ejs", { items }) %>
