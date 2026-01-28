@@ -1,28 +1,28 @@
 <form action="/items/new" method="post" id="item-form">
-  <ul class="flex flex-col gap-4">
+  <ul class="flex flex-col gap-4 w-200">
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="nameInput">Name*</label>
-      <input class="input" type="text" id="nameInput" name="name" required />
+      <input class="input w-full" type="text" id="nameInput" name="name" required />
     </li>
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="skuInput">SKU*</label>
-      <input class="input" type="text" id="skuInput" name="sku" required />
+      <input class="input w-full" type="text" id="skuInput" name="sku" required />
     </li>
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="roasteryInput">Roastery*</label>
-      <input class="input" type="text" id="roasteryInput" name="roastery" required />
+      <input class="input w-full" type="text" id="roasteryInput" name="roastery" required />
     </li>
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="descriptionInput" class="flex-col">
         <span>Description</span>
         <small class="opacity-50 italic">(Optional)</small>
       </label>
-      <textarea class="textarea" id="descriptionInput" name="description" rows="6"></textarea>
+      <textarea class="textarea w-full" id="descriptionInput" name="description" rows="6"></textarea>
     </li>
     <li class="grid grid-cols-[9rem_1fr] gap-8 items-center">
       <label for="weightInput">Weight*</label>
       <div class="flex gap-2 items-center">
-        <input class="input" type="number" id="weightInput" name="size_grams" required min="0.1" step="any" />
+        <input class="input w-full" type="number" id="weightInput" name="size_grams" required min="0.1" step="any" />
         <p>grams</p>
       </div>
     </li>
@@ -30,13 +30,13 @@
       <label for="sellingPriceInput">Selling price*</label>
       <div class="flex gap-2 items-center">
         <p>AUD$</p>
-        <input class="input" type="number" id="sellingPriceInput" name="price_dollars" required step="any" min="0" />
+        <input class="input w-full" type="number" id="sellingPriceInput" name="price_dollars" required step="any" min="0" />
       </div>
     </li>
     <li class="grid grid-cols-[9rem_1fr] gap-8 items-center">
       <label for="stockCountInput">Stock on hand*</label>
       <div class="flex gap-2 items-center">
-        <input class="input" type="number" id="stockCountInput" name="stock_quantity" required min="0" step="1" />
+        <input class="input w-full" type="number" id="stockCountInput" name="stock_quantity" required min="0" step="1" />
         <p>units</p>
       </div>
     </li>
