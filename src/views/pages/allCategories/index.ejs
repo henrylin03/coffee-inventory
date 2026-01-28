@@ -1,0 +1,5 @@
+<%- include("../../components/pageHeaders/pageHeaderWithAdd", { heading: "All categories", button: {
+  text: "Add new category",
+  route: "/categories/new"
+}}) %>
+<%- include("./categoriesList.ejs", { categories }) %>

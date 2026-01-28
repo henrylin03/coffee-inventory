@@ -28,13 +28,14 @@ exports.getAllCategories = async (_req, res) => {
 	}
 
 	res.render("pages/allCategories", {
+		title: "All categories",
 		categories: allCategories,
 		itemCountPerCategory,
 	});
 };
 
 exports.createCategoryGet = async (_req, res) => {
-	res.render("pages/newCategory");
+	res.render("pages/newCategory", { title: "Add new category" });
 };
 
 exports.createCategoryPost = [
@@ -62,6 +63,7 @@ exports.editCategoryGet = async (req, res) => {
 	const allItemsInCategory = await getItemsInCategory(categoryId);
 
 	res.render("pages/editCategory", {
+		title: category.name,
 		category,
 		compositeItems: allItemsInCategory,
 	});

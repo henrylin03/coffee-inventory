@@ -1,0 +1,12 @@
+<% if (locals.errors) {%>
+<section role="alert" class="alert alert-error alert-soft mb-8 shadow-3xs px-6 py-4">
+  <div class="flex flex-col text-error">
+    <h2 class="text-lg font-bold">Please correct the following errors</h2>
+    <ul class="list-disc pl-8">
+      <% errors.forEach(error => {%>
+      <li><%= error.msg %></li>
+      <% })%>
+    </ul>
+  </div>
+</section>
+<% } %>

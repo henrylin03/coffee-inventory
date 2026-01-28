@@ -24,11 +24,11 @@ exports.getAllItems = async (_req, res) => {
 		};
 	});
 
-	res.render("pages/allItems", { items: allItems });
+	res.render("pages/allItems", { title: "All items", items: allItems });
 };
 
 exports.createItemGet = async (_req, res) => {
-	res.render("pages/newItem");
+	res.render("pages/newItem", { title: "Create new item" });
 };
 
 exports.createItemPost = [
@@ -56,7 +56,7 @@ exports.editItemGet = async (req, res) => {
 	const { id: itemId } = req.params;
 	const fetchedItem = await getItemById(itemId);
 
-	res.render("pages/editItem", { item: fetchedItem });
+	res.render("pages/editItem", { title: fetchedItem.name, item: fetchedItem });
 };
 
 exports.editItemPost = [

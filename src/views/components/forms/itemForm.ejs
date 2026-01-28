@@ -1,0 +1,44 @@
+<form action="<%= route %>" method="post" id="item-form">
+  <ul class="flex flex-col gap-4 w-150">
+    <li class="grid grid-cols-[9rem_1fr] gap-8">
+      <label for="nameInput">Name*</label>
+      <input class="input w-full" type="text" id="nameInput" name="name" required value="<%= typeof item !== 'undefined' ? item.name : '' %>" />
+    </li>
+    <li class="grid grid-cols-[9rem_1fr] gap-8">
+      <label for="skuInput">SKU*</label>
+      <input class="input w-full" type="text" id="skuInput" name="sku" required value="<%= typeof item !== 'undefined' ? item.sku : '' %>" />
+    </li>
+    <li class="grid grid-cols-[9rem_1fr] gap-8">
+      <label for="roasteryInput">Roastery*</label>
+      <input class="input w-full" type="text" id="roasteryInput" name="roastery" required value="<%= typeof item !== 'undefined' ? item.roastery : '' %>" />
+    </li>
+    <li class="grid grid-cols-[9rem_1fr] gap-8">
+      <label for="descriptionInput" class="flex-col">
+        <span>Description</span>
+        <small class="opacity-50 italic">(Optional)</small>
+      </label>
+      <textarea class="textarea w-full" id="descriptionInput" name="description" rows="6"><%= typeof item !== "undefined" ? item.description : "" %></textarea>
+    </li>
+    <li class="grid grid-cols-[9rem_1fr] gap-8 items-center">
+      <label for="weightInput">Weight*</label>
+      <div class="flex gap-2 items-center">
+        <input class="input w-full" type="number" id="weightInput" name="size_grams" required min="0.1" step="any" value="<%= typeof item !== 'undefined' ? item.size_grams : '' %>" />
+        <p>grams</p>
+      </div>
+    </li>
+    <li class="grid grid-cols-[9rem_1fr] gap-8 items-center">
+      <label for="sellingPriceInput">Selling price*</label>
+      <div class="flex gap-2 items-center">
+        <p>AUD$</p>
+        <input class="input w-full" type="number" id="sellingPriceInput" name="price_dollars" required step="any" min="0" value="<%= typeof item !== 'undefined' ? item.price_cents / 100 : '' %>" />
+      </div>
+    </li>
+    <li class="grid grid-cols-[9rem_1fr] gap-8 items-center">
+      <label for="stockCountInput">Stock on hand*</label>
+      <div class="flex gap-2 items-center">
+        <input class="input w-full" type="number" id="stockCountInput" name="stock_quantity" required min="0" step="1" value="<%= typeof item !== 'undefined' ? item.stock_quantity : '' %>" />
+        <p>units</p>
+      </div>
+    </li>
+  </ul>
+</form>

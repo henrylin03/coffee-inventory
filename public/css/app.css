@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Satisfy&display=swap");
+@import "tailwindcss";
+@plugin "daisyui" {
+	themes: corporate --default;
+}
+@plugin "daisyui/theme" {
+	name: "corporate";
+	default: true;
+	--color-primary: #0a9396;
+	--color-secondary: #002a39;
+	--color-error: #ae2012;
+}
+
+* {
+	font-family: "Open Sans", sans-serif;
+}
+
+.app-name {
+	font-family: "Satisfy", cursive, sans-serif;
+}
+
+.menu-active {
+	background-color: var(--color-primary);
+}
