@@ -56,7 +56,7 @@ exports.editItemGet = async (req, res) => {
 	const { id: itemId } = req.params;
 	const fetchedItem = await getItemById(itemId);
 
-	res.render("pages/editItem", { item: fetchedItem });
+	res.render("pages/editItem", { title: fetchedItem.name, item: fetchedItem });
 };
 
 exports.editItemPost = [
