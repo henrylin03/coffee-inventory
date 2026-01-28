@@ -9,7 +9,7 @@
 </header>
 <section class="px-8 flex-1">
   <%- include("../components/errorsList") %>
-  <form action="/categories/new" method="post" id="categoryForm">
+  <form action="/categories/new" method="post" id="category-form">
     <ul>
       <li class="grid grid-cols-[9rem_1fr] gap-8 mb-4">
         <label for="nameInput">Category name*</label>
@@ -26,6 +26,6 @@
   </form>
 </section>
 <footer class="flex gap-2 p-6 border border-base-200">
-  <input type="submit" form="categoryForm" value="Save" class="btn btn-primary" />
+  <input type="submit" form="category-form" value="Save" class="btn btn-primary" />
   <button type="button" class="btn bg-white text-gray-500 border-gray-400" onclick="history.back()">Cancel</button>
 </footer>
