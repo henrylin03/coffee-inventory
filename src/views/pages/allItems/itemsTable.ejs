@@ -1,24 +1,26 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>SKU</th>
-      <th class="align-right">Weight</th>
-      <th>Roastery</th>
-      <th class="align-right">Selling price ($AUD)</th>
-      <th class="align-right">Stock on hand</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% items.forEach(item => { %>
-    <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item" class="clickable-row">
-      <td><%= item.name %></td>
-      <td><%= item.sku %></td>
-      <td class="align-right"><%= Math.round(item.size_grams) %>g</td>
-      <td><%= item.roastery %></td>
-      <td class="align-right"><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
-      <td class="align-right"><%= item.stock_quantity %></td>
-    </tr>
-    <%}); %>
-  </tbody>
-</table>
+<div class="overflow-x-auto">
+  <table class="table">
+    <thead class="uppercase bg-neutral-200 text-neutral-600">
+      <tr>
+        <th>Name</th>
+        <th>SKU</th>
+        <th>Weight</th>
+        <th>Roastery</th>
+        <th>Selling price ($AUD)</th>
+        <th>Stock on hand</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+      <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item" role="button" class="hover:bg-neutral-100 hover:cursor-pointer">
+        <td><%= item.name %></td>
+        <td><%= item.sku %></td>
+        <td><%= Math.round(item.size_grams) %>g</td>
+        <td><%= item.roastery %></td>
+        <td><%= item.price_dollars %> <span class="opacity-80">/unit</span></td>
+        <td><%= item.stock_quantity %></td>
+      </tr>
+      <%}); %>
+      </tbody>
+      </table>
+</div>
