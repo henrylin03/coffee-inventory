@@ -28,7 +28,7 @@ exports.getAllItems = async (_req, res) => {
 };
 
 exports.createItemGet = async (_req, res) => {
-	res.render("pages/newItem", { title: "Create new item" });
+	res.render("pages/newItem", { title: "Create new item", referredCategoryId });
 };
 
 exports.createItemPost = [
@@ -48,7 +48,9 @@ exports.createItemPost = [
 		};
 
 		await db.addItem(formInputsAndValues);
-		res.redirect("/items");
+
+		if (referredCategoryId) res.redirect(`/categories/${referredCategoryId}`);
+		else res.redirect("/items");
 	},
 ];
 
