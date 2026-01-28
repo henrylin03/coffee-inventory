@@ -8,17 +8,19 @@
 </head>
 
 <body>
-  <%- include("../../components/header.ejs") %>
   <%- include("../../components/navMenu.ejs") %>
-  <main>
-    <header>
-      <h1 class="page-title">All items</h1>
-      <a href="/items/new" class="button-anchor-wrapper">
-        <%- include("../../components/addNewButton.ejs", { text: "Add new item" }) %>
-      </a>
-    </header>
-    <%- include("./itemsTable.ejs", {items}) %>
-  </main>
+  <div>
+    <%- include("../../components/header.ejs") %>
+    <main>
+      <header>
+        <h1 class="page-title">All items</h1>
+        <a href="/items/new" class="button-anchor-wrapper">
+          <%- include("../../components/addNewButton.ejs", { text: "Add new item" }) %>
+        </a>
+      </header>
+      <%- include("./itemsTable.ejs", {items}) %>
+    </main>
+  </div>
 </body>
 
 </html>
