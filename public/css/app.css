@@ -8,6 +8,7 @@
 	default: true;
 	--color-primary: #0a9396;
 	--color-secondary: #002a39;
+	--color-error: #ae2012;
 }
 
 * {
