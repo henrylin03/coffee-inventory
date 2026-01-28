@@ -1,6 +1,6 @@
 <section class="flex-2 flex flex-col gap-4">
   <header class="w-full grid justify-items-end px-8">
-    <button type="button" class="btn btn-primary">Add item to category</button>
+    <%- include("./buttonTriggeredDropdown", { text: "Add item", options: [{ label: "Add new item", href: "#" }, { label: "Add existing item", href: "#" }]}) %>
   </header>
   <div class="overflow-x-auto">
     <table class="table table-auto">
