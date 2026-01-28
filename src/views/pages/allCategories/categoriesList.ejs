@@ -1,15 +1,13 @@
-<ul class="categories-list">
+<ul class="list border-solid border border-base-200 divide-solid">
   <% categories.forEach(category => { %>
-  <li class="category-list-item">
-    <a href="/categories/<%= category.id %>" class="category clickable-row">
-      <figure class="icon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-icon lucide-folder">
-          <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
-        </svg>
-      </figure>
-      <div class="category-text-container">
+  <li class="list-row border-base-200">
+    <a href="/categories/<%= category.id %>" class="flex gap-4">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-icon lucide-folder">
+        <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+      </svg>
+      <div class="flex gap-2">
         <p><%= category.name %></p>
-        <p class="item-count">(<%= itemCountPerCategory.get(category.id) %> <%= itemCountPerCategory.get(category.id) === 1 ? "item" : "items" %>)</p>
+        <p class="opacity-50">(<%= itemCountPerCategory.get(category.id) %> <%= itemCountPerCategory.get(category.id) === 1 ? "item" : "items" %>)</p>
       </div>
     </a>
   </li>
