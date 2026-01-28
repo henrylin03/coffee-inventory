@@ -1,29 +1,16 @@
 {
 	"name": "coffee-inventory",
 	"version": "1.0.0",
-	"description": "Full-stack web app for managing inventory for a fake e-commerce coffee business. Built with ExpressJS, EJS, and PostgreSQL.",
+	"description": "Full-stack web app for managing inventory for a fake e-commerce coffee business. Built with ExpressJS (backend), PostgreSQL (database), EJS (templating/views) and Daisy UI + TailwindCSS (styling).",
 	"main": "src/app.js",
 	"scripts": {
 		"dev": "node --watch src/app.js",
 		"seed-db": "node src/db/populatedb.js",
 		"build:css": "npx @tailwindcss/cli -i ./public/css/app.css -o ./public/css/output.css --watch"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/henrylin03/template--expressjs-ejs-postgres.git"
-	},
-	"keywords": [
-		"ExpressJS",
-		"template",
-		"EJS"
-	],
 	"author": "Henry Lin",
 	"license": "MIT",
 	"type": "commonjs",
-	"bugs": {
-		"url": "https://github.com/henrylin03/template--expressjs-ejs-postgres/issues"
-	},
-	"homepage": "https://github.com/henrylin03/template--expressjs-ejs-postgres#readme",
 	"dependencies": {
 		"@tailwindcss/cli": "^4.1.18",
 		"dotenv": "^17.2.3",
