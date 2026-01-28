@@ -14,8 +14,6 @@ app.set("views", path.join(__dirname, "views"));
 
 /* set up EJS layouts */
 app.use(expressLayouts);
-app.set("layout extractScripts", true);
-app.set("layout extractStyles", true);
 app.set("layout", "layouts/baseLayout");
 
 /* middleware to parse data in request body */
