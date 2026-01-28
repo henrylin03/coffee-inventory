@@ -11,7 +11,7 @@
   </div>
 </header>
 <section class="px-8 flex-1">
-  <%- include("../components/itemForm", { route: `/items/${item.id}/update`}) %>
+  <%- include("../components/itemForm", { item, route: `/items/${item.id}/update`}) %>
 </section>
 <footer class="flex gap-2 p-6 border border-base-200">
   <input type="submit" form="item-form" value="Save" class="btn btn-primary" />
