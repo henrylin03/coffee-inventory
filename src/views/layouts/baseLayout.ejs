@@ -12,9 +12,9 @@
 <body>
   <div class="drawer lg:drawer-open">
     <input id="nav-drawer" type="checkbox" class="drawer-toggle">
-    <div class="drawer-content">
+    <div class="drawer-content flex flex-col">
       <%- include("../components/userAvatarHeader") %>
-      <main>
+      <main class="flex flex-col flex-1">
         <%- body %>
       </main>
     </div>
