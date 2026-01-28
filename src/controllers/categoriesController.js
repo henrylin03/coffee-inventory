@@ -28,6 +28,7 @@ exports.getAllCategories = async (_req, res) => {
 	}
 
 	res.render("pages/allCategories", {
+		title: "All categories",
 		categories: allCategories,
 		itemCountPerCategory,
 	});
