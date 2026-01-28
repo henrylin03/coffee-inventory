@@ -10,14 +10,16 @@
 </head>
 
 <body>
-  <header>
-    <%- header %>
-  </header>
-
-  <%- body %>
-  <footer>
-    <%- defineContent("footer") %>
-  </footer>
+  <div class="drawer lg:drawer-open">
+    <input id="nav-drawer" type="checkbox" class="drawer-toggle">
+    <div class="drawer-content">
+      <%- include("../components/header.ejs") %>
+      <main>
+        <%- body %>
+      </main>
+      </div>
+      <%- include("../components/navDrawer.ejs") %>
+      </div>
 
   <%- defineContent(script) %>
   <script src="/js/navScript.js"></script>
