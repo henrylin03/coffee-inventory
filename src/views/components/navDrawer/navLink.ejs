@@ -1,9 +1,11 @@
-<a href="<%= link.route %>" class="capitalize"><%= link.label %></a>
-<a href="/categories/new" aria-label="Add new category of items">
-  <button class="btn btn-xs btn-circle">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
-      <path d="M5 12h14" />
-      <path d="M12 5v14" />
-    </svg>
-  </button>
-</a>
+<div class="flex items-center justify-between py-4">
+  <a href="<%= link.route %>" class="capitalize"><%= link.label %></a>
+  <a href="/categories/new" aria-label="Add new <%= link.label %>">
+    <button class="btn btn-xs btn-circle">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
+        <path d="M5 12h14" />
+        <path d="M12 5v14" />
+      </svg>
+      </button>
+      </a>
+</div>

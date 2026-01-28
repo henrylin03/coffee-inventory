@@ -15,7 +15,7 @@
     <nav class="menu w-full">
       <ul>
         <% links.forEach((link) => { %>
-        <li class="flex items-center justify-between navlink py-4"><%- include("./navLink.ejs", { link }); %></li>
+        <li><%- include("./navLink.ejs", { link }); %></li>
         <% }); %>
       </ul>
     </nav>
