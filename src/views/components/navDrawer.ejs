@@ -1,38 +1,43 @@
-<nav>
-  <div class="flex items-center gap-2 pl-4">
-    <figure class="w-6" alt="Logo for Coffee Inventory app">
-      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee-icon lucide-coffee">
-        <path d="M10 2v2" />
-        <path d="M14 2v2" />
-        <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
-        <path d="M6 2v2" />
-      </svg>
-    </figure>
-    <h1 class="text-2xl font-bold">Inventory</h1>
-  </div>
-  <ul class="menu w-full mt-4">
-    <li>
-      <a href="/items" aria-label="View all items in inventory" class="navlink py-2">Items</a>
-      <!-- <a href="/items/new" aria-label="Add new item to inventory">
-        <button type="button" class="icon-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-            <path d="M5 12h14" />
-            <path d="M12 5v14" />
-          </svg>
-        </button>
-      </a> -->
-    </li>
+<aside class="drawer-side">
+  <label for="nav-drawer" aria-label="Close navigation sidebar" class="drawer-overlay"></label>
+  <div class="bg-base-100 min-h-full w-80 py-4 px-2">
+    <div class="flex items-center gap-3 mb-6 p-6">
+      <figure class="w-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-coffee">
+          <path d="M10 2v2" />
+          <path d="M14 2v2" />
+          <path d="M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1" />
+          <path d="M6 2v2" />
+        </svg>
+      </figure>
+      <h1 class="text-2xl font-bold">Inventory</h1>
+    </div>
+    <nav class="menu w-full">
+      <ul>
+        <li>
+          <a href="/items" aria-label="View all items in inventory" class="navlink py-2">Items</a>
+          <!-- <a href="/items/new" aria-label="Add new item to inventory">
+            <button type="button" class="icon-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+              </button>
+              </a> -->
+              </li>
 
-    <li>
-      <a href="/categories" aria-label="View all item categories in inventory" class="navlink py-2">Categories</a>
-      <!-- <a href="/categories/new" aria-label="Add new category of items">
-        <button type="button" class="icon-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus">
-            <path d="M5 12h14" />
-            <path d="M12 5v14" />
-          </svg>
-        </button>
-      </a> -->
-    </li>
-  </ul>
-</nav>
+        <li>
+          <a href="/categories" aria-label="View all item categories in inventory" class="navlink py-2">Categories</a>
+          <!-- <a href="/categories/new" aria-label="Add new category of items">
+            <button type="button" class="icon-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus">
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+              </button>
+              </a> -->
+              </li>
+              </ul>
+              </nav>
+  </div>
+  </aside>

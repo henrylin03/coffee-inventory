@@ -1,10 +1,10 @@
 <div class="drawer lg:drawer-open">
-  <input type="text" id="nav-drawer" type="checkbox" class="drawer-toggle">
+  <input id="nav-drawer" type="checkbox" class="drawer-toggle">
   <div class="drawer-content">
-    <header class="navbar bg-neutral-100 shadow-sm px-10">
+    <header class="navbar bg-neutral-100 shadow-sm px-10 w-full">
       <div>
-        <label aria-label="Open navigation sidebar" class="btn btn-square btn-ghost">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-left-open-icon lucide-panel-left-open my-1.5 inline-block size-5">
+        <label for="nav-drawer" aria-label="Open navigation sidebar" class="btn btn-square btn-ghost lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-left-open-icon lucide-panel-left-open size-5">
             <rect width="18" height="18" x="3" y="3" rx="2" />
             <path d="M9 3v18" />
             <path d="m14 9 3 3-3 3" />
@@ -15,7 +15,7 @@
         <div class="dropdown dropdown-end">
           <button class="btn btn-ghost btn-circle avatar" tabindex="0">
             <div class="w-10 rounded-full">
-              <img src="/images/blank-avatar.jpg" alt="Avatar">
+              <img src="/images/blank-avatar.jpg" alt="User avatar">
             </div>
           </button>
           <ul class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow" tabindex="-1">
@@ -26,4 +26,5 @@
       </div>
     </header>
   </div>
+  <%- include("./navDrawer.ejs") %>
 </div>
