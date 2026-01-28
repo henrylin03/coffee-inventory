@@ -27,9 +27,8 @@ exports.getAllItems = async (_req, res) => {
 	res.render("pages/allItems", { title: "All items", items: allItems });
 };
 
-exports.createItemGet = async (req, res) => {
-	const { referredCategoryId } = req.query;
-	res.render("pages/newItem", { title: "Create new item", referredCategoryId });
+exports.createItemGet = async (_req, res) => {
+	res.render("pages/newItem", { title: "Create new item" });
 };
 
 exports.createItemPost = [
