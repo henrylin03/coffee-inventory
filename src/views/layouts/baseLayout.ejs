@@ -13,12 +13,12 @@
   <div class="drawer lg:drawer-open">
     <input id="nav-drawer" type="checkbox" class="drawer-toggle">
     <div class="drawer-content">
-      <%- include("../components/header.ejs") %>
+      <%- include("../components/userAvatarHeader") %>
       <main>
         <%- body %>
       </main>
     </div>
-    <%- include("../components/navDrawer.ejs") %>
+    <%- include("../components/navDrawer") %>
     </div>
 
   <%- defineContent(script) %>
