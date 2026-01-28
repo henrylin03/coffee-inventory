@@ -13,6 +13,20 @@ const getItemById = async (itemId) => {
 	return item;
 };
 
+const getRoutes = async (referredCategoryId) => {
+	const routes = {};
+
+	routes.formSubmitRoute = referredCategoryId
+		? `/items/new?referredCategoryId=${referredCategoryId}`
+		: "/items/new";
+
+	routes.redirectRoute = referredCategoryId
+		? `/categories/${referredCategoryId}`
+		: "/items";
+
+	return routes;
+};
+
 exports.getAllItems = async (_req, res) => {
 	const fetchedItems = await db.getAllItems();
 
@@ -27,28 +41,38 @@ exports.getAllItems = async (_req, res) => {
 	res.render("pages/allItems", { title: "All items", items: allItems });
 };
 
-exports.createItemGet = async (_req, res) => {
-	res.render("pages/newItem", { title: "Create new item" });
+exports.createItemGet = async (req, res) => {
+	const { referredCategoryId } = req.query;
+
+	const routes = await getRoutes(referredCategoryId);
+
+	res.render("pages/newItem", {
+		title: "Create new item",
+		routes,
+	});
 };
 
 exports.createItemPost = [
 	validateItem,
 	async (req, res) => {
+		const { referredCategoryId } = req.query;
+		const routes = await getRoutes(referredCategoryId);
+
 		const errors = validationResult(req);
 		if (!errors.isEmpty())
 			return res
 				.status(400)
-				.render("pages/newItem", { errors: errors.array() });
+				.render("pages/newItem", { errors: errors.array(), routes });
 
 		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
-
 		const formInputsAndValues = {
 			...unchangedFormInputsAndValues,
 			price_cents: price_dollars * 100,
+			category_id: referredCategoryId,
 		};
 
 		await db.addItem(formInputsAndValues);
-		res.redirect("/items");
+		res.redirect(routes.redirectRoute);
 	},
 ];
 
