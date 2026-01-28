@@ -6,19 +6,15 @@
   "scripts": {
     "dev": "node --watch src/app.js",
     "seed-db": "node src/db/populatedb.js",
-    "build:css": "npx @tailwindcss/cli -i ./public/css/app.css -o ./public/css/output.css --watch"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/henrylin03/template--expressjs-ejs-postgres.git"
+    "build:css": "npx @tailwindcss/cli -i ./public/css/app.css -o ./public/css/output.css --watch",
+    "prepare": "husky"
   },
   "author": "Henry Lin",
   "license": "MIT",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/henrylin03/template--expressjs-ejs-postgres/issues"
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
-  "homepage": "https://github.com/henrylin03/template--expressjs-ejs-postgres#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.1.18",
     "dotenv": "^17.2.3",
@@ -31,6 +27,8 @@
   },
   "devDependencies": {
     "daisyui": "^5.5.14",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "3.8.1"
   }
 }
