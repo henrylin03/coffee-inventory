@@ -1,21 +1,7 @@
-<%- include("../components/pageHeaderWithClose.ejs", { heading: "New category"}) %>
+<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "New category"}) %>
 <section class="px-8 flex-1">
   <%- include("../components/errorsList") %>
-  <form action="/categories/new" method="post" id="category-form">
-    <ul>
-      <li class="grid grid-cols-[9rem_1fr] gap-8 mb-4">
-        <label for="nameInput">Category name*</label>
-        <input type="text" id="nameInput" name="name" required class="input" />
-      </li>
-      <li class="grid grid-cols-[9rem_1fr] gap-8">
-        <label for="descriptionInput" class="flex-col">
-          <span>Description</span>
-          <small class="opacity-50 italic">(Optional)</small>
-        </label>
-        <textarea class="textarea" id="descriptionInput" name="description" rows="6"></textarea>
-      </li>
-    </ul>
-  </form>
+  <%- include("../components/forms/categoryForm", { route: "/categories/new"}) %>
 </section>
 <footer class="flex gap-2 p-6 border border-base-200">
   <input type="submit" form="category-form" value="Save" class="btn btn-primary" />

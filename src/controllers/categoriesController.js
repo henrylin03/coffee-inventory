@@ -63,6 +63,7 @@ exports.editCategoryGet = async (req, res) => {
 	const allItemsInCategory = await getItemsInCategory(categoryId);
 
 	res.render("pages/editCategory", {
+		title: category.name,
 		category,
 		compositeItems: allItemsInCategory,
 	});
