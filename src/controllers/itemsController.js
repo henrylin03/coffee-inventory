@@ -27,7 +27,8 @@ exports.getAllItems = async (_req, res) => {
 	res.render("pages/allItems", { title: "All items", items: allItems });
 };
 
-exports.createItemGet = async (_req, res) => {
+exports.createItemGet = async (req, res) => {
+	const { referredCategoryId } = req.query;
 	res.render("pages/newItem", { title: "Create new item", referredCategoryId });
 };
 
@@ -40,11 +41,13 @@ exports.createItemPost = [
 				.status(400)
 				.render("pages/newItem", { errors: errors.array() });
 
-		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
+		const { referredCategoryId } = req.query || null;
 
+		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
 		const formInputsAndValues = {
 			...unchangedFormInputsAndValues,
 			price_cents: price_dollars * 100,
+			category_id: referredCategoryId,
 		};
 
 		await db.addItem(formInputsAndValues);

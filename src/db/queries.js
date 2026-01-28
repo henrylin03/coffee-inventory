@@ -23,11 +23,21 @@ const addItem = async (formObject) => {
 		size_grams,
 		stock_quantity,
 		price_cents,
+		category_id,
 	} = formObject;
 
 	await pool.query(
-		"INSERT INTO items (name, sku, size_grams, roastery, description, price_cents, stock_quantity) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-		[name, sku, size_grams, roastery, description, price_cents, stock_quantity],
+		"INSERT INTO items (name, sku, size_grams, roastery, description, price_cents, stock_quantity, category_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)",
+		[
+			name,
+			sku,
+			size_grams,
+			roastery,
+			description,
+			price_cents,
+			stock_quantity,
+			category_id,
+		],
 	);
 };
 
