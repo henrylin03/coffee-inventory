@@ -1,7 +1,7 @@
 <header class="flex items-center justify-between p-8">
   <h1 class="text-2xl">Edit item</h1>
   <div class="flex items-center gap-4">
-    <button class="btn btn-error btn-outline">Delete item</button>
+    <button class="btn btn-error btn-outline delete-btn">Delete item</button>
     <button class="btn btn-circle btn-ghost" onclick="history.back()">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x opacity-50">
         <path d="M18 6 6 18" />
@@ -17,5 +17,7 @@
   <input type="submit" form="item-form" value="Save" class="btn btn-primary" />
   <button type="button" class="btn bg-white text-gray-500 border-gray-400" onclick="history.back()">Cancel</button>
 </footer>
+<%- include("../components/confirmDeleteModal", {itemId: item.id}) %>
+
 <script src="/js/editItemScript.js"></script>
 <script src="/js/deleteItemScript.js"></script>
