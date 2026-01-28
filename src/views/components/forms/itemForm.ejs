@@ -1,42 +1,97 @@
 <form action="<%= formSubmitRoute %>" method="POST" id="item-form">
-  <ul class="flex flex-col gap-4 w-150">
+  <ul class="flex w-150 flex-col gap-4">
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="nameInput">Name*</label>
-      <input class="input w-full" type="text" id="nameInput" name="name" required value="<%= typeof item !== 'undefined' ? item.name : '' %>" />
+      <input
+        class="input w-full"
+        type="text"
+        id="nameInput"
+        name="name"
+        required
+        value="<%= typeof item !== 'undefined' ? item.name : '' %>"
+      />
     </li>
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="skuInput">SKU*</label>
-      <input class="input w-full" type="text" id="skuInput" name="sku" required value="<%= typeof item !== 'undefined' ? item.sku : '' %>" />
+      <input
+        class="input w-full"
+        type="text"
+        id="skuInput"
+        name="sku"
+        required
+        value="<%= typeof item !== 'undefined' ? item.sku : '' %>"
+      />
     </li>
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="roasteryInput">Roastery*</label>
-      <input class="input w-full" type="text" id="roasteryInput" name="roastery" required value="<%= typeof item !== 'undefined' ? item.roastery : '' %>" />
+      <input
+        class="input w-full"
+        type="text"
+        id="roasteryInput"
+        name="roastery"
+        required
+        value="<%= typeof item !== 'undefined' ? item.roastery : '' %>"
+      />
     </li>
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="descriptionInput" class="flex-col">
         <span>Description</span>
-        <small class="opacity-50 italic">(Optional)</small>
+        <small class="italic opacity-50">(Optional)</small>
       </label>
-      <textarea class="textarea w-full" id="descriptionInput" name="description" rows="6"><%= typeof item !== "undefined" ? item.description : "" %></textarea>
+      <textarea
+        class="textarea w-full"
+        id="descriptionInput"
+        name="description"
+        rows="6"
+      >
+<%= typeof item !== "undefined" ? item.description : "" %></textarea
+      >
     </li>
-    <li class="grid grid-cols-[9rem_1fr] gap-8 items-center">
+    <li class="grid grid-cols-[9rem_1fr] items-center gap-8">
       <label for="weightInput">Weight*</label>
-      <div class="flex gap-2 items-center">
-        <input class="input w-full" type="number" id="weightInput" name="size_grams" required min="0.1" step="any" value="<%= typeof item !== 'undefined' ? item.size_grams : '' %>" />
+      <div class="flex items-center gap-2">
+        <input
+          class="input w-full"
+          type="number"
+          id="weightInput"
+          name="size_grams"
+          required
+          min="0.1"
+          step="any"
+          value="<%= typeof item !== 'undefined' ? item.size_grams : '' %>"
+        />
         <p>grams</p>
       </div>
     </li>
-    <li class="grid grid-cols-[9rem_1fr] gap-8 items-center">
+    <li class="grid grid-cols-[9rem_1fr] items-center gap-8">
       <label for="sellingPriceInput">Selling price*</label>
-      <div class="flex gap-2 items-center">
+      <div class="flex items-center gap-2">
         <p>AUD$</p>
-        <input class="input w-full" type="number" id="sellingPriceInput" name="price_dollars" required step="any" min="0" value="<%= typeof item !== 'undefined' ? item.price_cents / 100 : '' %>" />
+        <input
+          class="input w-full"
+          type="number"
+          id="sellingPriceInput"
+          name="price_dollars"
+          required
+          step="any"
+          min="0"
+          value="<%= typeof item !== 'undefined' ? item.price_cents / 100 : '' %>"
+        />
       </div>
     </li>
-    <li class="grid grid-cols-[9rem_1fr] gap-8 items-center">
+    <li class="grid grid-cols-[9rem_1fr] items-center gap-8">
       <label for="stockCountInput">Stock on hand*</label>
-      <div class="flex gap-2 items-center">
-        <input class="input w-full" type="number" id="stockCountInput" name="stock_quantity" required min="0" step="1" value="<%= typeof item !== 'undefined' ? item.stock_quantity : '' %>" />
+      <div class="flex items-center gap-2">
+        <input
+          class="input w-full"
+          type="number"
+          id="stockCountInput"
+          name="stock_quantity"
+          required
+          min="0"
+          step="1"
+          value="<%= typeof item !== 'undefined' ? item.stock_quantity : '' %>"
+        />
         <p>units</p>
       </div>
     </li>

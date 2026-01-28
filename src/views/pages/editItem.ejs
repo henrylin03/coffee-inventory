@@ -1,10 +1,18 @@
-<%- include("../components/pageHeaders/pageHeaderWithDelete.ejs", { type: "item" }) %>
-<section class="px-8 flex-1">
-  <%- include("../components/forms/itemForm", { item, route: `/items/${item.id}/update`}) %>
+<%- include("../components/pageHeaders/pageHeaderWithDelete.ejs", { type: "item"
+}) %>
+<section class="flex-1 px-8">
+  <%- include("../components/forms/itemForm", { item, route:
+  `/items/${item.id}/update`}) %>
 </section>
-<footer class="flex gap-2 p-6 border border-base-200">
+<footer class="border-base-200 flex gap-2 border p-6">
   <input type="submit" form="item-form" value="Save" class="btn btn-primary" />
-  <button type="button" class="btn bg-white text-gray-500 border-gray-400" onclick="history.back()">Cancel</button>
+  <button
+    type="button"
+    class="btn border-gray-400 bg-white text-gray-500"
+    onclick="history.back()"
+  >
+    Cancel
+  </button>
 </footer>
 <%- include("../components/deleteModal", { itemId: item.id }) %>
 

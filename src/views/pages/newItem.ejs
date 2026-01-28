@@ -1,11 +1,15 @@
-<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "New item "}) %>
-<section class="px-8 flex-1">
-  <%- include("../components/errorsList") %>
-  <%- include("../components/forms/itemForm", { formSubmitRoute: routes.formSubmitRoute }) %>
+<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "New
+item "}) %>
+<section class="flex-1 px-8">
+  <%- include("../components/errorsList") %> <%-
+  include("../components/forms/itemForm", { formSubmitRoute:
+  routes.formSubmitRoute }) %>
 </section>
-<footer class="flex gap-2 p-6 border border-base-200">
+<footer class="border-base-200 flex gap-2 border p-6">
   <input type="submit" form="item-form" value="Save" class="btn btn-primary" />
   <a href="<%= routes.redirectRoute %>">
-    <button type="button" class="btn bg-white text-gray-500 border-gray-400">Cancel</button>
+    <button type="button" class="btn border-gray-400 bg-white text-gray-500">
+      Cancel
+    </button>
   </a>
 </footer>

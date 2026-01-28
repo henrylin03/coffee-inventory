@@ -1,6 +1,6 @@
 <div class="overflow-x-auto">
   <table class="table">
-    <thead class="uppercase bg-neutral-200 text-neutral-600">
+    <thead class="bg-neutral-200 text-neutral-600 uppercase">
       <tr>
         <th>Name</th>
         <th>SKU</th>
@@ -9,10 +9,15 @@
         <th>Selling price ($AUD)</th>
         <th>Stock on hand</th>
       </tr>
-      </thead>
-      <tbody>
-        <% items.forEach(item => { %>
-      <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item" role="button" class="hover:bg-neutral-100 hover:cursor-pointer">
+    </thead>
+    <tbody>
+      <% items.forEach(item => { %>
+      <tr
+        onclick="window.location = '<%= `/items/${item.id}` %>'"
+        aria-label="See more details of item"
+        role="button"
+        class="hover:cursor-pointer hover:bg-neutral-100"
+      >
         <td><%= item.name %></td>
         <td><%= item.sku %></td>
         <td><%= Math.round(item.size_grams) %>g</td>
@@ -21,6 +26,6 @@
         <td><%= item.stock_quantity %></td>
       </tr>
       <%}); %>
-      </tbody>
-      </table>
+    </tbody>
+  </table>
 </div>
