@@ -4,18 +4,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
+  <title><%= typeof pageTitle === "undefined" ? "Manage your coffee smarter" : pageTitle %></title>
   <link rel="stylesheet" href="/css/output.css" />
-  <%- style %>
+  <%- defineContent(styles) %>
 </head>
 
 <body>
-  <%- header %>
+  <header>
+    <%- header %>
+  </header>
 
   <%- body %>
   <%- defineContent("footer") %>
 
-  <%- script %>
+  <%- defineContent(scripts) %>
+  <script src="/js/navScript.js"></script>
 </body>
 
 </html>
