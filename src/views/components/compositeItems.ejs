@@ -1,9 +1,9 @@
-<section>
-  <header class="w-full">
+<section class="flex-2 flex flex-col gap-4">
+  <header class="w-full grid justify-items-end px-8">
     <button type="button" class="btn btn-primary">Add item to category</button>
   </header>
   <div class="overflow-x-auto">
-    <table class="table">
+    <table class="table table-fixed">
       <thead class="uppercase bg-neutral-200 text-neutral-600">
         <tr>
           <th>Item name</th>
@@ -24,7 +24,7 @@
           <td><%= item.roastery %></td>
           <td><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
           <td><%= item.stock_quantity %></td>
-          <td class="grid">
+          <td class="grid pr-8">
             <button class="btn btn-outline btn-error justify-self-end">Remove from category</button>
           </td>
         </tr>

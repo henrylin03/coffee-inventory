@@ -2,8 +2,8 @@
 <section class="px-8 flex-1">
   <%- include("../components/errorsList") %>
   <%- include("../components/forms/categoryForm", { category, route: `/categories/${category.id}/update`}) %>
-  <%- include("../components/compositeItems", { compositeItems }) %>
 </section>
+<%- include("../components/compositeItems", { compositeItems }) %>
 <footer class="flex gap-2 p-6 border border-base-200">
   <input type="submit" form="category-form" value="Save" class="btn btn-primary" />
   <button type="button" class="btn bg-white text-gray-500 border-gray-400" onclick="history.back()">Cancel</button>
