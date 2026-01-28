@@ -1,6 +1,6 @@
 <section class="flex-2 flex flex-col gap-4">
   <header class="w-full grid justify-items-end px-8">
-    <%- include("./buttonTriggeredDropdown", { text: "Add item", options: [{ label: "Add new item", href: "#" }, { label: "Add existing item", href: "#" }]}) %>
+    <%- include("./buttonTriggeredDropdown", { text: "Add item", options: [{ label: "Add new item", href: `/items/new?referredCategoryId=${categoryId}` }, { label: "Add existing item", href: "#" }]}) %>
   </header>
   <div class="overflow-x-auto">
     <table class="table table-auto">
