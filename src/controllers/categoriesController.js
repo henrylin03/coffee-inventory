@@ -35,7 +35,7 @@ exports.getAllCategories = async (_req, res) => {
 };
 
 exports.createCategoryGet = async (_req, res) => {
-	res.render("pages/newCategory");
+	res.render("pages/newCategory", { title: "Add new category" });
 };
 
 exports.createCategoryPost = [
