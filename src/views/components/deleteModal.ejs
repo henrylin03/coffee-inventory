@@ -13,7 +13,7 @@
       you sure you would like to delete it?
     </p>
     <div class="modal-action border border-base-200 p-6">
-      <form method="dialog" action="/items/<%= itemId %>/delete" method="POST" class="flex gap-2 w-full">
+      <form action="/items/<%= itemId %>/delete" method="POST" class="flex gap-2 w-full">
         <button type="button" class="cancel-btn btn bg-white text-gray-500 border-gray-400">No, keep it</button>
         <button type="submit" class="btn btn-error text-white">Yes, delete</button>
       </form>
