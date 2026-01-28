@@ -3,7 +3,7 @@
     <button type="button" class="btn btn-primary">Add item to category</button>
   </header>
   <div class="overflow-x-auto">
-    <table class="table table-fixed">
+    <table class="table table-auto">
       <thead class="uppercase bg-neutral-200 text-neutral-600">
         <tr>
           <th>Item name</th>
@@ -24,8 +24,14 @@
           <td><%= item.roastery %></td>
           <td><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
           <td><%= item.stock_quantity %></td>
-          <td class="grid pr-8">
-            <button class="btn btn-outline btn-error justify-self-end">Remove from category</button>
+          <td class="grid pr-10">
+            <button class="btn btn-circle btn-ghost justify-center" aria-label="Remove item from this category">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash stroke-error">
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+                <path d="M3 6h18" />
+                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+              </svg>
+            </button>
           </td>
         </tr>
         <%}); %>
