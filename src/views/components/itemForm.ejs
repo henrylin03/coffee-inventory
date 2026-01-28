@@ -1,5 +1,5 @@
 <form action="<%= route %>" method="post" id="item-form">
-  <ul class="flex flex-col gap-4 w-200">
+  <ul class="flex flex-col gap-4 w-150">
     <li class="grid grid-cols-[9rem_1fr] gap-8">
       <label for="nameInput">Name*</label>
       <input class="input w-full" type="text" id="nameInput" name="name" required value="<%= typeof item !== 'undefined' ? item.name : '' %>" />
