@@ -7,7 +7,7 @@
 	name: "corporate";
 	default: true;
 	--color-primary: #0a9396;
-	--color-primary-darker: #002a39;
+	--color-primary-content: #002a39;
 }
 
 * {
