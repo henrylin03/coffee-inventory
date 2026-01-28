@@ -4,13 +4,13 @@ function styleActiveLink() {
 	const ACTIVE_LINK_CLASS = "menu-active";
 	const pathOfCurrentPage = window.location.pathname.split("/")[1];
 
-	[...navlinks].forEach((elem) => {
-		const linkPath = elem.getAttribute("href").split("/")[1];
-		console.log(linkPath);
-
-		if (linkPath === pathOfCurrentPage) elem.classList.add(ACTIVE_LINK_CLASS);
-		else elem.classList.remove(ACTIVE_LINK_CLASS);
-	});
+	for (const linkElement of navlinks) {
+		const parentElement = linkElement.parentElement;
+		const navPath = linkElement.getAttribute("href").split("/")[1];
+		if (navPath === pathOfCurrentPage)
+			parentElement.classList.add(ACTIVE_LINK_CLASS);
+		else parentElement.classList.remove(ACTIVE_LINK_CLASS);
+	}
 }
 
 /* main */
