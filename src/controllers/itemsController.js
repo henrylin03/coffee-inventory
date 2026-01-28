@@ -28,7 +28,7 @@ exports.getAllItems = async (_req, res) => {
 };
 
 exports.createItemGet = async (_req, res) => {
-	res.render("pages/newItem");
+	res.render("pages/newItem", { title: "Create new item" });
 };
 
 exports.createItemPost = [
