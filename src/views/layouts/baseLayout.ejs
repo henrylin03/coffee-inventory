@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= typeof pageTitle === "undefined" ? "Manage your coffee smarter" : pageTitle %></title>
   <link rel="stylesheet" href="/css/output.css" />
-  <%- defineContent(styles) %>
+  <%- defineContent(style) %>
 </head>
 
 <body>
@@ -15,9 +15,11 @@
   </header>
 
   <%- body %>
-  <%- defineContent("footer") %>
+  <footer>
+    <%- defineContent("footer") %>
+  </footer>
 
-  <%- defineContent(scripts) %>
+  <%- defineContent(script) %>
   <script src="/js/navScript.js"></script>
 </body>
 
