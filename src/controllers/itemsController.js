@@ -87,6 +87,5 @@ exports.editItemPost = [
 exports.deleteItemPost = async (req, res) => {
 	const { id: itemId } = req.params;
 	await db.deleteItem(itemId);
-	console.log("deleting item", itemId);
 	res.redirect("/items");
 };
