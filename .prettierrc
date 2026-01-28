@@ -1,11 +1,12 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "overrides": [
-    {
-      "files": "*.ejs",
-      "options": {
-        "parser": "html"
-      }
-    }
-  ]
+    "tabWidth": 4,
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "overrides": [
+        {
+            "files": "*.ejs",
+            "options": {
+                "parser": "html"
+            }
+        }
+    ]
 }
