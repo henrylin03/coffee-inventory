@@ -1,86 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <%- include("../partials/helmet.ejs", { pageTitle: "Edit Item" }) %>
-  <script src="/js/editItemScript.js" defer></script>
-  <script src="/js/deleteItemScript.js" defer></script>
-</head>
-
-<body>
-  <%- include("../components/navMenu.ejs") %>
-  <div>
-    <%- include("../../components/header.ejs") %>
-
-    <main>
-      <header>
-        <h1 class="page-title" id="page-title">Edit item</h1>
-        <div class="buttons">
-          <button type="button" class="delete-btn">Delete item</button>
-          <a href="/items" aria-label="Close item details and view all items">
-            <button type="button" class="close-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
-            </button>
-          </a>
-        </div>
-      </header>
-      <section aria-labelledby="page-title" class="content-section">
-        <%- include("../partials/errorsList.ejs") %>
-        <form action="/items/<%= item.id %>/update" method="POST" id="edit-item-form">
-          <ul>
-            <li>
-              <label for="nameInput">Name*</label>
-              <input type="text" id="nameInput" name="name" value="<%= item.name %>" required />
-            </li>
-            <li>
-              <label for="skuInput">SKU*</label>
-              <input type="text" id="skuInput" name="sku" value="<%= item.sku %>" required />
-            </li>
-            <li>
-              <label for="roasteryInput">Roastery*</label>
-              <input type="text" id="roasteryInput" name="roastery" value="<%= item.roastery %>" required />
-            </li>
-            <li>
-              <label for="descriptionInput" class="optional-input">Description<small>(Optional)</small></label><textarea id="descriptionInput" name="description" rows="6">
-      <%= item.description %></textarea>
-            </li>
-            <li>
-              <label for="weightInput">Weight*</label>
-              <div class="right">
-                <input type="number" id="weightInput" name="size_grams" required min="0.1" step="any" value="<%= item.size_grams %>" />
-                <p class="decorative-text">grams</p>
-              </div>
-            </li>
-            <li>
-              <label for="sellingPriceInput">Selling price*</label>
-              <div class="right">
-                <p class="decorative-text">AUD$</p>
-                <input type="number" id="sellingPriceInput" name="price_dollars" required step="any" min="0" value="<%= item.price_cents / 100 %>" />
-              </div>
-            </li>
-            <li>
-              <label for="stockCountInput">Stock on hand*</label>
-              <div class="right">
-                <input type="number" id="stockCountInput" name="stock_quantity" required min="0" step="1" value="<%= item.stock_quantity %>" />
-                <p class="decorative-text">units</p>
-              </div>
-            </li>
-          </ul>
-        </form>
-      </section>
-      <footer class="page-footer">
-        <div class="buttons">
-          <input type="submit" form="edit-item-form" class="primary-btn" value="Save" />
-          <a href="/items" aria-label="Close item details and view all items"><button type="button" class="cancel-btn">Cancel</button></a>
-        </div>
-      </footer>
-    </main>
+<header class="flex items-center justify-between p-8">
+  <h1 class="text-2xl">Edit item</h1>
+  <div class="flex items-center gap-4">
+    <button class="btn btn-error btn-outline delete-btn">Delete item</button>
+    <button class="btn btn-circle btn-ghost" onclick="history.back()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x opacity-50">
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>
+    </button>
   </div>
+</header>
+<section class="px-8 flex-1">
+  <%- include("../components/itemForm", { item, route: `/items/${item.id}/update`}) %>
+</section>
+<footer class="flex gap-2 p-6 border border-base-200">
+  <input type="submit" form="item-form" value="Save" class="btn btn-primary" />
+  <button type="button" class="btn bg-white text-gray-500 border-gray-400" onclick="history.back()">Cancel</button>
+</footer>
+<%- include("../components/deleteModal", { itemId: item.id }) %>
 
-  <%- include("../components/confirmDeleteModal.ejs", {itemId: item.id}) %>
-</body>
-
-</html>
+<script src="/js/editItemScript.js"></script>
+<script src="/js/deleteItemScript.js"></script>
