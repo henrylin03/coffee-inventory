@@ -1,4 +1,4 @@
-const navlinks = document.querySelectorAll("nav .navlink");
+const navlinks = document.querySelectorAll(".navlink");
 
 function styleActiveLink() {
 	const ACTIVE_LINK_CLASS = "menu-active";
@@ -6,6 +6,7 @@ function styleActiveLink() {
 
 	[...navlinks].forEach((elem) => {
 		const linkPath = elem.getAttribute("href").split("/")[1];
+		console.log(linkPath);
 
 		if (linkPath === pathOfCurrentPage) elem.classList.add(ACTIVE_LINK_CLASS);
 		else elem.classList.remove(ACTIVE_LINK_CLASS);

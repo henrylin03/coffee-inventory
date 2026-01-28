@@ -17,9 +17,8 @@
         <%- body %>
       </main>
     </div>
-    <%- include("../components/navDrawer/index") %>
+    <%- include("../components/navDrawer/index", { links: [{label: "items", route: "/items"}, {label: "categories", route: "/categories"}] }) %>
   </div>
-  <script src="/js/navScript.js"></script>
 </body>
 
 </html>
