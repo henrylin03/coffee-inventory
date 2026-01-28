@@ -12,11 +12,6 @@
 		"type": "git",
 		"url": "git+https://github.com/henrylin03/template--expressjs-ejs-postgres.git"
 	},
-	"keywords": [
-		"ExpressJS",
-		"template",
-		"EJS"
-	],
 	"author": "Henry Lin",
 	"license": "MIT",
 	"type": "commonjs",
