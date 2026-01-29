@@ -8,8 +8,11 @@ categoriesRouter.get("/", categoriesController.getAllCategories);
 categoriesRouter.get("/new", categoriesController.createCategoryGet);
 categoriesRouter.post("/new", categoriesController.createCategoryPost);
 
-categoriesRouter.get("/:id", categoriesController.editCategoryGet);
+categoriesRouter.get(
+	"/includeItems",
+	categoriesController.editItemsInCategoryGet,
+);
 
-categoriesRouter.get("/addItems", categoriesController.addItemsToCategoryGet);
+categoriesRouter.get("/:id", categoriesController.editCategoryGet);
 
 module.exports = categoriesRouter;

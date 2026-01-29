@@ -69,7 +69,6 @@ exports.editCategoryGet = async (req, res) => {
 	});
 };
 
-exports.addItemsToCategoryGet = async (req, res) => {
-	const { categoryId } = req.query;
-	res.render("pages/addItemToCategory", { categoryId });
+exports.editItemsInCategoryGet = async (_req, res) => {
+	res.render("pages/editItemsInCategory");
 };
