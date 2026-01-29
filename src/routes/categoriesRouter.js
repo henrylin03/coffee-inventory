@@ -10,4 +10,6 @@ categoriesRouter.post("/new", categoriesController.createCategoryPost);
 
 categoriesRouter.get("/:id", categoriesController.editCategoryGet);
 
+categoriesRouter.get("/addItems", categoriesController.addItemsToCategoryGet);
+
 module.exports = categoriesRouter;

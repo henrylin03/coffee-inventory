@@ -68,3 +68,8 @@ exports.editCategoryGet = async (req, res) => {
 		compositeItems: allItemsInCategory,
 	});
 };
+
+exports.addItemsToCategoryGet = async (req, res) => {
+	const { categoryId } = req.query;
+	res.render("pages/addItemToCategory", { categoryId });
+};
