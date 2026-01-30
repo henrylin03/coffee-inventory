@@ -70,5 +70,7 @@ exports.editCategoryGet = async (req, res) => {
 };
 
 exports.editItemsInCategoryGet = async (_req, res) => {
-	res.render("pages/editItemsInCategory");
+	res.render("pages/editItemsInCategory", {
+		title: "Modify items",
+	});
 };
