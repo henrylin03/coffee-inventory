@@ -9,15 +9,34 @@ const handleClickOnRow = (e) => {
 	location.href = `/items/${itemId}`;
 };
 
-const handleChangeOnSelectAllCheckbox = () => {
-	for (const checkbox of rowCheckboxes) checkbox.checked = !checkbox.checked;
+const handleChangeOnSelectAllCheckbox = (e) => {
+	const selectAll = e.currentTarget;
+
+	for (const checkbox of rowCheckboxes) {
+		if (!selectAll.checked) checkbox.checked = false;
+		else checkbox.checked = true;
+	}
 };
 
 const handleClickOnRowCheckbox = (e) => {
 	e.stopPropagation();
-};
 
-// TODO: if only some of checkboxes in row is selected, then select all checkbox is 'indeterminate'
+	const allCheckboxesChecked = [...rowCheckboxes].every(
+		(checkbox) => checkbox.checked,
+	);
+	const noCheckboxesChecked = [...rowCheckboxes].every(
+		(checkbox) => checkbox.checked === false,
+	);
+
+	if (!allCheckboxesChecked && !noCheckboxesChecked) {
+		selectAllCheckbox.indeterminate = true;
+		return;
+	}
+
+	if (allCheckboxesChecked) selectAllCheckbox.checked = true;
+	else selectAllCheckbox.checked = false;
+	selectAllCheckbox.indeterminate = false;
+};
 
 /* attach event listeners */
 selectAllCheckbox.addEventListener("change", handleChangeOnSelectAllCheckbox);
