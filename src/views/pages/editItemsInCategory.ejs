@@ -18,7 +18,7 @@
       <tr aria-label="See more details of item" role="button" class="hover:bg-neutral-100 hover:cursor-pointer" data-item-id="<%= item.id %>">
         <th class="w-16">
           <label>
-            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" />
+            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" <%= Number(item["category_id"]) === Number(categoryId) ? "checked" : "" %>>
           </label>
         </th>
         <td><%= item.name %></td>
