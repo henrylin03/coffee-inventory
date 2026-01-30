@@ -2,7 +2,13 @@ const selectAllCheckbox = document.querySelector("thead .checkbox");
 const rowCheckboxes = document.querySelectorAll("tbody .checkbox");
 const rows = document.querySelectorAll("tbody tr");
 
-// TODO: if there is an existing item already part of category, its checkbox is checked
+const allCheckboxesChecked = [...rowCheckboxes].every(
+	(checkbox) => checkbox.checked,
+);
+const noCheckboxesChecked = [...rowCheckboxes].every(
+	(checkbox) => checkbox.checked === false,
+);
+const someCheckboxesChecked = !allCheckboxesChecked && !noCheckboxesChecked;
 
 const handleClickOnRow = (e) => {
 	const itemId = e.currentTarget.dataset.itemId;
@@ -21,14 +27,7 @@ const handleChangeOnSelectAllCheckbox = (e) => {
 const handleClickOnRowCheckbox = (e) => {
 	e.stopPropagation();
 
-	const allCheckboxesChecked = [...rowCheckboxes].every(
-		(checkbox) => checkbox.checked,
-	);
-	const noCheckboxesChecked = [...rowCheckboxes].every(
-		(checkbox) => checkbox.checked === false,
-	);
-
-	if (!allCheckboxesChecked && !noCheckboxesChecked) {
+	if (someCheckboxesChecked) {
 		selectAllCheckbox.indeterminate = true;
 		return;
 	}
@@ -38,7 +37,9 @@ const handleClickOnRowCheckbox = (e) => {
 	selectAllCheckbox.indeterminate = false;
 };
 
-/* attach event listeners */
+/* MAIN */
+if (someCheckboxesChecked) selectAllCheckbox.indeterminate = true;
+
 selectAllCheckbox.addEventListener("change", handleChangeOnSelectAllCheckbox);
 
 for (const checkbox of rowCheckboxes)
