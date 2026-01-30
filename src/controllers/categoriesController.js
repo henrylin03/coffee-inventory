@@ -68,3 +68,9 @@ exports.editCategoryGet = async (req, res) => {
 		compositeItems: allItemsInCategory,
 	});
 };
+
+exports.editItemsInCategoryGet = async (_req, res) => {
+	res.render("pages/editItemsInCategory", {
+		title: "Modify items",
+	});
+};
