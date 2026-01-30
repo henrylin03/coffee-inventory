@@ -5,7 +5,7 @@
     <thead class="uppercase bg-neutral-200 text-neutral-600">
       <tr>
         <th class="w-16"><label>
-            <input type="checkbox" class="checkbox checkbox-primary">
+            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm">
           </label></th>
         <th>Name</th>
         <th>SKU</th>
@@ -18,7 +18,7 @@
       <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item" role="button" class="hover:bg-neutral-100 hover:cursor-pointer">
         <th class="w-16">
           <label>
-            <input type="checkbox" class="checkbox checkbox-primary" />
+            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" />
           </label>
         </th>
         <td><%= item.name %></td>
