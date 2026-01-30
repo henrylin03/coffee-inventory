@@ -5,10 +5,9 @@ const rows = document.querySelectorAll("tbody tr");
 const allCheckboxesChecked = [...rowCheckboxes].every(
 	(checkbox) => checkbox.checked,
 );
-const noCheckboxesChecked = [...rowCheckboxes].every(
-	(checkbox) => checkbox.checked === false,
+const someCheckboxesChecked = [...rowCheckboxes].some(
+	(checkbox) => checkbox.checked,
 );
-const someCheckboxesChecked = !allCheckboxesChecked && !noCheckboxesChecked;
 
 const handleClickOnRow = (e) => {
 	const itemId = e.currentTarget.dataset.itemId;
