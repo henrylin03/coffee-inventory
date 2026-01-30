@@ -70,7 +70,10 @@ exports.editCategoryGet = async (req, res) => {
 };
 
 exports.editItemsInCategoryGet = async (_req, res) => {
+	const items = await db.getAllItems();
+
 	res.render("pages/editItemsInCategory", {
 		title: "Modify items",
+		items,
 	});
 };
