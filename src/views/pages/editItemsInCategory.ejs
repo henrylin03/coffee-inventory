@@ -1,9 +1,12 @@
 <%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "All items"}) %>
 <p class="px-8 -mt-4 mb-4">Select all item(s) that you want to add to this category</p>
 <section class="overflow-x-auto flex-1">
-  <table class="table">
+  <table class="table table-fixed">
     <thead class="uppercase bg-neutral-200 text-neutral-600">
       <tr>
+        <th class="w-16"><label>
+            <input type="checkbox" class="checkbox checkbox-primary">
+          </label></th>
         <th>Name</th>
         <th>SKU</th>
         <th>Weight</th>
@@ -13,6 +16,11 @@
     <tbody>
       <% items.forEach(item => { %>
       <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item" role="button" class="hover:bg-neutral-100 hover:cursor-pointer">
+        <th class="w-16">
+          <label>
+            <input type="checkbox" class="checkbox checkbox-primary" />
+          </label>
+        </th>
         <td><%= item.name %></td>
         <td><%= item.sku %></td>
         <td><%= Math.round(item.size_grams) %>g</td>
