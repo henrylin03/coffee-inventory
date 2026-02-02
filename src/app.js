@@ -6,6 +6,8 @@ const categoriesRouter = require("./routes/categoriesRouter");
 
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "..", "public")));
 
 /* set up EJS templating */
@@ -15,9 +17,6 @@ app.set("views", path.join(__dirname, "views"));
 /* set up EJS layouts */
 app.use(expressLayouts);
 app.set("layout", "layouts/baseLayout");
-
-/* middleware to parse data in request body */
-app.use(express.urlencoded({ extended: true }));
 
 /* routes */
 app.use("/items", itemsRouter);

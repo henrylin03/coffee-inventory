@@ -16,26 +16,85 @@
         </tr>
       </thead>
       <tbody>
-        <% compositeItems.forEach(item => { %>
-        <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item" class="hover:bg-neutral-100 hover:cursor-pointer">
-          <td><%= item.name %></td>
-          <td><%= item.sku %></td>
-          <td><%= Math.round(item.size_grams) %>g</td>
-          <td><%= item.roastery %></td>
-          <td><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
-          <td><%= item.stock_quantity %></td>
-          <td class="grid pr-10">
-            <button class="btn btn-circle btn-ghost justify-center" aria-label="Remove item from this category">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 lucide lucide-trash-icon lucide-trash stroke-error">
-                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
-                <path d="M3 6h18" />
-                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-              </svg>
-            </button>
-          </td>
-        </tr>
-        <%}); %>
       </tbody>
     </table>
   </div>
 </section>
+<script>
+  const tableBody = document.querySelector("table tbody");
+  const categoryId = <%= categoryId %>;
+  let items = <%- JSON.stringify(compositeItems) %>;
+  let itemIdsForOrphaning = [];
+
+  const renderItemRows = (items) => {
+    items.forEach(item => {
+      const columnsData = [
+        item.name, item.sku, `${Math.round(item.size_grams)}g`, item.roastery, `${item.price_dollars} /unit`, item.stock_quantity
+      ]
+
+      const row = document.createElement("tr");
+      row.dataset.itemId = item.id;
+      row.classList.add("cursor-pointer", "hover:bg-neutral-100");
+      row.addEventListener("click", () => window.location = `/items/${row.dataset.itemId}`)
+
+      columnsData.forEach(col => {
+        const cell = document.createElement("td");
+        cell.textContent = col;
+        row.appendChild(cell);
+      })
+      const deleteButtonCell = document.createElement("td");
+      deleteButtonCell.classList.add("grid", "pr-10");
+      const deleteButton = document.createElement("button");
+      deleteButton.dataset.itemId = item.id;
+      deleteButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash stroke-error w-4 h-4">
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+        <path d="M3 6h18" />
+        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      </svg>`;
+      deleteButton.classList.add("btn", "btn-circle", "btn-ghost", "justify-center");
+      deleteButton.addEventListener("click", handleDeleteItem);
+      deleteButtonCell.appendChild(deleteButton);
+      row.appendChild(deleteButtonCell);
+
+      tableBody.appendChild(row);
+    })
+  }
+
+  const handleDeleteItem = (e) => {
+    e.stopPropagation();
+    const itemIdForDeletion = e.currentTarget.dataset.itemId;
+    itemIdsForOrphaning.push(Number(itemIdForDeletion))
+    items = items.filter(item => Number(item.id) !== Number(itemIdForDeletion));
+    tableBody.replaceChildren(); // clear table body
+    renderItemRows(items);
+  }
+
+  renderItemRows(items);
+  const categoryForm = document.querySelector("#category-form");
+
+  categoryForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const formData = new FormData(categoryForm);
+    const categoryData = Object.fromEntries(formData);
+
+    const payload = {
+      ...categoryData,
+      itemIdsForOrphaning
+    }
+
+    try {
+      const response = await fetch(categoryForm.action, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) window.location.href = `/categories`
+      else throw new Error("Failed to update category");
+    } catch (error) {
+      console.error("Failed to save category details:", error)
+    }
+  })
+</script>

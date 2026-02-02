@@ -108,13 +108,20 @@ const countItemsInCategory = async (categoryId) => {
 	return rows[0].count;
 };
 
-const updateCategoryById = async (categoryId, formObject) => {
+const updateCategoryDetails = async (categoryId, formObject) => {
 	const { name: categoryName, description } = formObject;
 
 	await pool.query(
 		"UPDATE categories SET name = $2, description = $3 WHERE id = $1",
 		[categoryId, categoryName, description],
 	);
+};
+
+const orphanItems = async (itemIdsArray) => {
+	if (!Array.isArray(itemIdsArray) || itemIdsArray.length === 0) return;
+	await pool.query("UPDATE items SET category_id = NULL WHERE id = ANY($1);", [
+		itemIdsArray,
+	]);
 };
 
 const deleteCategoryAndOrphanItems = async (categoryId) => {
@@ -136,6 +143,7 @@ module.exports = {
 	getCategoryById,
 	getItemById,
 	getItemsInCategory,
-	updateCategoryById,
+	orphanItems,
+	updateCategoryDetails,
 	updateItemById,
 };
