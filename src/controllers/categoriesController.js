@@ -86,9 +86,11 @@ exports.editCategoryPost = [
 			});
 
 		const formObject = matchedData(req);
+		console.log("req.body:", req.body);
 
-		await db.updateCategoryById(categoryId, formObject);
-		res.redirect("/categories");
+		// await db.updateCategoryById(categoryId, formObject);
+		// res.redirect("/categories");
+		res.end();
 	},
 ];
 

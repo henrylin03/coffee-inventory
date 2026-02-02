@@ -22,6 +22,7 @@
 </section>
 <script>
   const tableBody = document.querySelector("table tbody");
+  const categoryId = <%= categoryId %>;
   let items = <%- JSON.stringify(compositeItems) %>;
   let itemIdsForOrphaning = [];
 
@@ -77,6 +78,7 @@
     const categoryData = Object.fromEntries(formData);
 
     const payload = {
+      id: categoryId,
       ...categoryData,
       itemIdsForOrphaning
     }
