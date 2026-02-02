@@ -102,6 +102,17 @@ exports.editCategoryDetailsPost = [
 	},
 ];
 
+exports.editItemsInCategoryGet = async (req, res) => {
+	const { categoryId } = req.query;
+	const items = await db.getAllItems();
+
+	res.render("pages/editItemsInCategory", {
+		title: "Modify items",
+		items,
+		categoryId,
+	});
+};
+
 exports.deleteCategoryPost = async (req, res) => {
 	const { id: categoryId } = req.params;
 	await db.deleteCategoryAndOrphanItems(categoryId);

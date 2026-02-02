@@ -4,11 +4,10 @@ const categoriesController = require("../controllers/categoriesController");
 const categoriesRouter = Router();
 
 categoriesRouter.get("/", categoriesController.getAllCategories);
+categoriesRouter.get("/:id", categoriesController.categoryGet);
 
 categoriesRouter.get("/new", categoriesController.createCategoryGet);
 categoriesRouter.post("/new", categoriesController.createCategoryPost);
-
-categoriesRouter.get("/:id", categoriesController.categoryGet);
 
 categoriesRouter.get(
 	"/:id/edit-details",
@@ -17,6 +16,10 @@ categoriesRouter.get(
 categoriesRouter.post(
 	"/:id/edit-details/save",
 	categoriesController.editCategoryDetailsPost,
+);
+categoriesRouter.get(
+	"/:id/edit-items",
+	categoriesController.editItemsInCategoryGet,
 );
 
 categoriesRouter.post("/:id/delete", categoriesController.deleteCategoryPost);
