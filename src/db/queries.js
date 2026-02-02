@@ -117,6 +117,13 @@ const updateCategoryDetails = async (categoryId, formObject) => {
 	);
 };
 
+const orphanItems = async (itemIdsArray) => {
+	if (!Array.isArray(itemIdsArray) || itemIdsArray.length === 0) return;
+	await pool.query("UPDATE items SET category_id = NULL WHERE id = ANY($1);", [
+		itemIdsArray,
+	]);
+};
+
 const deleteCategoryAndOrphanItems = async (categoryId) => {
 	await pool.query(
 		"UPDATE items SET category_id = NULL WHERE category_id = $1;",
@@ -136,6 +143,7 @@ module.exports = {
 	getCategoryById,
 	getItemById,
 	getItemsInCategory,
+	orphanItems,
 	updateCategoryDetails,
 	updateItemById,
 };
