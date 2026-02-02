@@ -17,16 +17,25 @@
       </thead>
       <tbody>
       </tbody>
-      </table>
-      </div>
-      </section>
-      <script>
-        let items = <%- JSON.stringify(compositeItems) %>;
+    </table>
+    </div>
+    </section>
+<script src="
+https://cdn.jsdelivr.net/npm/dompurify@3.3.1/dist/purify.min.js
+"></script>
+<script>
+  let items = <%- JSON.stringify(compositeItems) %>;
 
-        const renderItemRows = (items) => {
-            const tableBody = document.querySelector(".table>tbody");
+  const renderItemRows = (items) => {
+    if (typeof trustedTypes === "undefined") trustedTypes = {
+    createPolicy: (n, rules) => rules
+    }
+    const policy = trustedTypes.createPolicy("my-policy", {
+    createHTML: (input) => DOMPurify.sanitize(input),
+    })
 
-            tableBody.innerHTML = items.map(item => `<tr onclick="window.location='/items/${item.id}'" aria-label="See more details of item" class="hover:bg-neutral-100 hover:cursor-pointer">
+    const tableBody = document.querySelector(".table>tbody");
+    const innerHtmlString = items.map(item => `<tr onclick="window.location='/items/${item.id}'" aria-label="See more details of item" class="hover:bg-neutral-100 hover:cursor-pointer">
           <td>${item.name}</td>
           <td>${item.sku}</td>
           <td>${Math.round(item.size_grams)}</td>
@@ -43,7 +52,9 @@
             </button>
           </td>
         </tr>`).join("")
-        }
+    const trustedHTML = policy.createHTML(innerHtmlString);
+    tableBody.innerHTML = trustedHTML;
+  }
 
-        renderItemRows(items);
+  renderItemRows(items);
 </script>
