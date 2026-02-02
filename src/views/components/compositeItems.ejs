@@ -39,6 +39,19 @@
         cell.textContent = col;
         row.appendChild(cell);
       })
+      const deleteButtonCell = document.createElement("td");
+      deleteButtonCell.classList.add("grid", "pr-10");
+      const deleteButton = document.createElement("button");
+      deleteButton.dataset.itemId = item.id;
+      deleteButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash stroke-error w-4 h-4">
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+        <path d="M3 6h18" />
+        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      </svg>`;
+      deleteButton.classList.add("btn", "btn-circle", "btn-ghost", "justify-center");
+      deleteButtonCell.appendChild(deleteButton);
+      row.appendChild(deleteButtonCell);
+
       tableBody.appendChild(row);
     })
   }
