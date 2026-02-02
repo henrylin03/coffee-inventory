@@ -25,7 +25,7 @@
           <td><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
           <td><%= item.stock_quantity %></td>
           <td class="grid pr-10">
-            <button class="btn btn-circle btn-ghost justify-center" aria-label="Remove item from this category">
+            <button class="btn btn-circle btn-ghost justify-center" aria-label="Remove item from this category" data-item-id="<%= item.id %>">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 lucide lucide-trash-icon lucide-trash stroke-error">
                 <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
                 <path d="M3 6h18" />
@@ -39,3 +39,6 @@
     </table>
   </div>
 </section>
+<script>
+  let items = <%- JSON.stringify(compositeItems) %>
+</script>
