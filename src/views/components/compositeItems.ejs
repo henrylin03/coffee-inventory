@@ -27,7 +27,7 @@
   const renderItemRows = (items) => {
     items.forEach(item => {
       const columnsData = [
-        item.name, item.sku, `${Math.round(item.size_grams)} g`, item.roastery, `${item.price_dollars} /unit`, item.stock_quantity
+        item.name, item.sku, `${Math.round(item.size_grams)}g`, item.roastery, `${item.price_dollars} /unit`, item.stock_quantity
       ]
 
       const row = document.createElement("tr");
