@@ -69,6 +69,24 @@ exports.editCategoryGet = async (req, res) => {
 	});
 };
 
+exports.editCategoryPost = [
+	validateCategory,
+	async (req, res) => {
+		const { id: categoryId } = req.params;
+
+		const errors = validationResult(req);
+		if (!errors.isEmpty())
+			return res
+				.status(400)
+				.render("pages/editCategory", { errors: errors.array() });
+
+		const formObject = matchedData(req);
+
+		await db.updateCategoryById(categoryId, formObject);
+		res.redirect("/categories");
+	},
+];
+
 exports.editItemsInCategoryGet = async (req, res) => {
 	const { categoryId } = req.query;
 	const items = await db.getAllItems();
