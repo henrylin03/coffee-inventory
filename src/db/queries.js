@@ -108,7 +108,7 @@ const countItemsInCategory = async (categoryId) => {
 	return rows[0].count;
 };
 
-const updateCategoryById = async (categoryId, formObject) => {
+const updateCategoryDetails = async (categoryId, formObject) => {
 	const { name: categoryName, description } = formObject;
 
 	await pool.query(
@@ -136,6 +136,6 @@ module.exports = {
 	getCategoryById,
 	getItemById,
 	getItemsInCategory,
-	updateCategoryById,
+	updateCategoryDetails,
 	updateItemById,
 };

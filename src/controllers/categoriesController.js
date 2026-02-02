@@ -86,8 +86,9 @@ exports.editCategoryPost = [
 			});
 
 		const formObject = matchedData(req);
+		const { itemIdsForOrphaning } = req.body;
 
-		await db.updateCategoryById(categoryId, formObject);
+		await db.updateCategoryDetails(categoryId, formObject);
 		res.redirect("/categories");
 	},
 ];
