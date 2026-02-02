@@ -92,6 +92,7 @@ exports.editCategoryPost = [
 			await db.orphanItems(itemIdsForOrphaning);
 
 		await db.updateCategoryDetails(categoryId, formObject);
+		res.redirect("/categories");
 	},
 ];
 
