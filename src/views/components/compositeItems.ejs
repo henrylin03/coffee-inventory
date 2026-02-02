@@ -20,40 +20,53 @@
     </table>
   </div>
 </section>
-<script src="
-https://cdn.jsdelivr.net/npm/dompurify@3.3.1/dist/purify.min.js
-"></script>
 <script>
   let items = <%- JSON.stringify(compositeItems) %>;
 
   const renderItemRows = (items) => {
-    if (typeof trustedTypes === "undefined") trustedTypes = {
-      createPolicy: (n, rules) => rules
-    }
-    const policy = trustedTypes.createPolicy("my-policy", {
-      createHTML: (input) => DOMPurify.sanitize(input),
-    })
+    const tableBody = document.querySelector("table tbody");
+    items.forEach(item => {
+      const columnsData = [
+        item.name, item.sku, `${Math.round(item.size_grams)} g`, item.roastery, `${item.price_dollars} /unit`, item.stock_quantity
+      ]
 
-    const tableBody = document.querySelector(".table>tbody");
-    const innerHtmlString = items.map(item => `<tr onclick="window.location='/items/${policy.createHTML(item.id)}'" aria-label="See more details of item" class="hover:bg-neutral-100 hover:cursor-pointer">
-      <td>${policy.createHTML(item.name)}</td>
-      <td>${policy.createHTML(item.sku)}</td>
-          <td>${Math.round(item.size_grams)}</td>
-          <td>${policy.createHTML(item.roastery)}</td>
-          <td>${policy.createHTML(item.price_dollars)} <span class="decorative-text">/unit</span></td>
-          <td>${item.stock_quantity}</td>
-          <td class="grid pr-10">
-            <button class="btn btn-circle btn-ghost justify-center" aria-label="Remove item from this category" data-item-id="${policy.createHTML(item.id)}">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 lucide lucide-trash-icon lucide-trash stroke-error">
-                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
-                <path d="M3 6h18" />
-                <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-              </svg>
-            </button>
-          </td>
-        </tr>`).join("")
-    tableBody.innerHTML = innerHtmlString;
+      const row = document.createElement("tr");
+      row.dataset.itemId = item.id;
+      row.classList.add("cursor-pointer", "hover:bg-neutral-100");
+
+      columnsData.forEach(col => {
+        const cell = document.createElement("td");
+        cell.textContent = col;
+        row.appendChild(cell);
+      })
+      const deleteButtonCell = document.createElement("td");
+      deleteButtonCell.classList.add("grid", "pr-10");
+      const deleteButton = document.createElement("button");
+      deleteButton.dataset.itemId = item.id;
+      deleteButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash stroke-error w-4 h-4">
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
+        <path d="M3 6h18" />
+        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+      </svg>`;
+      deleteButton.classList.add("btn", "btn-circle", "btn-ghost", "justify-center");
+      deleteButtonCell.appendChild(deleteButton);
+      row.appendChild(deleteButtonCell);
+
+      tableBody.appendChild(row);
+    })
   }
 
   renderItemRows(items);
+  const tableRows = document.querySelectorAll("table tbody tr");
+  tableRows.forEach(row => row.addEventListener("click", () => {
+    window.location = `/items/${row.dataset.itemId}`;
+  }))
+
+  const deleteButtons = document.querySelectorAll("table button");
+  deleteButtons.forEach(btn => btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const itemId = btn.dataset.itemId;
+    items = items.filter(item => item.id !== itemId);
+    renderItemRows(items);
+  }))
 </script>
