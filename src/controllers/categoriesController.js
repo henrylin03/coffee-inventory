@@ -81,6 +81,27 @@ exports.editCategoryDetailsGet = async (req, res) => {
 	});
 };
 
+exports.editCategoryDetailsPost = [
+	validateCategory,
+	async (req, res) => {
+		const { id: categoryId } = req.params;
+		const fetchedCategory = await db.getCategoryById(categoryId);
+
+		const errors = validationResult(req);
+		if (!errors.isEmpty())
+			return res.status(400).render("pages/editCategory", {
+				title: fetchedCategory.name,
+				category: fetchedCategory,
+				errors: errors.array(),
+			});
+
+		const categoryFormValues = matchedData(req);
+
+		await db.updateCategoryDetails(categoryId, categoryFormValues);
+		res.redirect(`/categories/${categoryId}`);
+	},
+];
+
 exports.deleteCategoryPost = async (req, res) => {
 	const { id: categoryId } = req.params;
 	await db.deleteCategoryAndOrphanItems(categoryId);
