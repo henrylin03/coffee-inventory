@@ -110,12 +110,10 @@ const countItemsInCategory = async (categoryId) => {
 
 const deleteCategoryAndOrphanItems = async (categoryId) => {
 	await pool.query(
-		`
-UPDATE items SET category_id = NULL WHERE category_id = $1;
-DELETE FROM categories WHERE id = $1;
-`,
+		"UPDATE items SET category_id = NULL WHERE category_id = $1;",
 		[categoryId],
 	);
+	await pool.query("DELETE FROM categories WHERE id = $1;", [categoryId]);
 };
 
 module.exports = {
