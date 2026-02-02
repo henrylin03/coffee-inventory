@@ -1,0 +1,37 @@
+<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "All items"}) %>
+<p class="px-8 -mt-4 mb-4">Select all item(s) that you want to add to this category</p>
+<section class="overflow-x-auto flex-1">
+  <table class="table table-fixed">
+    <thead class="uppercase bg-neutral-200 text-neutral-600">
+      <tr>
+        <th class="w-16"><label>
+            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm">
+          </label></th>
+        <th>Name</th>
+        <th>SKU</th>
+        <th>Weight</th>
+        <th>Roastery</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% items.forEach(item => { %>
+      <tr aria-label="See more details of item" role="button" class="hover:bg-neutral-100 hover:cursor-pointer" data-item-id="<%= item.id %>">
+        <th class="w-16">
+          <label>
+            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" <%= Number(item["category_id"]) === Number(categoryId) ? "checked" : "" %>>
+          </label>
+        </th>
+        <td><%= item.name %></td>
+        <td><%= item.sku %></td>
+        <td><%= Math.round(item.size_grams) %>g</td>
+        <td><%= item.roastery %></td>
+      </tr>
+      <%}); %>
+    </tbody>
+  </table>
+</section>
+<footer class="flex gap-2 p-6 border border-base-200">
+  <button class="btn btn-primary">Save</button>
+  <button class="btn bg-white text-gray-500 border-gray-400" onclick="history.back()">Cancel</button>
+</footer>
+<script src="/js/compositeItemsScript.js"></script>
