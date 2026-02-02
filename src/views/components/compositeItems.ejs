@@ -21,10 +21,10 @@
   </div>
 </section>
 <script>
+  const tableBody = document.querySelector("table tbody");
   let items = <%- JSON.stringify(compositeItems) %>;
 
   const renderItemRows = (items) => {
-    const tableBody = document.querySelector("table tbody");
     items.forEach(item => {
       const columnsData = [
         item.name, item.sku, `${Math.round(item.size_grams)} g`, item.roastery, `${item.price_dollars} /unit`, item.stock_quantity
@@ -33,6 +33,7 @@
       const row = document.createElement("tr");
       row.dataset.itemId = item.id;
       row.classList.add("cursor-pointer", "hover:bg-neutral-100");
+      row.addEventListener("click", () => window.location = `/items/${row.dataset.itemId}`)
 
       columnsData.forEach(col => {
         const cell = document.createElement("td");
@@ -49,6 +50,7 @@
         <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
       </svg>`;
       deleteButton.classList.add("btn", "btn-circle", "btn-ghost", "justify-center");
+      deleteButton.addEventListener("click", handleDeleteItem);
       deleteButtonCell.appendChild(deleteButton);
       row.appendChild(deleteButtonCell);
 
@@ -56,17 +58,13 @@
     })
   }
 
-  renderItemRows(items);
-  const tableRows = document.querySelectorAll("table tbody tr");
-  tableRows.forEach(row => row.addEventListener("click", () => {
-    window.location = `/items/${row.dataset.itemId}`;
-  }))
-
-  const deleteButtons = document.querySelectorAll("table button");
-  deleteButtons.forEach(btn => btn.addEventListener("click", (e) => {
+  const handleDeleteItem = (e) => {
     e.stopPropagation();
-    const itemId = btn.dataset.itemId;
-    items = items.filter(item => item.id !== itemId);
+    const itemIdForDeletion = e.currentTarget.dataset.itemId;
+    items = items.filter(item => Number(item.id) !== Number(itemIdForDeletion));
+    tableBody.replaceChildren();
     renderItemRows(items);
-  }))
+  }
+
+  renderItemRows(items);
 </script>
