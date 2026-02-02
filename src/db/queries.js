@@ -108,6 +108,15 @@ const countItemsInCategory = async (categoryId) => {
 	return rows[0].count;
 };
 
+const updateCategoryById = async (categoryId, formObject) => {
+	const { name: categoryName, description } = formObject;
+
+	await pool.query(
+		"UPDATE categories SET name = $2, description = $3 WHERE id = $1",
+		[categoryId, categoryName, description],
+	);
+};
+
 module.exports = {
 	addCategory,
 	addItem,
@@ -118,5 +127,6 @@ module.exports = {
 	getCategoryById,
 	getItemById,
 	getItemsInCategory,
+	updateCategoryById,
 	updateItemById,
 };

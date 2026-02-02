@@ -14,5 +14,6 @@ categoriesRouter.get(
 );
 
 categoriesRouter.get("/:id", categoriesController.editCategoryGet);
+categoriesRouter.post("/:id/update", categoriesController.editCategoryPost);
 
 module.exports = categoriesRouter;
