@@ -102,3 +102,9 @@ exports.editItemsInCategoryGet = async (req, res) => {
 		categoryId,
 	});
 };
+
+exports.deleteCategoryPost = async (req, res) => {
+	const { id: categoryId } = req.params;
+	await db.deleteCategoryAndOrphanItems(categoryId);
+	res.redirect("/categories");
+};
