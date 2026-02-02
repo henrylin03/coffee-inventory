@@ -26,19 +26,20 @@
   const renderItemRows = (items) => {
     const tableBody = document.querySelector("table tbody");
     items.forEach(item => {
-    const columnsData = [
-    item.name, item.sku, `${Math.round(item.size_grams)} g`, item.roastery, `${item.price_dollars} /unit`, item.stock_quantity
-    ]
+      const columnsData = [
+        item.name, item.sku, `${Math.round(item.size_grams)} g`, item.roastery, `${item.price_dollars} /unit`, item.stock_quantity
+      ]
 
-    const row = document.createElement("tr");
-    row.dataset.itemId = item.id;
+      const row = document.createElement("tr");
+      row.dataset.itemId = item.id;
+      row.classList.add("cursor-pointer", "hover:bg-neutral-100");
 
-    columnsData.forEach(col => {
-    const cell = document.createElement("td");
-    cell.textContent = col;
-    row.appendChild(cell);
-    })
-    tableBody.appendChild(row);
+      columnsData.forEach(col => {
+        const cell = document.createElement("td");
+        cell.textContent = col;
+        row.appendChild(cell);
+      })
+      tableBody.appendChild(row);
     })
   }
 
