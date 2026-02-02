@@ -117,10 +117,19 @@ const updateCategoryById = async (categoryId, formObject) => {
 	);
 };
 
+const deleteCategoryAndOrphanItems = async (categoryId) => {
+	await pool.query(
+		"UPDATE items SET category_id = NULL WHERE category_id = $1;",
+		[categoryId],
+	);
+	await pool.query("DELETE FROM categories WHERE id = $1;", [categoryId]);
+};
+
 module.exports = {
 	addCategory,
 	addItem,
 	countItemsInCategory,
+	deleteCategoryAndOrphanItems,
 	deleteItem,
 	getAllCategories,
 	getAllItems,
