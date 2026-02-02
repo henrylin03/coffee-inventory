@@ -16,16 +16,25 @@
         </tr>
       </thead>
       <tbody>
-        <% compositeItems.forEach(item => { %>
-        <tr onclick="window.location='<%= `/items/${item.id}` %>'" aria-label="See more details of item" class="hover:bg-neutral-100 hover:cursor-pointer">
-          <td><%= item.name %></td>
-          <td><%= item.sku %></td>
-          <td><%= Math.round(item.size_grams) %>g</td>
-          <td><%= item.roastery %></td>
-          <td><%= item.price_dollars %> <span class="decorative-text">/unit</span></td>
-          <td><%= item.stock_quantity %></td>
+      </tbody>
+      </table>
+      </div>
+      </section>
+      <script>
+        let items = <%- JSON.stringify(compositeItems) %>;
+
+        const renderItemRows = (items) => {
+            const tableBody = document.querySelector(".table>tbody");
+
+            tableBody.innerHTML = items.map(item => `<tr onclick="window.location='/items/${item.id}'" aria-label="See more details of item" class="hover:bg-neutral-100 hover:cursor-pointer">
+          <td>${item.name}</td>
+          <td>${item.sku}</td>
+          <td>${Math.round(item.size_grams)}</td>
+          <td>${item.roastery}</td>
+          <td>${item.price_dollars} <span class="decorative-text">/unit</span></td>
+          <td>${item.stock_quantity}</td>
           <td class="grid pr-10">
-            <button class="btn btn-circle btn-ghost justify-center" aria-label="Remove item from this category" data-item-id="<%= item.id %>">
+            <button class="btn btn-circle btn-ghost justify-center" aria-label="Remove item from this category" data-item-id="${item.id}">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 lucide lucide-trash-icon lucide-trash stroke-error">
                 <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
                 <path d="M3 6h18" />
@@ -33,12 +42,8 @@
               </svg>
             </button>
           </td>
-        </tr>
-        <%}); %>
-      </tbody>
-    </table>
-  </div>
-</section>
-<script>
-  let items = <%- JSON.stringify(compositeItems) %>
+        </tr>`).join("")
+        }
+
+        renderItemRows(items);
 </script>
