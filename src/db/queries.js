@@ -99,6 +99,16 @@ const getItemsInCategory = async (categoryId) => {
 	return rows;
 };
 
+const getCategoryNameById = async (categoryId) => {
+	const { rows } = await pool.query(
+		"SELECT name FROM categories WHERE id = $1;",
+		[categoryId],
+	);
+
+	if (rows.length === 0) return null;
+	return rows[0].name;
+};
+
 const countItemsInCategory = async (categoryId) => {
 	const { rows } = await pool.query(
 		"SELECT COUNT(id) AS count FROM items WHERE category_id = $1",
@@ -134,6 +144,7 @@ module.exports = {
 	getAllCategories,
 	getAllItems,
 	getCategoryById,
+	getCategoryNameById,
 	getItemById,
 	getItemsInCategory,
 	updateCategoryDetails,

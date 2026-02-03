@@ -1,5 +1,5 @@
-<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "All items"}) %>
-<p class="px-8 -mt-4 mb-4">Select all item(s) that you want to add to this category</p>
+<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "Manage items"}) %>
+<p class="px-8 -mt-6 mb-4">Modify the items in the category: "<span class="text-secondary font-bold"><%= category.name %></span>"</p>
 <section class="overflow-x-auto flex-1">
   <table class="table table-fixed">
     <thead class="uppercase bg-neutral-200 text-neutral-600">
@@ -18,7 +18,7 @@
       <tr aria-label="See more details of item" role="button" class="hover:bg-neutral-100 hover:cursor-pointer" data-item-id="<%= item.id %>">
         <th class="w-16">
           <label>
-            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" <%= Number(item["category_id"]) === Number(categoryId) ? "checked" : "" %>>
+            <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" <%= Number(item["category_id"]) === Number(category.id) ? "checked" : "" %>>
           </label>
         </th>
         <td><%= item.name %></td>

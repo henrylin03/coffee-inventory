@@ -104,12 +104,16 @@ exports.editCategoryDetailsPost = [
 
 exports.editItemsInCategoryGet = async (req, res) => {
 	const { id: categoryId } = req.params;
+	const categoryName = await db.getCategoryNameById(categoryId);
+	if (categoryName === null)
+		throw new CustomNotFoundError(`Category with id ${categoryId} not found`);
+
 	const allItems = await db.getAllItems();
 
 	res.render("pages/editItemsInCategory", {
 		title: "Modify items",
 		items: allItems,
-		categoryId,
+		category: { id: categoryId, name: categoryName },
 	});
 };
 
