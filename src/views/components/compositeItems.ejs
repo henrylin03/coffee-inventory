@@ -1,6 +1,12 @@
 <section class="flex-2 flex flex-col gap-4">
   <header class="w-full grid justify-items-end px-8">
-    <%- include("./buttonTriggeredDropdown", { text: "Add item", options: [{ label: "Add new item", href: `/items/new?referredCategoryId=${categoryId}` }, { label: "Add existing item", href: `/categories/includeItems?categoryId=${categoryId}` }]}) %>
+    <a href="/categories/includeItems?categoryId=<%= categoryId %>" role="button" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-todo-icon lucide-list-todo w-4 h-4">
+        <path d="M13 5h8" />
+        <path d="M13 12h8" />
+        <path d="M13 19h8" />
+        <path d="m3 17 2 2 4-4" />
+        <rect x="3" y="4" width="6" height="6" rx="1" />
+      </svg>Modify items</a>
   </header>
   <div class="overflow-x-auto">
     <table class="table table-auto">
