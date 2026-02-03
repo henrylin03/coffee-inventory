@@ -54,7 +54,7 @@ exports.createCategoryPost = [
 	},
 ];
 
-exports.editCategoryGet = async (req, res) => {
+exports.categoryGet = async (req, res) => {
 	const { id: categoryId } = req.params;
 	const category = await db.getCategoryById(categoryId);
 	if (category === null)
@@ -66,6 +66,18 @@ exports.editCategoryGet = async (req, res) => {
 		title: category.name,
 		category,
 		compositeItems: allItemsInCategory,
+	});
+};
+
+exports.editCategoryDetailsGet = async (req, res) => {
+	const { id: categoryId } = req.params;
+	const category = await db.getCategoryById(categoryId);
+	if (category === null)
+		throw new CustomNotFoundError(`Category with id ${categoryId} not found`);
+
+	res.render("pages/editCategory", {
+		title: category.name,
+		category,
 	});
 };
 
