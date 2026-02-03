@@ -21,7 +21,7 @@ const getRoutes = async (referredCategoryId) => {
 		: "/items/new";
 
 	routes.redirectRoute = referredCategoryId
-		? `/categories/${referredCategoryId}`
+		? `/categories/${referredCategoryId}` // TODO: THIS NEEDS TO BE FIXED - NEEDS TO GO TO THE MANAGE ITEMS PAGE
 		: "/items";
 
 	return routes;
@@ -77,10 +77,24 @@ exports.createItemPost = [
 ];
 
 exports.editItemGet = async (req, res) => {
+	const { referredCategoryId, fromPage } = req.query;
 	const { id: itemId } = req.params;
 	const fetchedItem = await getItemById(itemId);
 
-	res.render("pages/editItem", { title: fetchedItem.name, item: fetchedItem });
+	const getButtonRoute = (categoryIdQueryValue, fromPageQueryValue) => {
+		if (!categoryIdQueryValue) return "/items";
+		if (fromPageQueryValue === "editItemsInCategory")
+			return `/categories/${categoryIdQueryValue}/edit-items`;
+		return `/categories/${categoryIdQueryValue}`;
+	};
+
+	res.render("pages/editItem", {
+		title: fetchedItem.name,
+		item: fetchedItem,
+		buttonRoutes: {
+			cancelBtn: getButtonRoute(referredCategoryId, fromPage),
+		},
+	});
 };
 
 exports.editItemPost = [
