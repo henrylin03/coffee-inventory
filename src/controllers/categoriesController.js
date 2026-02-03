@@ -111,7 +111,7 @@ exports.editItemsInCategoryGet = async (req, res) => {
 	const allItems = await db.getAllItems();
 
 	res.render("pages/editItemsInCategory", {
-		title: "Modify items",
+		title: "Manage items",
 		items: allItems,
 		category: { id: categoryId, name: categoryName },
 	});
