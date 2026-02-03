@@ -1,4 +1,4 @@
-<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "Modify items" }) %>
+<%- include("../components/pageHeaders/pageHeaderWithAdd.ejs", { heading: "Modify items", button: { text: "Add new item", route: `/items/new?referredCategoryId=${categoryId}`} }) %>
 <section class="overflow-x-auto flex-1">
   <table class="table table-fixed">
     <thead class="uppercase bg-neutral-200 text-neutral-600">
