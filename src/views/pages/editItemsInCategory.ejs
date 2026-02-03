@@ -5,7 +5,7 @@
   "<span class="font-bold text-secondary"><%= category.name %></span>"
 </p>
 
-<section class="overflow-x-auto flex-1">
+<form class="overflow-x-auto flex-1" method="POST" action="/categories/<%= category.id %>/edit-items/save" id="composite-items-form">
   <table class="table table-fixed">
     <thead class="bg-neutral-200 text-neutral-600 uppercase">
       <tr>
@@ -28,7 +28,7 @@
             <input type="checkbox" class="checkbox checkbox-primary checkbox-sm" <%= Number(item["category_id"]) === Number(category.id) 
                   ? "checked" 
                   : "" 
-                %>>
+                %> name="itemIds" value="<%= item.id %>">
           </label>
         </th>
         <td><%= item.name %></td>
@@ -39,9 +39,9 @@
       <% }); %>
     </tbody>
   </table>
-</section>
+</form>
 <footer class="flex gap-2 border border-base-200 p-6">
-  <button class="btn btn-primary">Save</button>
+  <input type="submit" value="Save" form="composite-items-form" class="btn btn-primary">
   <a href="/categories/<%= category.id %>" role="button" class="btn border-gray-400 bg-white text-gray-500">
     Cancel
   </a>
