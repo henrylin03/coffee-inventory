@@ -1,2 +1,6 @@
-<%- include("../components/pageHeaders/pageHeaderWithClose", { heading: category.name }) %>
-<p><%= category.description %></p>
+<header class="flex items-center justify-between p-8">
+  <h1 class="text-2xl"><%= category.name %></h1>
+</header>
+<section class="px-8 flex-1 max-w-3xl">
+  <p><%= category.description %></p>
+</section>
