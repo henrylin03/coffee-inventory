@@ -1,6 +1,5 @@
 const selectAllCheckbox = document.querySelector("thead .checkbox");
 const rowCheckboxes = document.querySelectorAll("tbody .checkbox");
-const rows = document.querySelectorAll("tbody tr");
 
 const allCheckboxesChecked = [...rowCheckboxes].every(
 	(checkbox) => checkbox.checked,
@@ -8,11 +7,6 @@ const allCheckboxesChecked = [...rowCheckboxes].every(
 const someCheckboxesChecked = [...rowCheckboxes].some(
 	(checkbox) => checkbox.checked,
 );
-
-const handleClickOnRow = (e) => {
-	const itemId = e.currentTarget.dataset.itemId;
-	location.href = `/items/${itemId}`;
-};
 
 const handleChangeOnSelectAllCheckbox = (e) => {
 	const selectAll = e.currentTarget;
@@ -43,5 +37,3 @@ selectAllCheckbox.addEventListener("change", handleChangeOnSelectAllCheckbox);
 
 for (const checkbox of rowCheckboxes)
 	checkbox.addEventListener("click", handleClickOnRowCheckbox);
-
-for (const row of rows) row.addEventListener("click", handleClickOnRow);
