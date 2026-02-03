@@ -135,6 +135,26 @@ const updateCategoryDetails = async (categoryId, formValues) => {
 	);
 };
 
+const updateCategoriesOfItems = async (
+	itemIdsToAddToCategoryId,
+	itemIdsToRemoveFromCategoryId,
+	categoryId,
+) => {
+	const itemIdsToAdd = [...itemIdsToAddToCategoryId];
+	const itemIdsToRemove = [...itemIdsToRemoveFromCategoryId];
+
+	if (itemIdsToAdd.length > 0)
+		await pool.query("UPDATE items SET category_id = $1 WHERE id = ANY($2)", [
+			categoryId,
+			itemIdsToAdd,
+		]);
+
+	if (itemIdsToRemove.length > 0)
+		await pool.query("UPDATE items SET category_id = NULL WHERE id = ANY($1)", [
+			itemIdsToRemove,
+		]);
+};
+
 module.exports = {
 	addCategory,
 	addItem,
@@ -148,5 +168,6 @@ module.exports = {
 	getItemById,
 	getItemsInCategory,
 	updateCategoryDetails,
+	updateCategoriesOfItems,
 	updateItemById,
 };

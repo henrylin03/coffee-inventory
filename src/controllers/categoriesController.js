@@ -127,17 +127,15 @@ exports.editItemsInCategoryPost = async (req, res) => {
 	const { itemIds } = req.body;
 	const itemIdsFromTable = new Set(itemIds.map((id) => Number(id)));
 
-	// add items to category (items that were in the req.body) but only if they are not already in the category
 	const itemIdsToAdd = [...itemIdsFromTable].filter(
 		(id) => !currentItemIdsInCategory.has(id),
 	);
-
-	// remove items from category (items that were not in the req.body) but only if they are currently in the category
 	const itemIdsToRemove = [...currentItemIdsInCategory].filter(
-		(id) => !itemIdsFromTable.includes(id),
+		(id) => !itemIdsFromTable.has(id),
 	);
 
-	res.end();
+	await db.updateCategoriesOfItems(itemIdsToAdd, itemIdsToRemove, categoryId);
+	res.redirect(`/categories/${categoryId}`);
 };
 
 exports.deleteCategoryPost = async (req, res) => {
