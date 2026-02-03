@@ -75,7 +75,7 @@ exports.editCategoryDetailsGet = async (req, res) => {
 	if (category === null)
 		throw new CustomNotFoundError(`Category with id ${categoryId} not found`);
 
-	res.render("pages/editCategory", {
+	res.render("pages/editCategoryDetails", {
 		title: category.name,
 		category,
 	});
@@ -89,7 +89,7 @@ exports.editCategoryDetailsPost = [
 
 		const errors = validationResult(req);
 		if (!errors.isEmpty())
-			return res.status(400).render("pages/editCategory", {
+			return res.status(400).render("pages/editCategoryDetails", {
 				title: fetchedCategory.name,
 				category: fetchedCategory,
 				errors: errors.array(),
