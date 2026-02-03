@@ -117,6 +117,11 @@ exports.editItemsInCategoryGet = async (req, res) => {
 	});
 };
 
+exports.editItemsInCategoryPost = async (req, res) => {
+	console.log("req.body:", req.body);
+	res.end();
+};
+
 exports.deleteCategoryPost = async (req, res) => {
 	const { id: categoryId } = req.params;
 	await db.deleteCategoryAndOrphanItems(categoryId);
