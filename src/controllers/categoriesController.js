@@ -118,8 +118,20 @@ exports.editItemsInCategoryGet = async (req, res) => {
 };
 
 exports.editItemsInCategoryPost = async (req, res) => {
-	console.log("req.body:", req.body);
-	res.end();
+	const { id: categoryId } = req.params;
+	const currentItemsInCategory = await db.getItemsInCategory(categoryId);
+	const currentItemIdsInCategory = new Set(
+		currentItemsInCategory.map((item) => Number(item.id)),
+	);
+
+	const { itemIds: itemIdsFromTable } = req.body;
+	const itemIdsToBeInCategory = new Set(
+		itemIdsFromTable.map((id) => Number(id)),
+	);
+
+	// add items to category (items that were in the req.body) but only if they are not already in the category
+
+	// remove items from category (items that were not in the req.body) but only if they are currently in the category
 };
 
 exports.deleteCategoryPost = async (req, res) => {
