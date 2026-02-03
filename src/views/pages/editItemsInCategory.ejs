@@ -1,13 +1,11 @@
-<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { 
-  heading: "Manage items"
-}) %>
+<%- include("../components/pageHeaders/pageHeaderWithAdd.ejs", { heading: "Manage items", button: { text: "Add new item", route: `/items/new?referredCategoryId=${category.id}`} }) %>
 
 <p class="px-8 -mt-6 mb-4">
   Modify the items in the category:
   "<span class="font-bold text-secondary"><%= category.name %></span>"
 </p>
 
-<section class="flex-1 overflow-x-auto">
+<section class="overflow-x-auto flex-1">
   <table class="table table-fixed">
     <thead class="bg-neutral-200 text-neutral-600 uppercase">
       <tr>
