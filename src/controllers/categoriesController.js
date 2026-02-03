@@ -104,11 +104,11 @@ exports.editCategoryDetailsPost = [
 
 exports.editItemsInCategoryGet = async (req, res) => {
 	const { categoryId } = req.query;
-	const items = await db.getAllItems();
+	const allItems = await db.getAllItems();
 
 	res.render("pages/editItemsInCategory", {
 		title: "Modify items",
-		items,
+		items: allItems,
 		categoryId,
 	});
 };
