@@ -6,19 +6,28 @@ function handleKeydownOnNumberInputs(event) {
 }
 
 function setCancelBtnHref() {
-	const QUERY_KEY = "referredCategoryId";
+	const QUERY_KEYS = {
+		referredPageViewName: "fromPage",
+		referredCategoryId: "referredCategoryId",
+	};
+
 	const cancelBtn = document.querySelector(".cancel-btn");
 
-	//   console.log("window.location.search:", location.search);
 	const params = new URL(document.location.toString()).searchParams;
-	const referredCategoryId = params.get(QUERY_KEY);
+	const referredCategoryId = params.get(QUERY_KEYS.referredCategoryId);
+	const referredPageViewName = params.get(QUERY_KEYS.referredPageViewName);
 
 	if (referredCategoryId === null) {
-		cancelBtn.setAttribute("href", "/items");
-	} else {
-		cancelBtn.setAttribute("href", `/categories/${referredCategoryId}`);
+		cancelBtn.href = "/items";
+		return;
 	}
-	// TODO: NEED TO ALSO HANDLE SITUATION WHERE USER IS GOING TO EDIT ITEMS FROM "MANAGE ITEMS"
+
+	if (referredPageViewName === null || referredPageViewName === "category") {
+		cancelBtn.href = `/categories/${referredCategoryId}`;
+		return;
+	}
+
+	cancelBtn.href = `/categories/${referredCategoryId}/edit-items`;
 }
 
 setCancelBtnHref();
