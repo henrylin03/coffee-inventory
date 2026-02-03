@@ -42,8 +42,8 @@
 </section>
 <footer class="flex gap-2 border border-base-200 p-6">
   <a href="/categories/<%= category.id %>/edit-items/save" role="button" class="btn btn-primary">Save</a>
-  <button class="btn border-gray-400 bg-white text-gray-500" onclick="history.back()">
+  <a href="/categories/<%= category.id %>" role="button" class="btn border-gray-400 bg-white text-gray-500">
     Cancel
-  </button>
+  </a>
 </footer>
 <script src="/js/editItemsInCategoryScript.js"></script>
