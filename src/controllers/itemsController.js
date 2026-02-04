@@ -27,6 +27,13 @@ const getRoutes = async (referredCategoryId) => {
 	return routes;
 };
 
+const getEditItemButtonRoute = (categoryIdQueryValue, fromPageQueryValue) => {
+	if (!categoryIdQueryValue) return "/items";
+	if (fromPageQueryValue === "category")
+		return `/categories/${categoryIdQueryValue}`;
+	else return `/categories/${categoryIdQueryValue}/edit-items`;
+};
+
 exports.getAllItems = async (_req, res) => {
 	const fetchedItems = await db.getAllItems();
 
@@ -81,18 +88,14 @@ exports.editItemGet = async (req, res) => {
 	const { id: itemId } = req.params;
 	const fetchedItem = await getItemById(itemId);
 
-	const getButtonRoute = (categoryIdQueryValue, fromPageQueryValue) => {
-		if (!categoryIdQueryValue) return "/items";
-		if (fromPageQueryValue === "editItemsInCategory")
-			return `/categories/${categoryIdQueryValue}/edit-items`;
-		return `/categories/${categoryIdQueryValue}`;
-	};
-
 	res.render("pages/editItem", {
 		title: fetchedItem.name,
 		item: fetchedItem,
 		buttonRoutes: {
-			cancelBtn: getButtonRoute(referredCategoryId, fromPage),
+			formSubmitRoute: !referredCategoryId
+				? `/items/${itemId}/update`
+				: `/items/${itemId}/update?referredCategoryId=${referredCategoryId}&fromPage=${fromPage}`,
+			cancelBtn: getEditItemButtonRoute(referredCategoryId, fromPage),
 		},
 	});
 };
@@ -100,6 +103,7 @@ exports.editItemGet = async (req, res) => {
 exports.editItemPost = [
 	validateItem,
 	async (req, res) => {
+		const { referredCategoryId, fromPage } = req.query;
 		const { id: itemId } = req.params;
 		const fetchedItem = await getItemById(itemId);
 
@@ -118,7 +122,7 @@ exports.editItemPost = [
 		};
 
 		await db.updateItemById(itemId, formInputsAndValues);
-		res.redirect("/items");
+		res.redirect(getEditItemButtonRoute(referredCategoryId, fromPage));
 	},
 ];
 
