@@ -1,4 +1,4 @@
-<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "New category"}) %>
+<%- include("../components/pageHeaders/pageHeaderWithClose.ejs", { heading: "New category", closeButtonPath: "/categories"}) %>
 <section class="px-8 flex-1">
   <%- include("../components/errorsList") %>
   <%- include("../components/forms/categoryForm", { route: "/categories/new"}) %>
