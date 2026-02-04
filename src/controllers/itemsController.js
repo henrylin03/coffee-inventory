@@ -13,25 +13,43 @@ const getItemById = async (itemId) => {
 	return item;
 };
 
-const getRoutes = async (referredCategoryId) => {
-	const routes = {};
+// const getRoutes = async (referredCategoryId) => {
+// 	const routes = {};
 
-	routes.formSubmitRoute = referredCategoryId
-		? `/items/new?referredCategoryId=${referredCategoryId}`
-		: "/items/new";
+// 	routes.formSubmitRoute = referredCategoryId
+// 		? `/items/new?referredCategoryId=${referredCategoryId}`
+// 		: "/items/new";
 
-	routes.redirectRoute = referredCategoryId
-		? `/categories/${referredCategoryId}` // TODO: THIS NEEDS TO BE FIXED - NEEDS TO GO TO THE MANAGE ITEMS PAGE
-		: "/items";
+// 	routes.redirectRoute = referredCategoryId
+// 		? `/categories/${referredCategoryId}` // TODO: THIS NEEDS TO BE FIXED - NEEDS TO GO TO THE MANAGE ITEMS PAGE
+// 		: "/items";
 
-	return routes;
-};
+// 	return routes;
+// };
 
 const getEditItemButtonRoute = (categoryIdQueryValue, fromPageQueryValue) => {
 	if (!categoryIdQueryValue) return "/items";
 	if (fromPageQueryValue === "category")
 		return `/categories/${categoryIdQueryValue}`;
 	else return `/categories/${categoryIdQueryValue}/edit-items`;
+};
+
+// const getRoutes = (req, basePath, allItemsPath = "/items") => {
+//   const { referredCategoryId, fromPage } = req.query;
+//   const routes = { formSubmitRoute: "/", redirectRoute: allItemsPath };
+
+//   if
+// };
+
+const getPathsForNewItemPage = (req) => {
+	const { referredCategoryId } = req.query;
+	const paths = { submit: "/items/new", previousPage: "/items" };
+	if (referredCategoryId) {
+		paths.submit = `/items/new?referredCategoryId=${referredCategoryId}`;
+		paths.previousPage = `/categories/${referredCategoryId}/edit-items`;
+	}
+
+	return paths;
 };
 
 exports.getAllItems = async (_req, res) => {
@@ -49,13 +67,11 @@ exports.getAllItems = async (_req, res) => {
 };
 
 exports.createItemGet = async (req, res) => {
-	const { referredCategoryId } = req.query;
-
-	const routes = await getRoutes(referredCategoryId);
+	const paths = getPathsForNewItemPage(req);
 
 	res.render("pages/newItem", {
 		title: "Create new item",
-		routes,
+		paths,
 	});
 };
 
@@ -63,13 +79,13 @@ exports.createItemPost = [
 	validateItem,
 	async (req, res) => {
 		const { referredCategoryId } = req.query;
-		const routes = await getRoutes(referredCategoryId);
+		const paths = getPathsForNewItemPage(req);
 
 		const errors = validationResult(req);
 		if (!errors.isEmpty())
 			return res
 				.status(400)
-				.render("pages/newItem", { errors: errors.array(), routes });
+				.render("pages/newItem", { errors: errors.array(), paths });
 
 		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
 		const formInputsAndValues = {
@@ -79,7 +95,7 @@ exports.createItemPost = [
 		};
 
 		await db.addItem(formInputsAndValues);
-		res.redirect(routes.redirectRoute);
+		res.redirect(paths.previousPage);
 	},
 ];
 
