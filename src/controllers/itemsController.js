@@ -13,34 +13,6 @@ const getItemById = async (itemId) => {
 	return item;
 };
 
-// const getRoutes = async (referredCategoryId) => {
-// 	const routes = {};
-
-// 	routes.formSubmitRoute = referredCategoryId
-// 		? `/items/new?referredCategoryId=${referredCategoryId}`
-// 		: "/items/new";
-
-// 	routes.redirectRoute = referredCategoryId
-// 		? `/categories/${referredCategoryId}` // TODO: THIS NEEDS TO BE FIXED - NEEDS TO GO TO THE MANAGE ITEMS PAGE
-// 		: "/items";
-
-// 	return routes;
-// };
-
-const getEditItemButtonRoute = (categoryIdQueryValue, fromPageQueryValue) => {
-	if (!categoryIdQueryValue) return "/items";
-	if (fromPageQueryValue === "category")
-		return `/categories/${categoryIdQueryValue}`;
-	else return `/categories/${categoryIdQueryValue}/edit-items`;
-};
-
-// const getRoutes = (req, basePath, allItemsPath = "/items") => {
-//   const { referredCategoryId, fromPage } = req.query;
-//   const routes = { formSubmitRoute: "/", redirectRoute: allItemsPath };
-
-//   if
-// };
-
 const getPathsForNewItemPage = (req) => {
 	const { referredCategoryId } = req.query;
 	const paths = { submit: "/items/new", previousPage: "/items" };
@@ -48,6 +20,24 @@ const getPathsForNewItemPage = (req) => {
 		paths.submit = `/items/new?referredCategoryId=${referredCategoryId}`;
 		paths.previousPage = `/categories/${referredCategoryId}/edit-items`;
 	}
+
+	return paths;
+};
+
+const getPathsForEditItemPage = (req) => {
+	const { referredCategoryId, fromPage } = req.query;
+	const { id: itemId } = req.params;
+	const paths = { submit: `/items/${itemId}/update`, previousPage: "/items" };
+
+	if (!referredCategoryId) return paths;
+	paths.submit =
+		`/items/${itemId}/update` +
+		`?referredCategoryId=${referredCategoryId}` +
+		`&fromPage=${fromPage}`;
+
+	if (fromPage.includes("edit"))
+		paths.previousPage = `/categories/${referredCategoryId}/edit-items`;
+	else paths.previousPage = `/categories/${referredCategoryId}`;
 
 	return paths;
 };
@@ -100,34 +90,32 @@ exports.createItemPost = [
 ];
 
 exports.editItemGet = async (req, res) => {
-	const { referredCategoryId, fromPage } = req.query;
 	const { id: itemId } = req.params;
 	const fetchedItem = await getItemById(itemId);
+
+	const paths = getPathsForEditItemPage(req);
 
 	res.render("pages/editItem", {
 		title: fetchedItem.name,
 		item: fetchedItem,
-		buttonRoutes: {
-			formSubmitRoute: !referredCategoryId
-				? `/items/${itemId}/update`
-				: `/items/${itemId}/update?referredCategoryId=${referredCategoryId}&fromPage=${fromPage}`,
-			cancelBtn: getEditItemButtonRoute(referredCategoryId, fromPage),
-		},
+		paths,
 	});
 };
 
 exports.editItemPost = [
 	validateItem,
 	async (req, res) => {
-		const { referredCategoryId, fromPage } = req.query;
 		const { id: itemId } = req.params;
 		const fetchedItem = await getItemById(itemId);
+
+		const paths = getPathsForEditItemPage(req);
 
 		const errors = validationResult(req);
 		if (!errors.isEmpty())
 			return res.status(400).render("pages/editItem", {
 				item: fetchedItem,
 				errors: errors.array(),
+				paths,
 			});
 
 		const { price_dollars, ...unchangedFormInputsAndValues } = matchedData(req);
@@ -138,7 +126,7 @@ exports.editItemPost = [
 		};
 
 		await db.updateItemById(itemId, formInputsAndValues);
-		res.redirect(getEditItemButtonRoute(referredCategoryId, fromPage));
+		res.redirect(paths.previousPage);
 	},
 ];
 
